@@ -6,7 +6,7 @@
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:26:49 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:14:12 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:12:02 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_color	validate_color(t_color color, char **parts)
 		|| color.g < 0 || color.g > 255
 		|| color.b < 0 || color.b > 255)
 	{
+		printf("color invalid");
 		i = 0;
 		while (parts[i])
 			free(parts[i++]);
@@ -27,6 +28,17 @@ static t_color	validate_color(t_color color, char **parts)
 		return ((t_color){0, 0, 0});
 	}
 	return (color);
+}
+
+static int	validate_color_values(t_color c)
+{
+	if (c.r < 0 || c.r > 255)
+		return (1);
+	if (c.g < 0 || c.g > 255)
+		return (1);
+	if (c.b < 0 || c.b > 255)
+		return (1);
+	return (0);
 }
 
 t_color	parse_color(char *str)
@@ -47,13 +59,16 @@ t_color	parse_color(char *str)
 	color.r = ft_atoi(parts[0]);
 	color.g = ft_atoi(parts[1]);
 	color.b = ft_atoi(parts[2]);
-	color = validate_color(color, parts);
+
 	i = 0;
 	while (parts[i])
 		free(parts[i++]);
 	free(parts);
+	if (validate_color_values(color))
+		return ((t_color){0, 0, 0});
 	return (color);
 }
+
 
 t_vec3	parse_vec3(char *str)
 {

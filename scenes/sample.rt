@@ -1,7 +1,7 @@
 # Sample miniRT scene file
 
 # Ambient lighting: ratio color(RGB)
-A 0.2 255,255,255
+A 0.99999 		255,255,255        
 
 # Camera: position view_direction fov
 C 0,0,-5 0,0,1 70

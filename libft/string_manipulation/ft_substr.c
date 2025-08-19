@@ -6,7 +6,7 @@
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:15:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2024/03/26 13:15:12 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:49:26 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,28 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub_str;
 	size_t	i;
+	size_t	s_len;
 
-	i = 0;
-	if (len == 0 || !s)
+	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
-	{
-		sub_str = ft_calloc(1, 1);
-		if (!sub_str)
-			return (NULL);
-		return (sub_str);
-	}
-	if (len > ft_strlen(s) - start)
-		len = ft_strlen(s) - start;
-	sub_str = (char *)malloc(len);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		len = 0;
+	else if (len > s_len - start)
+		len = s_len - start;
+	sub_str = (char *)malloc(len + 1);
 	if (!sub_str)
 		return (NULL);
-	while (i <= len && s[i + start] != '\0')
+	i = 0;
+	while (i < len)
 	{
-		sub_str[i] = s[i + start];
+		sub_str[i] = s[start + i];
 		i++;
 	}
-	return (sub_str[i] = '\0', sub_str);
+	sub_str[i] = '\0';
+	return (sub_str);
 }
+
 
 /* int main()
 {

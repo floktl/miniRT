@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
+#    By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:27 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/18 20:36:01 by Florian Kei      ###   ########.fr        #
+#    Updated: 2025/08/19 15:29:32 by fkeitel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,4 +87,26 @@ mlxfclean: fclean
 	@rm -rf $(LIBMLX)
 	@rm -rf MLX42
 
+VALFLAGS = --leak-check=full \
+           --show-leak-kinds=all \
+           --track-origins=yes \
+           --suppressions=valgrind.supp
+
+# Usage: make valgrind SCENE=sample.rt
+VALFLAGS = --leak-check=full \
+           --show-leak-kinds=all \
+           --track-origins=yes \
+           --suppressions=valgrind.supp
+
+# Default scene if none is provided
+SCENE ?= sample.rt
+
+# Usage: make valgrind [SCENE=your_scene.rt]
+valgrind: all
+	valgrind $(VALFLAGS) ./$(NAME) $(SCENE)
+
+
+
 .PHONY: all clean fclean re libmlx test leaks start
+
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./miniRT sample.rt

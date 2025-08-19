@@ -43,10 +43,10 @@ int	main(int argc, char **argv)
 	free(path);
 	if (init_app(&app) != 0)
 		return (printf("Error\nFailed to initialize application\n"), 1);
-	render_scene(&app);
-	mlx_key_hook(app.mlx, key_hook, &app);
-	mlx_loop(app.mlx);
-	mlx_terminate(app.mlx);
+	//render_scene(&app);
+	//mlx_key_hook(app.mlx, key_hook, &app);
+	//mlx_loop(app.mlx);
+	//mlx_terminate(app.mlx);
 	free_scene(&app.scene);
 	return (0);
 }
