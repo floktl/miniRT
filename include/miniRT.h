@@ -179,5 +179,6 @@ void	key_hook(mlx_key_data_t keydata, void *param);
 
 // cleanup/cleanup.c
 void	free_scene(t_scene *scene);
+void	free_tokens(char **tokens);
 
 #endif

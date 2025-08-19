@@ -6,7 +6,7 @@
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:17:50 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:32:09 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:39:29 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vec3	vec_add(t_vec3 a, t_vec3 b)
 {
-	return ((t_vec3){0 0, 0});
+	return ((t_vec3){0, 0, 0});
 }
 
 t_vec3	vec_sub(t_vec3 a, t_vec3 b)

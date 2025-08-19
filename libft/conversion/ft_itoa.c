@@ -6,7 +6,7 @@
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 09:33:22 by fkeitel           #+#    #+#             */
-/*   Updated: 2023/10/30 19:46:35 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:39:00 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int	num_places(unsigned int n)
 {
-	if (n < 0)
-		return (0);
 	if (n < 10)
 		return (1);
 	if (n < 100)

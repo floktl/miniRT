@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_datatypes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:39:23 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/18 20:41:58 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/19 14:39:17 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 //This function calculates and returns number of digits in unsigned integer n
 int	num_place(unsigned int n)
 {
-	if (n < 0)
-		return (0);
 	if (n < 10)
 		return (1);
 	if (n < 100)
