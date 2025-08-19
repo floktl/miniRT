@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:42:50 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 12:25:19 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/19 12:52:12 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 char	*ft_check_if_newline(char *s)
 {
-	int counter = 0;
+	int	counter;
+
+	counter = 0;
 	while (s[counter] != '\0')
 	{
 		if (s[counter] == '\n')

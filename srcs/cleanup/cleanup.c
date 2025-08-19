@@ -1,20 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 13:21:00 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/19 13:22:48 by fkeitel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/miniRT.h"
 
-void free_scene(t_scene *scene)
+void	free_scene(t_scene *scene)
 {
-	if (!scene) return;
-	t_object *obj = scene->objects;
+	t_object	*obj;
+	t_object	*tmp;
+	t_light		*light;
+	t_light		*tmp;
+
+	if (!scene)
+		return ;
+	obj = scene->objects;
 	while (obj)
 	{
-		t_object *tmp = obj;
+		tmp = obj;
 		obj = obj->next;
 		free(tmp);
 	}
 	scene->objects = NULL;
-	t_light *light = scene->lights;
+	light = scene->lights;
 	while (light)
 	{
-		t_light *tmp = light;
+		tmp = light;
 		light = light->next;
 		free(tmp);
 	}

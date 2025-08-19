@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:57:56 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/18 20:36:01 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/19 13:05:50 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_list
 	struct s_list	*next;
 }			t_list;
 
+int		ft_count_new_line(char **buf);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -37,6 +38,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_atoi(const char *str);
+double	ft_atof(const char *str);
 int		ft_lstsize(t_list *lst);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -48,6 +50,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
@@ -56,6 +59,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -97,12 +101,7 @@ int		ft_putchar(int c, int counter);
 char	*get_next_line(int fd);
 char	*double_bufsize_fill_with_null(char const *s1);
 void	*extract_line(char **line, char **buf, int *end);
-size_t	ft_strlen(const char *c);
 int		read_buf(int fd, char **buf, int *end);
 char	*ft_check_if_newline(char *s);
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_strncpy(char *dest, const char *src, size_t n);
-int		ft_count_new_line(char **buf);
-double  ft_atof(const char *str);
 
 #endif

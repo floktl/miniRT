@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersections.c                                    :+:      :+:    :+:   */
+/*   vect_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 14:19:58 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:19:59 by fkeitel          ###   ########.fr       */
+/*   Created: 2025/08/19 13:17:50 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/19 14:32:24 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/miniRT.h"
 
-double	intersect_sphere(t_ray ray, t_object *obj)
+t_vec3	vec_normalize(t_vec3 v)
 {
-	return (-1.0);
+	return ((t_vec3){0, 0, 0});
 }
 
-double	intersect_plane(t_ray ray, t_object *obj)
+t_vec3	vec_cross(t_vec3 a, t_vec3 b)
 {
-	return (-1.0);
-}
-
-double	intersect_cylinder(t_ray ray, t_object *obj)
-{
-	return (-1.0);
+	return ((t_vec3){0, 0, 0});
 }

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 13:23:20 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/19 14:20:12 by fkeitel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/miniRT.h"
 
-int init_app(t_app *app)
+int	init_app(t_app *app)
 {
 	app->window_width = WINDOW_WIDTH;
 	app->window_height = WINDOW_HEIGHT;

@@ -12,9 +12,9 @@
 
 #include "../include/miniRT.h"
 
-static int is_not_rt(char *file)
+static int	is_not_rt(char *file)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(file);
 	if (len < 3)
@@ -22,17 +22,18 @@ static int is_not_rt(char *file)
 	return (ft_strncmp(file + len - 3, ".rt", 3));
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_app app = {0};  // Zero-initialize
-	t_scene scene = {0};  // Zero-init scene
-	app.scene = scene;
+	t_app	app ;
+	char	*path;
 
+	path = NULL;
+	app = (t_app){0};
 	if (argc != 2)
 		return (printf("Error\nUsage: ./miniRT <scene.rt>\n"), 1);
 	if (is_not_rt(argv[1]))
 		return (printf("Error\nFile must have .rt extension\n"), 1);
-	char *path = ft_strjoin("scenes/", argv[1]);
+	path = ft_strjoin("scenes/", argv[1]);
 	if (parse_scene(path, &app.scene) != 0)
 	{
 		free(path);

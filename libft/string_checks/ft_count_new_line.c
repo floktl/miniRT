@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersections.c                                    :+:      :+:    :+:   */
+/*   ft_count_new_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 14:19:58 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:19:59 by fkeitel          ###   ########.fr       */
+/*   Created: 2025/08/19 13:04:36 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/19 13:05:07 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "libft.h"
 
-double	intersect_sphere(t_ray ray, t_object *obj)
+int	ft_count_new_line(char **buf)
 {
-	return (-1.0);
-}
+	int	i;
 
-double	intersect_plane(t_ray ray, t_object *obj)
-{
-	return (-1.0);
-}
-
-double	intersect_cylinder(t_ray ray, t_object *obj)
-{
-	return (-1.0);
+	i = 1;
+	while ((*buf)[i - 1] != '\n' && (*buf)[i - 1] != '\0' && **buf)
+		i++;
+	return (i);
 }

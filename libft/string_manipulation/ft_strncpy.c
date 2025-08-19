@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersections.c                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 14:19:58 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:19:59 by fkeitel          ###   ########.fr       */
+/*   Created: 2025/08/19 12:56:37 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/19 12:57:05 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "libft.h"
 
-double	intersect_sphere(t_ray ray, t_object *obj)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	return (-1.0);
-}
+	size_t	i;
 
-double	intersect_plane(t_ray ray, t_object *obj)
-{
-	return (-1.0);
-}
-
-double	intersect_cylinder(t_ray ray, t_object *obj)
-{
-	return (-1.0);
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+		dest[i++] = '\0';
+	return (dest);
 }
