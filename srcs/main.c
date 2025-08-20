@@ -40,9 +40,10 @@ int	main(int argc, char **argv)
 		free_scene(&app.scene);
 		return (printf("Error\nFailed to parse scene file\n"), 1);
 	}
+	print_scene(&app.scene);
 	free(path);
-	if (init_app(&app) != 0)
-		return (printf("Error\nFailed to initialize application\n"), 1);
+	//if (init_app(&app) != 0)
+	//	return (printf("Error\nFailed to initialize application\n"), 1);
 	//render_scene(&app);
 	//mlx_key_hook(app.mlx, key_hook, &app);
 	//mlx_loop(app.mlx);

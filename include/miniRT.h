@@ -181,4 +181,7 @@ void	key_hook(mlx_key_data_t keydata, void *param);
 void	free_scene(t_scene *scene);
 void	free_tokens(char **tokens);
 
+// debugging/print_scene.c
+void	print_scene(const t_scene *scene);
+
 #endif
