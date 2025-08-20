@@ -6,7 +6,7 @@
 #    By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:27 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/19 15:59:42 by fkeitel          ###   ########.fr        #
+#    Updated: 2025/08/20 10:31:38 by fkeitel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ VALFLAGS = --leak-check=full \
 SCENE ?= sample.rt
 
 # Usage: make valgrind [SCENE=your_scene.rt]
-valgrind: all
+valgrind:
 	valgrind $(VALFLAGS) ./$(NAME) $(SCENE)
 
 .PHONY: all clean fclean re libmlx test leaks start
