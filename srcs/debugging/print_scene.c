@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:03:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 16:11:17 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/24 16:23:22 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,19 @@ static void	print_color(const char *label, t_color c)
 		label, c.r, c.g, c.b);
 }
 
-static void	print_objects(const t_object *obj)
+static void	print_objects(const t_object *obj, int *index)
 {
-	int	index;
-
-	index = 0;
 	while (obj)
 	{
-		printf(C_CYAN "Object[%d]: type=", index);
+		printf(C_CYAN "Object[%d]: type=", (*index)++);
 		if (obj->type == SPHERE)
 		{
 			printf("SPHERE" C_RESET "\n");
 			print_vec3("  center=", obj->data.s_sphere.center);
 			printf("  radius=%.6f\n", obj->data.s_sphere.radius);
 		}
-		else if (obj->type == PLANE)
+		else if (obj->type == PLANE && printf("PLANE" C_RESET "\n"))
 		{
-			printf("PLANE" C_RESET "\n");
 			print_vec3("  point =", obj->data.s_plane.point);
 			print_vec3("  normal=", obj->data.s_plane.normal);
 		}
@@ -60,10 +56,7 @@ static void	print_objects(const t_object *obj)
 		}
 		print_color("  color =", obj->color);
 		obj = obj->next;
-		index++;
 	}
-	if (index == 0)
-		printf(C_RED "(no objects)\n" C_RESET);
 }
 
 static void	print_lights(const t_light *light)
@@ -86,6 +79,9 @@ static void	print_lights(const t_light *light)
 
 void	print_scene(const t_scene *scene)
 {
+	int	index;
+
+	index = 0;
 	if (!scene)
 	{
 		printf(C_RED "Scene: (null)\n" C_RESET);
@@ -102,6 +98,8 @@ void	print_scene(const t_scene *scene)
 	printf(C_CYAN "Lights:\n" C_RESET);
 	print_lights(scene->lights);
 	printf(C_CYAN "Objects:\n" C_RESET);
-	print_objects(scene->objects);
+	print_objects(scene->objects, &index);
+	if (index == 0)
+		printf(C_RED "(no objects)\n" C_RESET);
 	printf(C_CYAN "\n=============\n\n" C_RESET);
 }

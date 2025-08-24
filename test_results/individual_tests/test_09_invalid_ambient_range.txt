@@ -6,9 +6,13 @@ Running valgrind on miniRT with scene: scenes/miniRT_samples/09_invalid_ambient_
 === Valgrind Summary ===
 Full output saved to: valgrind_output.txt
 Checking for memory errors and leaks...
-✅ No definite leaks detected
-✅ No indirect leaks detected
-✅ No possible leaks detected
+❌ DEFINITE LEAKS DETECTED!
+==30154== 12 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==30154==    definitely lost: 12 bytes in 1 blocks
+⚠️  INDIRECT LEAKS DETECTED!
+==30154==    indirectly lost: 0 bytes in 0 blocks
+⚠️  POSSIBLE LEAKS DETECTED!
+==30154==      possibly lost: 0 bytes in 0 blocks
 ✅ No invalid reads detected
 ✅ No invalid writes detected
 ✅ No uninitialized values detected
@@ -16,8 +20,13 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==18013== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==30154== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 === Debug Information ===
+For detailed error analysis, run:
+  ./debug_error.sh valgrind_output.txt
+
+Quick error summary:
+- Memory leak detected
 
 === Test Complete ===

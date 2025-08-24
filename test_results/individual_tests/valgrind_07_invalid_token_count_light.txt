@@ -1,111 +1,328 @@
-==18126== Memcheck, a memory error detector
-==18126== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==18126== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
-==18126== Command: ./miniRT scenes/miniRT_samples/07_invalid_token_count_light.rt
-==18126== Parent PID: 18125
-==18126== 
---18126-- 
---18126-- Valgrind options:
---18126--    --leak-check=full
---18126--    --show-leak-kinds=all
---18126--    --track-origins=yes
---18126--    --show-reachable=yes
---18126--    --suppressions=valgrind.supp
---18126--    --verbose
---18126--    --log-file=valgrind_output.txt
---18126--    --error-exitcode=0
---18126--    --demangle=no
---18126--    --num-callers=20
---18126--    --track-origins=yes
---18126--    --show-mismatched-frees=yes
---18126--    --show-possibly-lost=yes
---18126--    --gen-suppressions=all
---18126-- Contents of /proc/version:
---18126--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
---18126-- 
---18126-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
---18126-- Page sizes: currently 4096, max supported 65536
---18126-- Valgrind library directory: /usr/libexec/valgrind
---18126-- Reading syms from /app/miniRT
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
---18126--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
---18126--   .. build-id is valid
---18126-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
---18126--    object doesn't have a symbol table
---18126--    object doesn't have a dynamic symbol table
---18126-- Scheduler: using generic scheduler lock implementation.
---18126-- Reading suppressions file: valgrind.supp
---18126-- Reading suppressions file: /usr/libexec/valgrind/default.supp
-==18126== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-18126-by-???-on-docker-desktop
-==18126== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-18126-by-???-on-docker-desktop
-==18126== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-18126-by-???-on-docker-desktop
-==18126== 
-==18126== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==18126== don't want to do, unless you know exactly what you're doing,
-==18126== or are doing some strange experiment):
-==18126==   /usr/bin/vgdb --pid=18126 ...command...
-==18126== 
-==18126== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==18126==   /path/to/gdb ./miniRT
-==18126== and then give GDB the following command
-==18126==   target remote | /usr/bin/vgdb --pid=18126
-==18126== --pid is optional if only one valgrind process is running
-==18126== 
---18126-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
---18126-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
---18126-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
---18126-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
---18126--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
---18126--   .. build-id is valid
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
---18126--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
---18126--   .. build-id is valid
-==18126== WARNING: new redirection conflicts with existing -- ignoring it
---18126--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---18126--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==18126== WARNING: new redirection conflicts with existing -- ignoring it
---18126--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---18126--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
-==18126== WARNING: new redirection conflicts with existing -- ignoring it
---18126--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---18126--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==18126== WARNING: new redirection conflicts with existing -- ignoring it
---18126--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---18126--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
---18126--    object doesn't have a symbol table
---18126-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
---18126--    object doesn't have a symbol table
---18126-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---18126-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---18126-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---18126-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---18126-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---18126-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
---18126-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
---18126-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
---18126-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
---18126-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
---18126-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
-==18126== 
-==18126== HEAP SUMMARY:
-==18126==     in use at exit: 0 bytes in 0 blocks
-==18126==   total heap usage: 197 allocs, 197 frees, 7,860 bytes allocated
-==18126== 
-==18126== All heap blocks were freed -- no leaks are possible
-==18126== 
-==18126== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==30310== Memcheck, a memory error detector
+==30310== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==30310== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==30310== Command: ./miniRT scenes/miniRT_samples/07_invalid_token_count_light.rt
+==30310== Parent PID: 30309
+==30310== 
+--30310-- 
+--30310-- Valgrind options:
+--30310--    --leak-check=full
+--30310--    --show-leak-kinds=all
+--30310--    --track-origins=yes
+--30310--    --show-reachable=yes
+--30310--    --suppressions=valgrind.supp
+--30310--    --verbose
+--30310--    --log-file=valgrind_output.txt
+--30310--    --error-exitcode=0
+--30310--    --demangle=no
+--30310--    --num-callers=20
+--30310--    --track-origins=yes
+--30310--    --show-mismatched-frees=yes
+--30310--    --show-possibly-lost=yes
+--30310--    --gen-suppressions=all
+--30310-- Contents of /proc/version:
+--30310--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
+--30310-- 
+--30310-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
+--30310-- Page sizes: currently 4096, max supported 65536
+--30310-- Valgrind library directory: /usr/libexec/valgrind
+--30310-- Reading syms from /app/miniRT
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+--30310--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
+--30310--   .. build-id is valid
+--30310-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
+--30310--    object doesn't have a symbol table
+--30310--    object doesn't have a dynamic symbol table
+--30310-- Scheduler: using generic scheduler lock implementation.
+--30310-- Reading suppressions file: valgrind.supp
+--30310-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==30310== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-30310-by-???-on-docker-desktop
+==30310== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-30310-by-???-on-docker-desktop
+==30310== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-30310-by-???-on-docker-desktop
+==30310== 
+==30310== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==30310== don't want to do, unless you know exactly what you're doing,
+==30310== or are doing some strange experiment):
+==30310==   /usr/bin/vgdb --pid=30310 ...command...
+==30310== 
+==30310== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==30310==   /path/to/gdb ./miniRT
+==30310== and then give GDB the following command
+==30310==   target remote | /usr/bin/vgdb --pid=30310
+==30310== --pid is optional if only one valgrind process is running
+==30310== 
+--30310-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
+--30310-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
+--30310-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
+--30310-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
+--30310--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
+--30310--   .. build-id is valid
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
+--30310--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
+--30310--   .. build-id is valid
+==30310== WARNING: new redirection conflicts with existing -- ignoring it
+--30310--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--30310--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==30310== WARNING: new redirection conflicts with existing -- ignoring it
+--30310--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--30310--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+==30310== WARNING: new redirection conflicts with existing -- ignoring it
+--30310--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--30310--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==30310== WARNING: new redirection conflicts with existing -- ignoring it
+--30310--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--30310--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
+--30310--    object doesn't have a symbol table
+--30310-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
+--30310--    object doesn't have a symbol table
+--30310-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--30310-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--30310-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--30310-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--30310-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--30310-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
+--30310-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
+--30310-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
+--30310-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
+--30310-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
+--30310-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
+--30310-- REDIR: 0x4a38fc0 (libc.so.6:__GI_memset) redirected to 0x486ee50 (memset)
+--30310-- REDIR: 0x4a30000 (libc.so.6:strcmp) redirected to 0x486c2d0 (strcmp)
+--30310-- REDIR: 0x4a2e460 (libc.so.6:calloc) redirected to 0x4869e90 (calloc)
+--30310-- REDIR: 0x4a307e4 (libc.so.6:strncmp) redirected to 0x486ba40 (strncmp)
+--30310-- REDIR: 0x4a30180 (libc.so.6:strcpy) redirected to 0x486b3c0 (strcpy)
+==30310== 
+==30310== HEAP SUMMARY:
+==30310==     in use at exit: 12,502 bytes in 8 blocks
+==30310==   total heap usage: 215 allocs, 207 frees, 25,414 bytes allocated
+==30310== 
+==30310== Searching for pointers to 8 not-freed blocks
+==30310== Checked 304,808 bytes
+==30310== 
+==30310== 10 bytes in 1 blocks are definitely lost in loss record 1 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x11F807: ft_strdup (ft_strdup.c:21)
+==30310==    by 0x11241F: handle_single_token (parse_token_utils.c:74)
+==30310==    by 0x111943: handle_single_token_res (parse_tokens.c:22)
+==30310==    by 0x111B2B: parse_color_tokens (parse_tokens.c:66)
+==30310==    by 0x113C1B: parse_light_color (parse_light_utils.c:43)
+==30310==    by 0x1149B3: parse_light_data (parse_light_utils2.c:37)
+==30310==    by 0x114AA3: parse_light_internal (parse_light_utils2.c:53)
+==30310==    by 0x111503: parse_light (parse_scene_elements.c:56)
+==30310==    by 0x113AAB: dispatch_and_return (parser_utils2.c:45)
+==30310==    by 0x113D83: dispatch_parse (parser.c:27)
+==30310==    by 0x113F13: parse_line (parser.c:54)
+==30310==    by 0x113FFB: process_line (parser.c:75)
+==30310==    by 0x114097: parse_scene (parser.c:99)
+==30310==    by 0x110813: main (main.c:48)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:ft_strdup
+   fun:handle_single_token
+   fun:handle_single_token_res
+   fun:parse_color_tokens
+   fun:parse_light_color
+   fun:parse_light_data
+   fun:parse_light_internal
+   fun:parse_light
+   fun:dispatch_and_return
+   fun:dispatch_parse
+   fun:parse_line
+   fun:process_line
+   fun:parse_scene
+   fun:main
+}
+==30310== 12 bytes in 1 blocks are definitely lost in loss record 2 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x11F807: ft_strdup (ft_strdup.c:21)
+==30310==    by 0x11241F: handle_single_token (parse_token_utils.c:74)
+==30310==    by 0x111943: handle_single_token_res (parse_tokens.c:22)
+==30310==    by 0x111B2B: parse_color_tokens (parse_tokens.c:66)
+==30310==    by 0x113617: parse_ambient_color (parse_scene_utils3.c:18)
+==30310==    by 0x111317: parse_ambient (parse_scene_elements.c:28)
+==30310==    by 0x113AAB: dispatch_and_return (parser_utils2.c:45)
+==30310==    by 0x113CE3: dispatch_parse (parser.c:23)
+==30310==    by 0x113F13: parse_line (parser.c:54)
+==30310==    by 0x113FFB: process_line (parser.c:75)
+==30310==    by 0x114097: parse_scene (parser.c:99)
+==30310==    by 0x110813: main (main.c:48)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:ft_strdup
+   fun:handle_single_token
+   fun:handle_single_token_res
+   fun:parse_color_tokens
+   fun:parse_ambient_color
+   fun:parse_ambient
+   fun:dispatch_and_return
+   fun:dispatch_parse
+   fun:parse_line
+   fun:process_line
+   fun:parse_scene
+   fun:main
+}
+==30310== 48 bytes in 1 blocks are still reachable in loss record 3 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x4B78557: XInitThreads (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x48A4AE3: glfwInit (in /usr/lib/aarch64-linux-gnu/libglfw.so.3.3)
+==30310==    by 0x115C77: mlx_init (in /app/miniRT)
+==30310==    by 0x10FFDB: init_app (init.c:19)
+==30310==    by 0x1106EF: mlx_functions (main.c:27)
+==30310==    by 0x11085F: main (main.c:56)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:XInitThreads
+   fun:glfwInit
+   fun:mlx_init
+   fun:init_app
+   fun:mlx_functions
+   fun:main
+}
+==30310== 48 bytes in 1 blocks are still reachable in loss record 4 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x4B7856F: XInitThreads (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x48A4AE3: glfwInit (in /usr/lib/aarch64-linux-gnu/libglfw.so.3.3)
+==30310==    by 0x115C77: mlx_init (in /app/miniRT)
+==30310==    by 0x10FFDB: init_app (init.c:19)
+==30310==    by 0x1106EF: mlx_functions (main.c:27)
+==30310==    by 0x11085F: main (main.c:56)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:XInitThreads
+   fun:glfwInit
+   fun:mlx_init
+   fun:init_app
+   fun:mlx_functions
+   fun:main
+}
+==30310== 48 bytes in 1 blocks are still reachable in loss record 5 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x4B78583: XInitThreads (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x48A4AE3: glfwInit (in /usr/lib/aarch64-linux-gnu/libglfw.so.3.3)
+==30310==    by 0x115C77: mlx_init (in /app/miniRT)
+==30310==    by 0x10FFDB: init_app (init.c:19)
+==30310==    by 0x1106EF: mlx_functions (main.c:27)
+==30310==    by 0x11085F: main (main.c:56)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:XInitThreads
+   fun:glfwInit
+   fun:mlx_init
+   fun:init_app
+   fun:mlx_functions
+   fun:main
+}
+==30310== 64 bytes in 1 blocks are still reachable in loss record 6 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x4B8238F: _XrmInternalStringToQuark (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x4B954F7: XrmInitialize (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x48A4AEB: glfwInit (in /usr/lib/aarch64-linux-gnu/libglfw.so.3.3)
+==30310==    by 0x115C77: mlx_init (in /app/miniRT)
+==30310==    by 0x10FFDB: init_app (init.c:19)
+==30310==    by 0x1106EF: mlx_functions (main.c:27)
+==30310==    by 0x11085F: main (main.c:56)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XrmInternalStringToQuark
+   fun:XrmInitialize
+   fun:glfwInit
+   fun:mlx_init
+   fun:init_app
+   fun:mlx_functions
+   fun:main
+}
+==30310== 4,096 bytes in 1 blocks are still reachable in loss record 7 of 8
+==30310==    at 0x4869F34: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x4B8226F: _XrmInternalStringToQuark (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x4B954F7: XrmInitialize (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x48A4AEB: glfwInit (in /usr/lib/aarch64-linux-gnu/libglfw.so.3.3)
+==30310==    by 0x115C77: mlx_init (in /app/miniRT)
+==30310==    by 0x10FFDB: init_app (init.c:19)
+==30310==    by 0x1106EF: mlx_functions (main.c:27)
+==30310==    by 0x11085F: main (main.c:56)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_XrmInternalStringToQuark
+   fun:XrmInitialize
+   fun:glfwInit
+   fun:mlx_init
+   fun:init_app
+   fun:mlx_functions
+   fun:main
+}
+==30310== 8,176 bytes in 1 blocks are still reachable in loss record 8 of 8
+==30310==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==30310==    by 0x4B810C3: ??? (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x4B82373: _XrmInternalStringToQuark (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x4B954F7: XrmInitialize (in /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0)
+==30310==    by 0x48A4AEB: glfwInit (in /usr/lib/aarch64-linux-gnu/libglfw.so.3.3)
+==30310==    by 0x115C77: mlx_init (in /app/miniRT)
+==30310==    by 0x10FFDB: init_app (init.c:19)
+==30310==    by 0x1106EF: mlx_functions (main.c:27)
+==30310==    by 0x11085F: main (main.c:56)
+==30310== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
+   fun:_XrmInternalStringToQuark
+   fun:XrmInitialize
+   fun:glfwInit
+   fun:mlx_init
+   fun:init_app
+   fun:mlx_functions
+   fun:main
+}
+==30310== LEAK SUMMARY:
+==30310==    definitely lost: 22 bytes in 2 blocks
+==30310==    indirectly lost: 0 bytes in 0 blocks
+==30310==      possibly lost: 0 bytes in 0 blocks
+==30310==    still reachable: 12,480 bytes in 6 blocks
+==30310==         suppressed: 0 bytes in 0 blocks
+==30310== 
+==30310== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

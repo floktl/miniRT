@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:21:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 12:54:04 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 16:30:31 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	free_scene(t_scene *scene)
 
 	if (!scene)
 		return ;
-
-	// Free objects
 	obj = scene->objects;
 	while (obj)
 	{
@@ -31,8 +29,6 @@ void	free_scene(t_scene *scene)
 		obj = obj_next;
 	}
 	scene->objects = NULL;
-
-	// Free lights
 	light = scene->lights;
 	while (light)
 	{

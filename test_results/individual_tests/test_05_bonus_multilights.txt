@@ -6,9 +6,16 @@ Running valgrind on miniRT with scene: scenes/miniRT_samples/05_bonus_multilight
 === Valgrind Summary ===
 Full output saved to: valgrind_output.txt
 Checking for memory errors and leaks...
-✅ No definite leaks detected
-✅ No indirect leaks detected
-✅ No possible leaks detected
+❌ DEFINITE LEAKS DETECTED!
+==30128== 12 bytes in 1 blocks are definitely lost in loss record 1 of 10
+==30128== 12 bytes in 1 blocks are definitely lost in loss record 2 of 10
+==30128== 12 bytes in 1 blocks are definitely lost in loss record 3 of 10
+==30128== 24 bytes in 3 blocks are definitely lost in loss record 4 of 10
+==30128==    definitely lost: 60 bytes in 6 blocks
+⚠️  INDIRECT LEAKS DETECTED!
+==30128==    indirectly lost: 0 bytes in 0 blocks
+⚠️  POSSIBLE LEAKS DETECTED!
+==30128==      possibly lost: 0 bytes in 0 blocks
 ✅ No invalid reads detected
 ✅ No invalid writes detected
 ✅ No uninitialized values detected
@@ -16,8 +23,13 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==17994== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==30128== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
 
 === Debug Information ===
+For detailed error analysis, run:
+  ./debug_error.sh valgrind_output.txt
+
+Quick error summary:
+- Memory leak detected
 
 === Test Complete ===

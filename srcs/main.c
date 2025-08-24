@@ -22,6 +22,17 @@ static int	is_not_rt(char *file)
 	return (ft_strncmp(file + len - 3, ".rt", 3));
 }
 
+static int	mlx_functions(t_app *app)
+{
+	if (init_app(app) != 0)
+		return (printf("Error\nFailed to initialize application\n"), 1);
+	render_scene(app);
+	mlx_key_hook(app->mlx, key_hook, app);
+	mlx_loop(app->mlx);
+	mlx_terminate(app->mlx);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_app	app ;
@@ -29,12 +40,10 @@ int	main(int argc, char **argv)
 
 	path = NULL;
 	app = (t_app){0};
-
 	if (argc != 2)
 		return (printf("Error\nUsage: ./miniRT <scene.rt>\n"), 1);
 	if (is_not_rt(argv[1]))
 		return (printf("Error\nFile must have .rt extension\n"), 1);
-
 	path = ft_strdup(argv[1]);
 	if (parse_scene(path, &app.scene) != 0)
 	{
@@ -42,15 +51,12 @@ int	main(int argc, char **argv)
 		free_scene(&app.scene);
 		return (printf("Error\nFailed to parse scene file\n"), 1);
 	}
-
 	print_scene(&app.scene);
 	free(path);
-	//if (init_app(&app) != 0)
-	//	return (printf("Error\nFailed to initialize application\n"), 1);
-	//render_scene(&app);
-	//mlx_key_hook(app.mlx, key_hook, &app);
-	//mlx_loop(app.mlx);
-	//mlx_terminate(app.mlx);
-	free_scene(&app.scene);
+	if (mlx_functions(&app) != 0)
+	{
+		free_scene(&app.scene);
+		return (1);
+	}
 	return (0);
 }
