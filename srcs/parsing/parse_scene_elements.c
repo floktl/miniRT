@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_elements.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:07:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 15:11:02 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/24 12:54:31 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,53 +21,91 @@ static int	color_invalid(t_color c, const char *raw)
 
 int	parse_ambient(char **tokens, t_scene *scene)
 {
-	t_color	col;
+	int		token_count;
+	int		idx;
+	t_color col;
 
-	if (!tokens || !tokens[1] || !tokens[2])
-	{
-		printf("[Ambient] Missing tokens (expected ratio,color)\n");
+	// Check if ambient already exists
+	if (scene->ambient.ratio != 0.0) {
+		printf("[Ambient] Duplicate ambient element not allowed\n");
 		return (1);
 	}
-	printf("[Ambient] Raw ratio token: '%s'\n", tokens[1]);
-	printf("[Ambient] Raw color token: '%s'\n", tokens[2]);
 
-	scene->ambient.ratio = ft_atof(tokens[1]);
-	printf("[Ambient] Parsed ratio: %f\n", scene->ambient.ratio);
+	token_count = 0;
+	while (tokens[token_count]) token_count++;
+	idx = 1;
 
-	col = parse_color(tokens[2]);
-	if (color_invalid(col, tokens[2]))
-	{
-		printf("[Ambient][ERROR] Invalid color parsed -> %d,%d,%d\n",
-			col.r, col.g, col.b);
+	float_result fr = parse_float_tokens(tokens, &idx, token_count);
+	if (!fr.success) {
+		printf("[Ambient] Failed to parse ratio\n");
 		return (1);
 	}
+	printf("[Ambient] Parsed ratio: %f\n", fr.f);
+
+	color_result cr = parse_color_tokens(tokens, &idx, token_count);
+	if (!cr.success || idx != token_count) {
+		printf("[Ambient] Failed to parse color or extra tokens\n");
+		return (1);
+	}
+	col = cr.c;
 	printf("[Ambient] Parsed color: r=%d g=%d b=%d\n", col.r, col.g, col.b);
 
-	if (scene->ambient.ratio < 0.0 || scene->ambient.ratio > 1.0)
-	{
+	if (fr.f < 0 || fr.f > 1) {
 		printf("[Ambient][ERROR] Ratio out of range [0..1]\n");
 		return (1);
 	}
-	if ((col.r | col.g | col.b) == 0 && ft_strncmp(tokens[2], "0,0,0", 5) != 0)
-	{
-		printf("[Ambient][WARN] Color parsed as 0,0,0 — input may be invalid\n");
-		/* keep going; parse_color already validated ranges */
-	}
+
+	scene->ambient.ratio = fr.f;
 	scene->ambient.color = col;
-	printf("[Ambient] OK (ratio=%f, color=%d,%d,%d)\n",
-		scene->ambient.ratio, scene->ambient.color.r,
-		scene->ambient.color.g, scene->ambient.color.b);
+	printf("[Ambient] OK (ratio=%f, color=%d,%d,%d)\n", fr.f, col.r, col.g, col.b);
 	return (0);
 }
 
 
 int	parse_camera(char **tokens, t_scene *scene)
 {
-	scene->camera.position = parse_vec3(tokens[1]);
-	scene->camera.direction = vec_normalize(parse_vec3(tokens[2]));
-	scene->camera.fov = ft_atof(tokens[3]);
-	if (scene->camera.fov < 0 || scene->camera.fov > 180)
+	int		token_count;
+	int		idx;
+
+	// Check if camera already exists
+	if (scene->camera.fov != 0.0) {
+		printf("[Camera] Duplicate camera element not allowed\n");
 		return (1);
+	}
+
+	token_count = 0;
+	while (tokens[token_count]) token_count++;
+	idx = 1;
+
+	vec3_result pr = parse_vec3_tokens(tokens, &idx, token_count);
+	if (!pr.success) {
+		printf("[Camera] Failed to parse position\n");
+		return (1);
+	}
+	scene->camera.position = pr.v;
+
+	vec3_result dr = parse_vec3_tokens(tokens, &idx, token_count);
+	if (!dr.success) {
+		printf("[Camera] Failed to parse direction\n");
+		return (1);
+	}
+	// Check for zero-length direction vector
+	if (is_vec_zero(dr.v)) {
+		printf("[Camera] Direction vector cannot be zero-length\n");
+		return (1);
+	}
+	scene->camera.direction = vec_normalize(dr.v);
+
+	float_result fr = parse_float_tokens(tokens, &idx, token_count);
+	if (!fr.success || idx != token_count) {
+		printf("[Camera] Failed to parse FOV or extra tokens\n");
+		return (1);
+	}
+	scene->camera.fov = fr.f;
+
+	if (scene->camera.fov < 0 || scene->camera.fov > 180) {
+		return (1);
+	}
 	return (0);
 }
 
@@ -75,18 +113,47 @@ int	parse_light(char **tokens, t_scene *scene)
 {
 	t_light	*light;
 
+	int token_count = 0;
+	while (tokens[token_count]) token_count++;
+	int idx = 1;
+
 	light = malloc(sizeof(t_light));
 	if (!light)
 		return (1);
-	light->position = parse_vec3(tokens[1]);
-	light->brightness = ft_atof(tokens[2]);
-	light->color = parse_color(tokens[3]);
-	light->next = scene->lights;
-	scene->lights = light;
-	if (light->brightness < 0 || light->brightness > 1)
-	{
+
+	vec3_result pr = parse_vec3_tokens(tokens, &idx, token_count);
+	if (!pr.success) {
+		printf("[Light] Failed to parse position\n");
 		free(light);
 		return (1);
 	}
+	light->position = pr.v;
+
+	float_result br = parse_float_tokens(tokens, &idx, token_count);
+	if (!br.success) {
+		printf("[Light] Failed to parse brightness\n");
+		free(light);
+		return (1);
+	}
+	light->brightness = br.f;
+
+	color_result cr = parse_color_tokens(tokens, &idx, token_count);
+	if (!cr.success || idx != token_count) {
+		printf("[Light] Failed to parse color or extra tokens\n");
+		free(light);
+		return (1);
+	}
+	light->color = cr.c;
+
+	// Check brightness BEFORE adding to scene
+	if (light->brightness < 0 || light->brightness > 1) {
+		printf("[Light] Brightness out of range [0..1]\n");
+		free(light);
+		return (1);
+	}
+
+	// Only add to scene after all validation passes
+	light->next = scene->lights;
+	scene->lights = light;
 	return (0);
 }

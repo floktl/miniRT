@@ -1,0 +1,7 @@
+# Valid for parsers that require no spaces within comma-separated fields
+A 0.2 255,255,255
+C 0,0,-5 0,0,1 70
+L 50,50,0 0.6 255,55,56
+sp 0,0,5 2 200,30,30
+pl 0,-2,0 0,1,0 120,120,120
+cy 2,0,8 0,0,1 1.5 3 10,80,220

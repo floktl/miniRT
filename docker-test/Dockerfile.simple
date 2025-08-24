@@ -1,0 +1,57 @@
+# Use Ubuntu 22.04 as base image
+FROM ubuntu:22.04
+
+# Prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update package list and install essential tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    valgrind \
+    gcc \
+    g++ \
+    libglfw3-dev \
+    libgl1-mesa-dev \
+    libxrandr-dev \
+    libxinerama-dev \
+    libxcursor-dev \
+    libxi-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install clang separately to avoid conflicts
+RUN apt-get update && apt-get install -y \
+    clang-14 \
+    clang++-14 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create symlinks for clang
+RUN ln -sf /usr/bin/clang-14 /usr/bin/clang && \
+    ln -sf /usr/bin/clang++-14 /usr/bin/clang++
+
+# Set working directory
+WORKDIR /app
+
+# Copy only essential files that won't be mounted as volumes
+COPY MLX42/ ./MLX42/
+COPY valgrind.supp ./
+COPY docker-test/run_valgrind.sh ./
+COPY docker-test/build_and_test.sh ./
+
+# Fix the Makefile to use GCC and add debug symbols (will be applied when Makefile is mounted)
+# Note: Source files will be mounted as volumes, so we can't build during image creation
+
+# Build MLX42 (this can be done during image creation)
+RUN if [ ! -d "MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git; fi && \
+    rm -rf MLX42/build && \
+    cmake -S MLX42 -B MLX42/build && \
+    cmake --build MLX42/build --parallel 4
+
+# Make the scripts executable
+RUN chmod +x /app/run_valgrind.sh
+RUN chmod +x /app/build_and_test.sh
+
+# Set the default command to build and then start bash
+CMD ["/bin/bash", "-c", "./build_and_test.sh && /bin/bash"]

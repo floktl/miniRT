@@ -29,17 +29,20 @@ int	main(int argc, char **argv)
 
 	path = NULL;
 	app = (t_app){0};
+
 	if (argc != 2)
 		return (printf("Error\nUsage: ./miniRT <scene.rt>\n"), 1);
 	if (is_not_rt(argv[1]))
 		return (printf("Error\nFile must have .rt extension\n"), 1);
-	path = ft_strjoin("scenes/", argv[1]);
+
+	path = ft_strdup(argv[1]);
 	if (parse_scene(path, &app.scene) != 0)
 	{
 		free(path);
 		free_scene(&app.scene);
 		return (printf("Error\nFailed to parse scene file\n"), 1);
 	}
+
 	print_scene(&app.scene);
 	free(path);
 	//if (init_app(&app) != 0)
@@ -51,5 +54,3 @@ int	main(int argc, char **argv)
 	free_scene(&app.scene);
 	return (0);
 }
-
-//test

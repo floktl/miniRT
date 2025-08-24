@@ -3,36 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   vec_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:17:50 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:39:29 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/24 11:07:06 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/miniRT.h"
+#include <math.h>
 
 t_vec3	vec_add(t_vec3 a, t_vec3 b)
 {
-	return ((t_vec3){0, 0, 0});
+	return ((t_vec3){a.x + b.x, a.y + b.y, a.z + b.z});
 }
 
 t_vec3	vec_sub(t_vec3 a, t_vec3 b)
 {
-	return ((t_vec3){0, 0, 0});
+	return ((t_vec3){a.x - b.x, a.y - b.y, a.z - b.z});
 }
 
 t_vec3	vec_mul(t_vec3 a, double scalar)
 {
-	return ((t_vec3){0, 0, 0});
+	return ((t_vec3){a.x * scalar, a.y * scalar, a.z * scalar});
 }
 
 double	vec_dot(t_vec3 a, t_vec3 b)
 {
-	return (0.0);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
 double	vec_length(t_vec3 v)
 {
-	return (0.0);
+	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
 }

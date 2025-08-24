@@ -1,0 +1,7 @@
+# Extreme but within bounds (edges): ratio=1.0, FOV=180, colors at limits
+A 1.0 255,255,255
+C 0,0,-10 0,0,1 180
+L 0,0,0 1.0 0,0,0
+sp 0,0,5 0.001 255,255,255
+pl 0,0,0 0,1,0 0,0,0
+cy 0,0,8 0,0,1 0.01 0.01 1,2,3

@@ -1,0 +1,14 @@
+# Valid scene with irregular whitespace, extra blank lines, tabs, and comments
+# Also tests that comments/blank lines are ignored.
+
+A      0.05            255,  255,  240
+
+C	-3, 0 , -7	0, 0, 1		60
+
+# Main light
+L  -4, 5, -1   0.3    255, 255, 200
+
+# Objects
+sp	0, 0, 3	1.0	  255,0,0
+pl 0, -1, 0    0,1,0   0,255,0
+cy 1, 0, 6   0,0,1    1.2  2.4   0,0,255

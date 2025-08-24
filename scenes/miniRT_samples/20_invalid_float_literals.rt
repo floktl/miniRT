@@ -1,0 +1,9 @@
+# INVALID (depending on your parser): scientific notation and INF/NaN
+# Include to test robust strtod/strtof handling.
+A 1e-1 255,255,255
+C 0,0,-5 0,0,1 7e1
+L 0,0,0 5e-1 255,255,255
+sp 0,0,5 2e0 255,0,0
+# Potentially problematic:
+pl 0,0,0 0,1,0 255,255,255
+cy 0,0,8 0,0,1 INF 3 NaN,0,255

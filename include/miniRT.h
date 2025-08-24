@@ -184,4 +184,29 @@ void	free_tokens(char **tokens);
 // debugging/print_scene.c
 void	print_scene(const t_scene *scene);
 
+// Additional parsing utils
+typedef struct {
+	t_color c;
+	int success;
+} color_result;
+
+typedef struct {
+	t_vec3 v;
+	int success;
+} vec3_result;
+
+typedef struct {
+	float f;
+	int success;
+} float_result;
+
+color_result parse_color_tokens(char **tokens, int *idx, int token_count);
+vec3_result parse_vec3_tokens(char **tokens, int *idx, int token_count);
+float_result parse_float_tokens(char **tokens, int *idx, int token_count);
+
+int is_color_zero(t_color c);
+int is_vec_zero(t_vec3 v);
+int is_vec_normalized(t_vec3 v);
+int is_integer_string(const char *str);
+
 #endif

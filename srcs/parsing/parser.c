@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:24:39 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 15:06:32 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/24 12:35:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,15 @@ int	parse_line(char *line, t_scene *scene)
 
 	status = 0;
 	printf("Parsing line: %s\n", line);
+
+	int i = 0;
+	while (line[i]) {
+		if (line[i] == '\t') {
+			line[i] = ' ';
+		}
+		i++;
+	}
+
 	tokens = ft_split(line, ' ');
 	if (!tokens || !tokens[0])
 	{
@@ -132,7 +141,10 @@ int	parse_scene(const char *filename, t_scene *scene)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (write(2, "Error: Could not open file\n", 27));
+	{
+		write(2, "Error: Could not open file\n", 27);
+		return (1);
+	}
 	line = get_next_line(fd);
 	while (line)
 	{
