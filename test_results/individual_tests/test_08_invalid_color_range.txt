@@ -6,13 +6,9 @@ Running valgrind on miniRT with scene: scenes/miniRT_samples/08_invalid_color_ra
 === Valgrind Summary ===
 Full output saved to: valgrind_output.txt
 Checking for memory errors and leaks...
-❌ DEFINITE LEAKS DETECTED!
-==30411== 12 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==30411==    definitely lost: 12 bytes in 1 blocks
-⚠️  INDIRECT LEAKS DETECTED!
-==30411==    indirectly lost: 0 bytes in 0 blocks
-⚠️  POSSIBLE LEAKS DETECTED!
-==30411==      possibly lost: 0 bytes in 0 blocks
+✅ No definite leaks detected
+✅ No indirect leaks detected
+✅ No possible leaks detected
 ✅ No invalid reads detected
 ✅ No invalid writes detected
 ✅ No uninitialized values detected
@@ -20,19 +16,19 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==30411== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
-==30411== 
-==30411== 1 errors in context 1 of 2:
-==30411== Invalid free() / delete / delete[] / realloc()
-==30411==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==30411==    by 0x111B8B: parse_color_tokens (parse_tokens.c:74)
-==30411==    by 0x113C1B: parse_light_color (parse_light_utils.c:43)
-==30411==    by 0x1149B3: parse_light_data (parse_light_utils2.c:37)
-==30411==    by 0x114AA3: parse_light_internal (parse_light_utils2.c:53)
-==30411==    by 0x111503: parse_light (parse_scene_elements.c:56)
-==30411==    by 0x113AAB: dispatch_and_return (parser_utils2.c:45)
+==34241== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==34241== 
+==34241== 1 errors in context 1 of 1:
+==34241== Invalid free() / delete / delete[] / realloc()
+==34241==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==34241==    by 0x111B87: parse_color_tokens (parse_tokens.c:76)
+==34241==    by 0x113CC7: parse_light_color (parse_light_utils.c:43)
+==34241==    by 0x114A5F: parse_light_data (parse_light_utils2.c:37)
+==34241==    by 0x114B4F: parse_light_internal (parse_light_utils2.c:53)
+==34241==    by 0x1114EB: parse_light (parse_scene_elements.c:56)
+==34241==    by 0x113B57: dispatch_and_return (parser_utils2.c:45)
 --
-==30411== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==34241== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 === Debug Information ===
 For detailed error analysis, run:
@@ -40,6 +36,5 @@ For detailed error analysis, run:
 
 Quick error summary:
 - Invalid free detected in free_scene function
-- Memory leak detected
 
 === Test Complete ===

@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:39:28 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 16:39:12 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 16:42:46 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ static color_res	handle_single_token_res(char **tokens, int *idx,
 	{
 		res.c = c;
 		res.success = 1;
+		// Free the allocated memory before returning
+		if (str)
+			free(str);
 		return (res);
 	}
 	// Free the allocated memory if validation fails

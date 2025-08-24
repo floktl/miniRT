@@ -1,38 +1,38 @@
 === miniRT Valgrind Test Summary ===
-Date: Sun Aug 24 16:38:32 CEST 2025
+Date: Sun Aug 24 16:45:58 CEST 2025
 
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
   ✅ PASSED
   ✅ PASSED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
-  ✅ PASSED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
   ✅ PASSED
   ✅ PASSED
-  ❌ FAILED
-  ❌ FAILED
-  ❌ FAILED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
+  ✅ PASSED
 
 === Summary Statistics ===
 Total tests: 29
-Passed: 5
-Failed: 24
+Passed: 29
+Failed: 0
 Warnings: 0

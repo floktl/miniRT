@@ -53,10 +53,11 @@ int	main(int argc, char **argv)
 	}
 	print_scene(&app.scene);
 	free(path);
-	if (mlx_functions(&app) != 0)
-	{
-		free_scene(&app.scene);
-		return (1);
-	}
+	// if (mlx_functions(&app) != 0)
+	// {
+	// 	free_scene(&app.scene);
+	// 	return (1);
+	// }
+	free_scene(&app.scene);
 	return (0);
 }

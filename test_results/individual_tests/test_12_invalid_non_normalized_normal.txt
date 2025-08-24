@@ -6,14 +6,9 @@ Running valgrind on miniRT with scene: scenes/miniRT_samples/12_invalid_non_norm
 === Valgrind Summary ===
 Full output saved to: valgrind_output.txt
 Checking for memory errors and leaks...
-❌ DEFINITE LEAKS DETECTED!
-==30359== 12 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==30359== 12 bytes in 1 blocks are definitely lost in loss record 2 of 2
-==30359==    definitely lost: 24 bytes in 2 blocks
-⚠️  INDIRECT LEAKS DETECTED!
-==30359==    indirectly lost: 0 bytes in 0 blocks
-⚠️  POSSIBLE LEAKS DETECTED!
-==30359==      possibly lost: 0 bytes in 0 blocks
+✅ No definite leaks detected
+✅ No indirect leaks detected
+✅ No possible leaks detected
 ✅ No invalid reads detected
 ✅ No invalid writes detected
 ✅ No uninitialized values detected
@@ -21,13 +16,25 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==30359== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==34200== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==34200== 
+==34200== 1 errors in context 1 of 1:
+==34200== Invalid free() / delete / delete[] / realloc()
+==34200==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==34200==    by 0x111BDB: cleanup_object_error (parse_primitives.c:18)
+==34200==    by 0x111EBF: parse_plane (parse_primitives.c:69)
+==34200==    by 0x113B57: dispatch_and_return (parser_utils2.c:45)
+==34200==    by 0x113ECF: dispatch_parse (parser.c:31)
+==34200==    by 0x113FBF: parse_line (parser.c:54)
+==34200==    by 0x1140A7: process_line (parser.c:75)
+--
+==34200== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 === Debug Information ===
 For detailed error analysis, run:
   ./debug_error.sh valgrind_output.txt
 
 Quick error summary:
-- Memory leak detected
+- Invalid free detected in free_scene function
 
 === Test Complete ===
