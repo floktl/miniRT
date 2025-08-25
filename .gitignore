@@ -77,3 +77,6 @@ Thumbs.db
 # Project specific
 *.rt.bak
 scenes/*.rt~
+
+# Documentation
+miniRT.pdf
