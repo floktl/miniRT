@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:24:39 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 13:56:56 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	dispatch_parse(char **tokens, int token_count, t_scene *scene)
 		return (dispatch_and_return(scene, tokens, "PLANE", parse_plane));
 	else if (ft_strncmp(tokens[0], "cy", 3) == 0 && token_count >= 6)
 		return (dispatch_and_return(scene, tokens, "CYLINDER", parse_cylinder));
+	else if (ft_strncmp(tokens[0], "co", 3) == 0 && token_count >= 6)
+		return (dispatch_and_return(scene, tokens, "CONE", parse_cone));
 	printf("[DISPATCH][ERROR] invalid line '%s' or wrong count (%d)\n",
 		tokens[0], token_count);
 	return (1);

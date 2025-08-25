@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	check_camera_duplicate(t_scene *scene)
 	return (0);
 }
 
-int	set_camera_data(t_scene *scene, vec3_res pr, vec3_res dr,
-	float_res fr)
+int	set_camera_data(t_scene *scene, t_vec3_res pr, t_vec3_res dr,
+	t_float_res fr)
 {
 	scene->camera.position = pr.v;
 	scene->camera.direction = vec_normalize(dr.v);

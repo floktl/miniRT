@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:03:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	setup_light(t_light *light, t_scene *scene)
 static int	parse_light_data(t_light *light, char **tokens, int *idx,
 		int token_count)
 {
-	vec3_res		pr;
-	float_res		br;
-	color_res		cr;
+	t_vec3_res		pr;
+	t_float_res		br;
+	t_clr_res		cr;
 
 	if (parse_light_position(tokens, idx, token_count, &pr))
 		return (cleanup_light_error(light, "Failed to parse position"));

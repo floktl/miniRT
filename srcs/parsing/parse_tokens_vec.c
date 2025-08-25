@@ -6,16 +6,16 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:39:16 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/miniRT.h"
 #include <math.h>
 
-vec3_res	parse_vec3_tokens(char **tokens, int *idx, int token_count)
+t_vec3_res	parse_vec3_tokens(char **tokens, int *idx, int token_count)
 {
-	vec3_res		res;
+	t_vec3_res		res;
 	char			*str;
 	int				local_idx;
 

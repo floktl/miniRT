@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+         #
+#    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 09:46:50 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/19 14:47:47 by fkeitel          ###   ########.fr        #
+#    Updated: 2025/08/25 10:03:06 by Florian Kei      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 FT_PRINTFDIR = print_functions/ft_printf
 GET_NEXT_LINEDIR = print_functions/get_next_line
 
-FUNCTIONS = conversion/ft_atoi.c conversion/ft_atof.c conversion/ft_itoa.c conversion/ft_tolower.c conversion/ft_toupper.c \
+FUNCTIONS = conversion/ft_atoi.c conversion/ft_atof.c conversion/ft_atof_utils.c conversion/ft_itoa.c conversion/ft_tolower.c conversion/ft_toupper.c \
 	list_functions/ft_lstadd_back.c list_functions/ft_lstadd_front.c list_functions/ft_lstclear.c list_functions/ft_lstdelone.c list_functions/ft_lstiter.c list_functions/ft_lstlast.c list_functions/ft_lstmap.c list_functions/ft_lstnew.c list_functions/ft_lstsize.c \
 	memory_manipulation/ft_bzero.c memory_manipulation/ft_calloc.c memory_manipulation/ft_memchr.c memory_manipulation/ft_memcmp.c memory_manipulation/ft_memcpy.c memory_manipulation/ft_memmove.c memory_manipulation/ft_memset.c memory_manipulation/ft_realloc.c \
 	string_checks/ft_isalnum.c string_checks/ft_isalpha.c string_checks/ft_isascii.c string_checks/ft_isdigit.c string_checks/ft_isprint.c string_checks/ft_strlen.c string_checks/ft_count_new_line.c\

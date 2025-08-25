@@ -6,14 +6,14 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:02:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/miniRT.h"
 
 int	parse_ambient_color(char **tokens, int *idx, int token_count,
-		color_res *cr)
+		t_clr_res *cr)
 {
 	*cr = parse_color_tokens(tokens, idx, token_count);
 	if (!(*cr).success || *idx != token_count)
@@ -23,7 +23,7 @@ int	parse_ambient_color(char **tokens, int *idx, int token_count,
 	return (0);
 }
 
-int	set_ambient_data(t_scene *scene, float_res fr, t_color col)
+int	set_ambient_data(t_scene *scene, t_float_res fr, t_color col)
 {
 	if (validate_ambient_ratio(fr.f))
 		return (1);
@@ -35,7 +35,7 @@ int	set_ambient_data(t_scene *scene, float_res fr, t_color col)
 }
 
 int	parse_camera_position(char **tokens, int *idx, int token_count,
-		vec3_res *pr)
+		t_vec3_res *pr)
 {
 	*pr = parse_vec3_tokens(tokens, idx, token_count);
 	if (!(*pr).success)
@@ -44,7 +44,7 @@ int	parse_camera_position(char **tokens, int *idx, int token_count,
 }
 
 int	parse_camera_direction(char **tokens, int *idx, int token_count,
-		vec3_res *dr)
+		t_vec3_res *dr)
 {
 	*dr = parse_vec3_tokens(tokens, idx, token_count);
 	if (!(*dr).success)
@@ -55,7 +55,7 @@ int	parse_camera_direction(char **tokens, int *idx, int token_count,
 }
 
 int	parse_camera_fov(char **tokens, int *idx, int token_count,
-		float_res *fr)
+		t_float_res *fr)
 {
 	*fr = parse_float_tokens(tokens, idx, token_count);
 	if (!(*fr).success || *idx != token_count)

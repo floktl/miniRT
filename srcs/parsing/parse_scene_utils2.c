@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:49:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:33:26 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	count_and_init_tokens(char **tokens, int *token_count, int *idx)
 }
 
 int	parse_ambient_ratio(char **tokens, int *idx, int token_count,
-		float_res *fr)
+		t_float_res *fr)
 {
 	*fr = parse_float_tokens(tokens, idx, token_count);
 	if (!(*fr).success)

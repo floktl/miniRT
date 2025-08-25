@@ -1,0 +1,13 @@
+# BONUS: Specular reflection test with different shininess values
+A 0.1 255,255,255
+C 0,0,-8 0,0,1 70
+L 10,10,10 0.8 255,255,255
+
+# Sphere with high shininess (very reflective)
+sp 0,0,4 2 200,30,30 100
+
+# Plane with medium shininess
+pl 0,-2,0 0,1,0 120,120,120 32
+
+# Cylinder with low shininess (matte)
+cy 3,0,6 0,0,1 1.5 3 10,80,220 8

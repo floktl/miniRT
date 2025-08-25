@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 15:27:00 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ int	check_color_validity(t_color c, char *str)
 			&& ft_strlen(str) == 5))
 		return (1);
 	return (0);
+}
+
+static int	cleanup_and_return(char **str, int status)
+{
+	free(*str);
+	*str = NULL;
+	return (status);
 }
 
 int	process_color_tokens_loop(char **tokens, int *local_idx,
@@ -32,21 +39,13 @@ int	process_color_tokens_loop(char **tokens, int *local_idx,
 		{
 			tmp = ft_strjoin(*str, " ");
 			if (!tmp)
-			{
-				free(*str);
-				*str = NULL;
-				return (0);
-			}
+				return (cleanup_and_return(str, 1));
 			free(*str);
 			*str = tmp;
 		}
 		tmp = ft_strjoin(*str, tokens[*local_idx]);
 		if (!tmp)
-		{
-			free(*str);
-			*str = NULL;
-			return (0);
-		}
+			return (cleanup_and_return(str, 1));
 		free(*str);
 		*str = tmp;
 		(*local_idx)++;
@@ -54,16 +53,14 @@ int	process_color_tokens_loop(char **tokens, int *local_idx,
 		if (check_color_validity(c, *str))
 			return (1);
 	}
-	free(*str);
-	*str = NULL;
-	return (0);
+	return (cleanup_and_return(str, 0));
 }
 
-color_res	init_color_res(void)
+t_clr_res	init_clr_res(void)
 {
-	color_res	res;
+	t_clr_res	res;
 
-	res = (color_res){{0, 0, 0}, 0};
+	res = (t_clr_res){{0, 0, 0}, 0};
 	return (res);
 }
 

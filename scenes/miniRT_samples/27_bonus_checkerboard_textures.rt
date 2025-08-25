@@ -1,0 +1,16 @@
+# BONUS: Checkerboard texture test
+A 0.2 255,255,255
+C 0,0,-8 0,0,1 70
+L 10,10,10 0.8 255,255,255
+
+# Sphere with checkerboard texture
+sp 0,0,4 2 200,30,30 32 checkerboard 3.0
+
+# Plane with checkerboard texture
+pl 0,-2,0 0,1,0 120,120,120 32 checkerboard 2.0
+
+# Cylinder with checkerboard texture
+cy 3,0,6 0,0,1 1.5 3 10,80,220 32 checkerboard 4.0
+
+# Cone with checkerboard texture
+co -3,0,6 0,0,1 1.5 3 220,80,10 32 checkerboard 5.0

@@ -1,0 +1,16 @@
+# BONUS: Cone primitive test
+A 0.2 255,255,255
+C 0,0,-8 0,0,1 70
+L 10,10,10 0.8 255,255,255
+
+# Cone pointing up
+co 0,0,4 0,0,1 2 4 200,30,30 32
+
+# Cone pointing down
+co 3,0,6 0,0,-1 1.5 3 10,80,220 32
+
+# Cone pointing sideways
+co -3,0,6 1,0,0 1.8 2.5 220,80,10 32
+
+# Sphere for reference
+sp 0,-2,4 1 120,120,120 32

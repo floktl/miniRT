@@ -1,0 +1,18 @@
+# Full Bonus Test Scene - All bonus features
+A 0.2 255,255,255
+C 0,0,-10 0,0,1 70
+L 10,10,10 0.8 255,255,255
+L -5,5,0 0.6 255,0,0
+L 5,-5,0 0.6 0,255,0
+
+# Sphere with specular reflection and checkerboard texture
+sp 0,0,5 3 200,30,30 100
+
+# Plane with bump mapping
+pl 0,-3,0 0,1,0 120,120,120 32
+
+# Cylinder with high shininess
+cy 3,0,8 0,0,1 2 4 10,80,220 50
+
+# Cone with medium shininess
+co -3,0,8 0,0,1 2 4 220,80,10 25

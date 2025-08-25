@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_datatypes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:39:23 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/19 14:39:17 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/08/25 09:59:52 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,10 @@ int	put_hex(unsigned long *hexadecimal, int upper_lower, int counter)
 	index = 0;
 	while (i >= 0)
 	{
-		if (((hex_chars[(*hexadecimal >> (i * 4)) & 0xF]) != '0' \
-			|| index > 0 || i == 0) && counter++ >= 0)
-			address_str[index++] = hex_chars[(*hexadecimal >> (i * 4)) & 0xF];
+		if (((hex_chars[(*hexadecimal >> (i * 4)) & 0xF]) != '0'
+				|| index > 0 || i == 0) && counter++ >= 0)
+			address_str[index++] = hex_chars[(*hexadecimal
+					>> (i * 4)) & 0xF];
 		i--;
 	}
 	address_str[index] = '\0';

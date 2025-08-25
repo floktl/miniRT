@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:05:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	parse_plane_point(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	vec3_res	pr;
+	t_vec3_res	pr;
 
 	pr = parse_vec3_tokens(tokens, idx, token_count);
 	if (!pr.success)
@@ -27,7 +27,7 @@ int	parse_plane_point(t_object *obj, char **tokens, int *idx,
 int	parse_plane_normal(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	vec3_res	nr;
+	t_vec3_res	nr;
 
 	nr = parse_vec3_tokens(tokens, idx, token_count);
 	if (!nr.success)
@@ -41,10 +41,10 @@ int	parse_plane_normal(t_object *obj, char **tokens, int *idx,
 int	parse_plane_color(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	color_res	colr;
+	t_clr_res	colr;
 
 	colr = parse_color_tokens(tokens, idx, token_count);
-	if (!colr.success || *idx != token_count)
+	if (!colr.success)
 		return (cleanup_object_error(obj, "[Plane] Failed to parse color"));
 	obj->color = colr.c;
 	return (0);
@@ -53,7 +53,7 @@ int	parse_plane_color(t_object *obj, char **tokens, int *idx,
 int	parse_cylinder_base(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	vec3_res	br;
+	t_vec3_res	br;
 
 	br = parse_vec3_tokens(tokens, idx, token_count);
 	if (!br.success)
@@ -65,7 +65,7 @@ int	parse_cylinder_base(t_object *obj, char **tokens, int *idx,
 int	parse_cylinder_axis(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	vec3_res	ar;
+	t_vec3_res	ar;
 
 	ar = parse_vec3_tokens(tokens, idx, token_count);
 	if (!ar.success)

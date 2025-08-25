@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:03:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 16:23:22 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 18:59:00 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,7 @@ static void	print_color(const char *label, t_color c)
 		label, c.r, c.g, c.b);
 }
 
-static void	print_objects(const t_object *obj, int *index)
-{
-	while (obj)
-	{
-		printf(C_CYAN "Object[%d]: type=", (*index)++);
-		if (obj->type == SPHERE)
-		{
-			printf("SPHERE" C_RESET "\n");
-			print_vec3("  center=", obj->data.s_sphere.center);
-			printf("  radius=%.6f\n", obj->data.s_sphere.radius);
-		}
-		else if (obj->type == PLANE && printf("PLANE" C_RESET "\n"))
-		{
-			print_vec3("  point =", obj->data.s_plane.point);
-			print_vec3("  normal=", obj->data.s_plane.normal);
-		}
-		else if (obj->type == CYLINDER)
-		{
-			printf("CYLINDER" C_RESET "\n");
-			print_vec3("  base  =", obj->data.s_cylinder.base);
-			print_vec3("  axis  =", obj->data.s_cylinder.axis);
-			printf("  radius=%.6f\n", obj->data.s_cylinder.radius);
-			printf("  height=%.6f\n", obj->data.s_cylinder.height);
-		}
-		print_color("  color =", obj->color);
-		obj = obj->next;
-	}
-}
+void	print_objects(const t_object *obj, int *index);
 
 static void	print_lights(const t_light *light)
 {

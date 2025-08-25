@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 	// if (mlx_functions(&app) != 0)
 	// {
 	// 	free_scene(&app.scene);
-	// 	return (1);
+	// 	return (printf("Error\nFailed to initialize mlx\n"), 1);
 	// }
 	free_scene(&app.scene);
 	return (0);

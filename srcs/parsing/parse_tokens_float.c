@@ -6,18 +6,18 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:37:48 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 15:14:51 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:58:56 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/miniRT.h"
 #include <math.h>
 
-static float_res	init_float_res(void)
+static t_float_res	init_float_res(void)
 {
-	float_res	res;
+	t_float_res	res;
 
-	res = (float_res){0.0f, 0};
+	res = (t_float_res){0.0f, 0};
 	return (res);
 }
 
@@ -39,9 +39,9 @@ static int	process_float_token(char **tokens, int *local_idx, char **str)
 	return (1);
 }
 
-static float_res	set_float_res(float f, int local_idx, int *idx)
+static t_float_res	set_float_res(float f, int local_idx, int *idx)
 {
-	float_res	res;
+	t_float_res	res;
 
 	res.f = f;
 	res.success = 1;
@@ -49,9 +49,9 @@ static float_res	set_float_res(float f, int local_idx, int *idx)
 	return (res);
 }
 
-float_res	parse_float_tokens(char **tokens, int *idx, int token_count)
+t_float_res	parse_float_tokens(char **tokens, int *idx, int token_count)
 {
-	float_res	res;
+	t_float_res	res;
 	char		*str;
 	int			local_idx;
 	float		f;

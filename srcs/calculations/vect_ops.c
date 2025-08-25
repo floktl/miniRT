@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:17:50 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 16:31:09 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:17:24 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ t_vec3	vec_cross(t_vec3 a, t_vec3 b)
 		a.z * b.x - a.x * b.z,
 		a.x * b.y - a.y * b.x
 	});
+}
+
+t_vec3	vec_reflect(t_vec3 incident, t_vec3 normal)
+{
+	double	dot_product;
+
+	dot_product = vec_dot(incident, normal);
+	return (vec_sub(incident, vec_mul(normal, 2.0 * dot_product)));
 }

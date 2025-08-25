@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:07:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 15:16:29 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	parse_ambient(char **tokens, t_scene *scene)
 	int			token_count;
 	int			idx;
 	t_color		col;
-	float_res	fr;
-	color_res	cr;
+	t_float_res	fr;
+	t_clr_res	cr;
 
 	if (check_ambient_duplicate(scene))
 		return (1);
@@ -35,9 +35,9 @@ int	parse_camera(char **tokens, t_scene *scene)
 {
 	int				token_count;
 	int				idx;
-	vec3_res		pr;
-	vec3_res		dr;
-	float_res		fr;
+	t_vec3_res		pr;
+	t_vec3_res		dr;
+	t_float_res		fr;
 
 	if (check_camera_duplicate(scene))
 		return (1);

@@ -6,18 +6,18 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:39:28 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 16:42:46 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/miniRT.h"
 #include <math.h>
 
-static color_res	handle_single_token_res(char **tokens, int *idx,
+static t_clr_res	handle_single_token_res(char **tokens, int *idx,
 		char *str)
 {
 	t_color		c;
-	color_res	res;
+	t_clr_res	res;
 
 	handle_single_token(tokens, idx, &str);
 	c = parse_color(str);
@@ -25,21 +25,19 @@ static color_res	handle_single_token_res(char **tokens, int *idx,
 	{
 		res.c = c;
 		res.success = 1;
-		// Free the allocated memory before returning
 		if (str)
 			free(str);
 		return (res);
 	}
-	// Free the allocated memory if validation fails
 	if (str)
 		free(str);
-	return ((color_res){{0, 0, 0}, 0});
+	return ((t_clr_res){{0, 0, 0}, 0});
 }
 
-static color_res	handle_loop_res(char **tokens, int *idx,
+static t_clr_res	handle_loop_res(char **tokens, int *idx,
 		int token_count, char *str)
 {
-	color_res	res;
+	t_clr_res	res;
 
 	if (str == NULL)
 		str = ft_strdup("");
@@ -51,15 +49,15 @@ static color_res	handle_loop_res(char **tokens, int *idx,
 	}
 	if (str)
 		free(str);
-	return ((color_res){{0, 0, 0}, 0});
+	return ((t_clr_res){{0, 0, 0}, 0});
 }
 
-color_res	parse_color_tokens(char **tokens, int *idx, int token_count)
+t_clr_res	parse_color_tokens(char **tokens, int *idx, int token_count)
 {
-	color_res	res;
+	t_clr_res	res;
 	char		*str;
 
-	res = init_color_res();
+	res = init_clr_res();
 	str = ft_strdup("");
 	if (*idx >= token_count)
 	{

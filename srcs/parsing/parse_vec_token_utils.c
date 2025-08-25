@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	process_vec_tokens_loop(char **tokens, int *local_idx,
 	return (0);
 }
 
-vec3_res	init_vec3_res(void)
+t_vec3_res	init_vec3_res(void)
 {
-	vec3_res	res;
+	t_vec3_res	res;
 
-	res = (vec3_res){{0.0f, 0.0f, 0.0f}, 0};
+	res = (t_vec3_res){{0.0f, 0.0f, 0.0f}, 0};
 	return (res);
 }
 
@@ -57,9 +57,9 @@ int	handle_single_vec_token(char **tokens, int *local_idx, char **str)
 	return (1);
 }
 
-vec3_res	set_vec3_res(t_vec3 v, int local_idx, int *idx)
+t_vec3_res	set_vec3_res(t_vec3 v, int local_idx, int *idx)
 {
-	vec3_res	res;
+	t_vec3_res	res;
 
 	res.v = v;
 	res.success = 1;

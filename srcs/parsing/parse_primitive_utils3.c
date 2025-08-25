@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:06:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:43:17 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	parse_cylinder_dimensions(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	float_res	dr;
-	float_res	hr;
+	t_float_res	dr;
+	t_float_res	hr;
 
 	dr = parse_float_tokens(tokens, idx, token_count);
 	if (!dr.success)
@@ -35,16 +35,16 @@ int	parse_cylinder_dimensions(t_object *obj, char **tokens, int *idx,
 int	parse_cylinder_color(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
-	color_res	colr;
+	t_clr_res	colr;
 
 	colr = parse_color_tokens(tokens, idx, token_count);
-	if (!colr.success || *idx != token_count)
+	if (!colr.success)
 		return (cleanup_object_error(obj, "[Cylinder] Failed to parse color"));
 	obj->color = colr.c;
 	return (0);
 }
 
-int	validate_cylinder_data(t_object *obj, float_res dr, float_res hr)
+int	validate_cylinder_data(t_object *obj, t_float_res dr, t_float_res hr)
 {
 	if (validate_cylinder_dimensions(dr.f, hr.f))
 		return (cleanup_object_error(obj,

@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 14:26:51 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:58:55 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,10 @@ int	init_object_and_count(t_object **obj, char **tokens, int *token_count,
 	*obj = malloc(sizeof(t_object));
 	if (!*obj)
 		return (1);
+	(*obj)->type = 0;
+	(*obj)->next = NULL;
+	(*obj)->shininess = 32.0;
+	(*obj)->texture_type = TEXTURE_NONE;
+	(*obj)->texture_scale = 1.0;
 	return (0);
 }

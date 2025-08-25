@@ -1,0 +1,23 @@
+# BONUS: Comprehensive test - All bonus features combined
+A 0.1 255,255,255
+C 0,0,-10 0,0,1 70
+
+# Multiple colored lights
+L 10,10,10 0.8 255,255,255
+L -5,5,0 0.6 255,0,0
+L 5,-5,0 0.6 0,255,0
+
+# Sphere with high shininess and checkerboard
+sp 0,0,5 2 200,30,30 100 checkerboard 4.0
+
+# Plane with bump mapping
+pl 0,-3,0 0,1,0 120,120,120 32 bump 3.0
+
+# Cylinder with medium shininess and checkerboard
+cy 3,0,8 0,0,1 1.5 3 10,80,220 50 checkerboard 2.0
+
+# Cone with bump mapping
+co -3,0,8 0,0,1 1.5 3 220,80,10 25 bump 4.0
+
+# Additional cone with high shininess
+co 0,2,6 0,0,1 1 2 80,220,80 75
