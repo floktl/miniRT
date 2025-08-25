@@ -6,7 +6,7 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 10:16:43 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 13:45:27 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ typedef struct s_vec3_res	t_vec3_res;
 typedef struct s_float_res	t_float_res;
 
 // parsing/parser.c
+// @param filename: Path to the .rt scene file to parse
+// @param scene: Scene struct to populate with parsed data
+// @return: 0 on success, 1 on error
 int			parse_scene(const char *filename, t_scene *scene);
+
+// @param line: Single line from scene file to parse
+// @param scene: Scene struct to add parsed elements to
+// @return: 0 on success, 1 on error
 int			parse_line(char *line, t_scene *scene);
 
 // parsing/scene/parser_utils.c
@@ -38,8 +45,19 @@ int			dispatch_and_return(t_scene *scene, char **tokens, const char *type,
 				int (*parse_func)(char **, t_scene *));
 
 // parsing/scene/parse_scene_elements.c
+// @param tokens: Array of strings representing ambient line tokens
+// @param scene: Scene struct to set ambient lighting in
+// @return: 0 on success, 1 on error
 int			parse_ambient(char **tokens, t_scene *scene);
+
+// @param tokens: Array of strings representing camera line tokens
+// @param scene: Scene struct to set camera data in
+// @return: 0 on success, 1 on error
 int			parse_camera(char **tokens, t_scene *scene);
+
+// @param tokens: Array of strings representing light line tokens
+// @param scene: Scene struct to add light to
+// @return: 0 on success, 1 on error
 int			parse_light(char **tokens, t_scene *scene);
 
 // parsing/scene/parse_scene_utils.c
@@ -118,10 +136,29 @@ int			validate_cylinder_data(t_object *obj, t_float_res dr,
 				t_float_res hr);
 
 // parsing/primitives/parse_primitives.c
+// @param tokens: Array of strings representing sphere line tokens
+// @param scene: Scene struct to add sphere object to
+// @return: 0 on success, 1 on error
 int			parse_sphere(char **tokens, t_scene *scene);
+
+// @param tokens: Array of strings representing plane line tokens
+// @param scene: Scene struct to add plane object to
+// @return: 0 on success, 1 on error
 int			parse_plane(char **tokens, t_scene *scene);
+
+// @param tokens: Array of strings representing cylinder line tokens
+// @param scene: Scene struct to add cylinder object to
+// @return: 0 on success, 1 on error
 int			parse_cylinder(char **tokens, t_scene *scene);
+
+// @param tokens: Array of strings representing cone line tokens
+// @param scene: Scene struct to add cone object to
+// @return: 0 on success, 1 on error
 int			parse_cone(char **tokens, t_scene *scene);
+
+// @param obj: Object to free memory from
+// @param message: Error message to print
+// @return: Always returns 1 (error)
 int			cleanup_object_error(t_object *obj, const char *message);
 
 // parsing/primitives/parse_shininess.c

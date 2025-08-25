@@ -6,14 +6,15 @@
 #    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:27 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/25 10:39:22 by Florian Kei      ###   ########.fr        #
+#    Updated: 2025/08/25 14:19:21 by Florian Kei      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := miniRT
 CC := gcc
 CXX := g++
-CFLAGS := -Wall -Wextra -Wno-error -Wunreachable-code -O0 -ffast-math -g -Wno-unused-parameter -Wno-unused-function
+CFLAGS := -Wall -Wextra -Wno-error -Wunreachable-code -O0 -ffast-math -g \
+			-Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 
 ifneq ($(TEST), )
 CFLAGS += -Wno-unused-parameter -Wno-unused-function
@@ -46,8 +47,12 @@ libmlx:
 	@if [ ! -d "$(LIBMLX)" ]; then \
 			git clone $(LIBMLX_URL) $(LIBMLX); \
 	fi
-	@cmake -S $(LIBMLX) -B $(LIBMLX)/build
-	@cmake --build $(LIBMLX)/build --parallel 4
+	@if [ ! -f "$(LIBMLX)/build/libmlx42.a" ]; then \
+		cmake -S $(LIBMLX) -B $(LIBMLX)/build; \
+		cmake --build $(LIBMLX)/build --parallel 4; \
+	else \
+		echo "MLX42 already compiled, skipping..."; \
+	fi
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
@@ -143,16 +148,6 @@ container-test-all:
 	@docker exec -it minirt-valgrind-test bash -c "make re"
 	@./docker-test/test_all.sh
 
-# Usage: make container-test-quick (shows only summary)
-container-test-quick:
-	@echo "Running quick test (summary only)..."
-	@if ! docker ps | grep -q minirt-valgrind-test; then \
-		echo "Container not running, starting it first..."; \
-		./docker-test/run.sh; \
-	fi
-	@echo "Rebuilding project before testing..."
-	@docker exec -it minirt-valgrind-test bash -c "make re"
-	@./docker-test/test_all.sh | grep -E "(=== Test Summary ===|Total tests:|Passed:|Failed:|Warnings:|🎉|⚠️|❌)"
 
 # Usage: make container-rebuild (rebuild after code changes)
 container-rebuild:
@@ -163,6 +158,8 @@ container-rebuild:
 	fi
 	@docker exec -it minirt-valgrind-test bash -c "make clean && make all"
 
-.PHONY: all clean fclean re libmlx test leaks start container container-build container-stop container-test container-test-all container-test-quick container-rebuild
+.PHONY: all clean fclean re libmlx test leaks start container container-build\
+			container-stop container-test container-test-all\
+			container-test-quick container-rebuild
 
 # valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./miniRT sample.rt

@@ -6,11 +6,27 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 18:53:03 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 14:31:54 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+/*
+ * PHONG LIGHTING MODEL CALCULATIONS
+ *
+ * The Phong reflection model simulates realistic surface lighting:
+ * - Ambient lighting provides constant background illumination
+ * - Diffuse lighting follows Lambert's cosine law for matte surfaces
+ * - Specular lighting creates shiny highlights using reflection angles
+ * - Multiple light sources are combined for final illumination
+ *
+ * Lighting components:
+ * - Ambient: Constant light simulating indirect illumination
+ * - Diffuse: Light scattered equally in all directions (Lambert's law)
+ * - Specular: Light reflected in mirror-like direction (Phong model)
+ * - Final color combines all components from all light sources
+ */
 
 static t_color	process_light_contribution(t_light *light,
 		t_light_params *params, t_color texture_color)

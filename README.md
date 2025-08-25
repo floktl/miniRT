@@ -46,14 +46,17 @@ miniRT/
 ├── MLX42/                 # Graphics library
 ├── scenes/                # Scene configuration files
 │   └── miniRT_samples/    # Test scenes
+├── scripts/               # Utility scripts for testing and debugging
+├── docker-test/           # Docker-based testing environment
 ├── test_results/          # Test outputs (ignored by git)
+├── valgrind.supp          # Valgrind suppression file
 └── Makefile              # Build configuration
 ```
 
 ## 🚀 Building and Running
 
 ### Prerequisites
-- macOS (for MLX42 compatibility)
+- linux or macOS (for MLX42 compatibility)
 - GCC compiler
 - Make
 
@@ -75,6 +78,12 @@ make
 - `make clean` - Remove object files
 - `make fclean` - Remove all build artifacts
 - `make re` - Rebuild from scratch
+
+### Testing
+- `./scripts/test_scenes.sh` - Run tests on all scene files
+- `./scripts/debug_test.sh` - Run tests with debug output
+- `make test` - Run tests using Docker (requires Docker)
+- `make valgrind SCENE=scene.rt` - Run Valgrind memory check on specific scene
 
 ## 📝 Scene File Format (.rt)
 
@@ -119,8 +128,6 @@ cy 2,0,8 0,0,1 1.5 3 10,80,220
 ## 🎮 Controls
 
 - **ESC** - Exit the program
-- **Mouse** - Interactive camera control (if implemented)
-- **Keyboard** - Additional controls (if implemented)
 
 ## 🧪 Testing
 
@@ -200,4 +207,4 @@ This is an educational project. For questions or issues, please refer to the 42 
 
 ---
 
-**Note**: This project requires macOS for MLX42 compatibility. Scene files must have a `.rt` extension and follow the specified format.
+**Note**: This project requires linux/macOS for MLX42 compatibility. Scene files must have a `.rt` extension and follow the specified format.

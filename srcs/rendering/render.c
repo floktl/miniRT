@@ -6,11 +6,28 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 16:57:41 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 14:32:12 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+/*
+ * RAY TRACING RENDERING ENGINE
+ *
+ * Ray tracing is a rendering technique that simulates light transport:
+ * - Rays are cast from the camera through each pixel into the scene
+ * - Intersection testing determines which objects are hit by each ray
+ * - Surface normals are calculated at intersection points
+ * - Lighting models compute the final color at each point
+ *
+ * The ray tracing algorithm simulates how light travels:
+ * 1. Cast rays from camera through image plane pixels
+ * 2. Find closest object intersections along ray paths
+ * 3. Calculate surface properties and lighting at hit points
+ * 4. Apply material properties and texture mapping
+ * 5. Determine final pixel color from lighting calculations
+ */
 
 static t_ray	get_ray(t_app *app, int x, int y)
 {
