@@ -6,15 +6,15 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/25 10:12:22 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:38:03 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
+# include "MLX42/MLX42.h"
+# include "libft.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>

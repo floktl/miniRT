@@ -6,11 +6,11 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 10:03:06 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:38:30 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static double	apply_exponent(double result, double exponent, double exp_sign)
 {

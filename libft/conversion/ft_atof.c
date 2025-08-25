@@ -6,11 +6,11 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:40:29 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 10:04:10 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:38:25 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static void	skip_ws_and_sign(const char *s, int *i, double *sign)
 {

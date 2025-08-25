@@ -6,7 +6,7 @@
 #    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:27 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/24 12:44:08 by Florian Kei      ###   ########.fr        #
+#    Updated: 2025/08/25 10:38:03 by Florian Kei      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBMLX := ./MLX42
 LIBMLX_URL := https://github.com/codam-coding-college/MLX42.git
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
-HEADERS := -I ./include -I $(LIBMLX)/include
+HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT_DIR)
 
 # Directories
 SRC_DIR := srcs
