@@ -1,149 +1,149 @@
-==50069== Memcheck, a memory error detector
-==50069== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==50069== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
-==50069== Command: ./miniRT scenes/miniRT_samples/08_invalid_color_range.rt
-==50069== Parent PID: 50068
-==50069== 
---50069-- 
---50069-- Valgrind options:
---50069--    --leak-check=full
---50069--    --show-leak-kinds=all
---50069--    --track-origins=yes
---50069--    --show-reachable=yes
---50069--    --suppressions=valgrind.supp
---50069--    --verbose
---50069--    --log-file=valgrind_output.txt
---50069--    --error-exitcode=0
---50069--    --demangle=no
---50069--    --num-callers=20
---50069--    --track-origins=yes
---50069--    --show-mismatched-frees=yes
---50069--    --show-possibly-lost=yes
---50069--    --gen-suppressions=all
---50069-- Contents of /proc/version:
---50069--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
---50069-- 
---50069-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
---50069-- Page sizes: currently 4096, max supported 65536
---50069-- Valgrind library directory: /usr/libexec/valgrind
---50069-- Reading syms from /app/miniRT
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
---50069--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
---50069--   .. build-id is valid
---50069-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
---50069--    object doesn't have a symbol table
---50069--    object doesn't have a dynamic symbol table
---50069-- Scheduler: using generic scheduler lock implementation.
---50069-- Reading suppressions file: valgrind.supp
---50069-- Reading suppressions file: /usr/libexec/valgrind/default.supp
-==50069== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-50069-by-???-on-docker-desktop
-==50069== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-50069-by-???-on-docker-desktop
-==50069== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-50069-by-???-on-docker-desktop
-==50069== 
-==50069== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==50069== don't want to do, unless you know exactly what you're doing,
-==50069== or are doing some strange experiment):
-==50069==   /usr/bin/vgdb --pid=50069 ...command...
-==50069== 
-==50069== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==50069==   /path/to/gdb ./miniRT
-==50069== and then give GDB the following command
-==50069==   target remote | /usr/bin/vgdb --pid=50069
-==50069== --pid is optional if only one valgrind process is running
-==50069== 
---50069-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
---50069-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
---50069-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
---50069-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
---50069--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
---50069--   .. build-id is valid
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
---50069--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
---50069--   .. build-id is valid
-==50069== WARNING: new redirection conflicts with existing -- ignoring it
---50069--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---50069--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==50069== WARNING: new redirection conflicts with existing -- ignoring it
---50069--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---50069--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
-==50069== WARNING: new redirection conflicts with existing -- ignoring it
---50069--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---50069--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==50069== WARNING: new redirection conflicts with existing -- ignoring it
---50069--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---50069--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
---50069--    object doesn't have a symbol table
---50069-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
---50069--    object doesn't have a symbol table
---50069-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---50069-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---50069-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---50069-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---50069-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---50069-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
---50069-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
---50069-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
---50069-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
---50069-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
---50069-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
-==50069== Invalid free() / delete / delete[] / realloc()
-==50069==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==50069==    by 0x113427: parse_color_tokens (parse_tokens.c:74)
-==50069==    by 0x115BE7: parse_light_color (parse_light_utils.c:43)
-==50069==    by 0x116BD7: parse_light_data (parse_light_utils2.c:37)
-==50069==    by 0x116CC7: parse_light_internal (parse_light_utils2.c:53)
-==50069==    by 0x111CBB: parse_light (parse_scene_elements.c:56)
-==50069==    by 0x115A77: dispatch_and_return (parser_utils2.c:45)
-==50069==    by 0x115D4F: dispatch_parse (parser.c:27)
-==50069==    by 0x115F2F: parse_line (parser.c:56)
-==50069==    by 0x116017: process_line (parser.c:77)
-==50069==    by 0x1160B3: parse_scene (parser.c:101)
-==50069==    by 0x110AB7: main (main.c:48)
-==50069==  Address 0x4d6f6a0 is 0 bytes inside a block of size 1 free'd
-==50069==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==50069==    by 0x113B1F: handle_single_token (parse_token_utils.c:74)
-==50069==    by 0x1131CB: handle_single_token_res (parse_tokens.c:22)
-==50069==    by 0x1133C7: parse_color_tokens (parse_tokens.c:67)
-==50069==    by 0x115BE7: parse_light_color (parse_light_utils.c:43)
-==50069==    by 0x116BD7: parse_light_data (parse_light_utils2.c:37)
-==50069==    by 0x116CC7: parse_light_internal (parse_light_utils2.c:53)
-==50069==    by 0x111CBB: parse_light (parse_scene_elements.c:56)
-==50069==    by 0x115A77: dispatch_and_return (parser_utils2.c:45)
-==50069==    by 0x115D4F: dispatch_parse (parser.c:27)
-==50069==    by 0x115F2F: parse_line (parser.c:56)
-==50069==    by 0x116017: process_line (parser.c:77)
-==50069==    by 0x1160B3: parse_scene (parser.c:101)
-==50069==    by 0x110AB7: main (main.c:48)
-==50069==  Block was alloc'd at
-==50069==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==50069==    by 0x122AAF: ft_strdup (ft_strdup.c:21)
-==50069==    by 0x11338B: parse_color_tokens (parse_tokens.c:61)
-==50069==    by 0x115BE7: parse_light_color (parse_light_utils.c:43)
-==50069==    by 0x116BD7: parse_light_data (parse_light_utils2.c:37)
-==50069==    by 0x116CC7: parse_light_internal (parse_light_utils2.c:53)
-==50069==    by 0x111CBB: parse_light (parse_scene_elements.c:56)
-==50069==    by 0x115A77: dispatch_and_return (parser_utils2.c:45)
-==50069==    by 0x115D4F: dispatch_parse (parser.c:27)
-==50069==    by 0x115F2F: parse_line (parser.c:56)
-==50069==    by 0x116017: process_line (parser.c:77)
-==50069==    by 0x1160B3: parse_scene (parser.c:101)
-==50069==    by 0x110AB7: main (main.c:48)
-==50069== 
+==52402== Memcheck, a memory error detector
+==52402== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==52402== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==52402== Command: ./miniRT scenes/miniRT_samples/08_invalid_color_range.rt
+==52402== Parent PID: 52401
+==52402== 
+--52402-- 
+--52402-- Valgrind options:
+--52402--    --leak-check=full
+--52402--    --show-leak-kinds=all
+--52402--    --track-origins=yes
+--52402--    --show-reachable=yes
+--52402--    --suppressions=valgrind.supp
+--52402--    --verbose
+--52402--    --log-file=valgrind_output.txt
+--52402--    --error-exitcode=0
+--52402--    --demangle=no
+--52402--    --num-callers=20
+--52402--    --track-origins=yes
+--52402--    --show-mismatched-frees=yes
+--52402--    --show-possibly-lost=yes
+--52402--    --gen-suppressions=all
+--52402-- Contents of /proc/version:
+--52402--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
+--52402-- 
+--52402-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
+--52402-- Page sizes: currently 4096, max supported 65536
+--52402-- Valgrind library directory: /usr/libexec/valgrind
+--52402-- Reading syms from /app/miniRT
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+--52402--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
+--52402--   .. build-id is valid
+--52402-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
+--52402--    object doesn't have a symbol table
+--52402--    object doesn't have a dynamic symbol table
+--52402-- Scheduler: using generic scheduler lock implementation.
+--52402-- Reading suppressions file: valgrind.supp
+--52402-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==52402== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-52402-by-???-on-docker-desktop
+==52402== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-52402-by-???-on-docker-desktop
+==52402== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-52402-by-???-on-docker-desktop
+==52402== 
+==52402== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==52402== don't want to do, unless you know exactly what you're doing,
+==52402== or are doing some strange experiment):
+==52402==   /usr/bin/vgdb --pid=52402 ...command...
+==52402== 
+==52402== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==52402==   /path/to/gdb ./miniRT
+==52402== and then give GDB the following command
+==52402==   target remote | /usr/bin/vgdb --pid=52402
+==52402== --pid is optional if only one valgrind process is running
+==52402== 
+--52402-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
+--52402-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
+--52402-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
+--52402-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
+--52402--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
+--52402--   .. build-id is valid
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
+--52402--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
+--52402--   .. build-id is valid
+==52402== WARNING: new redirection conflicts with existing -- ignoring it
+--52402--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--52402--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==52402== WARNING: new redirection conflicts with existing -- ignoring it
+--52402--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--52402--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+==52402== WARNING: new redirection conflicts with existing -- ignoring it
+--52402--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--52402--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==52402== WARNING: new redirection conflicts with existing -- ignoring it
+--52402--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--52402--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
+--52402--    object doesn't have a symbol table
+--52402-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
+--52402--    object doesn't have a symbol table
+--52402-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--52402-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--52402-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--52402-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--52402-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--52402-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
+--52402-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
+--52402-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
+--52402-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
+--52402-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
+--52402-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
+==52402== Invalid free() / delete / delete[] / realloc()
+==52402==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==52402==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
+==52402==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==52402==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==52402==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==52402==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==52402==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==52402==    by 0x1150CF: dispatch_parse (parser.c:27)
+==52402==    by 0x1152AF: parse_line (parser.c:56)
+==52402==    by 0x115397: process_line (parser.c:77)
+==52402==    by 0x115433: parse_scene (parser.c:101)
+==52402==    by 0x110AB7: main (main.c:48)
+==52402==  Address 0x4d6f6a0 is 0 bytes inside a block of size 1 free'd
+==52402==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==52402==    by 0x1159F7: handle_single_token (parse_token_utils.c:74)
+==52402==    by 0x11549F: handle_single_token_res (parse_tokens.c:22)
+==52402==    by 0x11569B: parse_color_tokens (parse_tokens.c:67)
+==52402==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==52402==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==52402==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==52402==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==52402==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==52402==    by 0x1150CF: dispatch_parse (parser.c:27)
+==52402==    by 0x1152AF: parse_line (parser.c:56)
+==52402==    by 0x115397: process_line (parser.c:77)
+==52402==    by 0x115433: parse_scene (parser.c:101)
+==52402==    by 0x110AB7: main (main.c:48)
+==52402==  Block was alloc'd at
+==52402==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==52402==    by 0x121AAF: ft_strdup (ft_strdup.c:21)
+==52402==    by 0x11565F: parse_color_tokens (parse_tokens.c:61)
+==52402==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==52402==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==52402==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==52402==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==52402==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==52402==    by 0x1150CF: dispatch_parse (parser.c:27)
+==52402==    by 0x1152AF: parse_line (parser.c:56)
+==52402==    by 0x115397: process_line (parser.c:77)
+==52402==    by 0x115433: parse_scene (parser.c:101)
+==52402==    by 0x110AB7: main (main.c:48)
+==52402== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Free
@@ -160,59 +160,59 @@
    fun:parse_scene
    fun:main
 }
-==50069== 
-==50069== HEAP SUMMARY:
-==50069==     in use at exit: 0 bytes in 0 blocks
-==50069==   total heap usage: 170 allocs, 171 frees, 6,533 bytes allocated
-==50069== 
-==50069== All heap blocks were freed -- no leaks are possible
-==50069== 
-==50069== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==50069== 
-==50069== 1 errors in context 1 of 1:
-==50069== Invalid free() / delete / delete[] / realloc()
-==50069==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==50069==    by 0x113427: parse_color_tokens (parse_tokens.c:74)
-==50069==    by 0x115BE7: parse_light_color (parse_light_utils.c:43)
-==50069==    by 0x116BD7: parse_light_data (parse_light_utils2.c:37)
-==50069==    by 0x116CC7: parse_light_internal (parse_light_utils2.c:53)
-==50069==    by 0x111CBB: parse_light (parse_scene_elements.c:56)
-==50069==    by 0x115A77: dispatch_and_return (parser_utils2.c:45)
-==50069==    by 0x115D4F: dispatch_parse (parser.c:27)
-==50069==    by 0x115F2F: parse_line (parser.c:56)
-==50069==    by 0x116017: process_line (parser.c:77)
-==50069==    by 0x1160B3: parse_scene (parser.c:101)
-==50069==    by 0x110AB7: main (main.c:48)
-==50069==  Address 0x4d6f6a0 is 0 bytes inside a block of size 1 free'd
-==50069==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==50069==    by 0x113B1F: handle_single_token (parse_token_utils.c:74)
-==50069==    by 0x1131CB: handle_single_token_res (parse_tokens.c:22)
-==50069==    by 0x1133C7: parse_color_tokens (parse_tokens.c:67)
-==50069==    by 0x115BE7: parse_light_color (parse_light_utils.c:43)
-==50069==    by 0x116BD7: parse_light_data (parse_light_utils2.c:37)
-==50069==    by 0x116CC7: parse_light_internal (parse_light_utils2.c:53)
-==50069==    by 0x111CBB: parse_light (parse_scene_elements.c:56)
-==50069==    by 0x115A77: dispatch_and_return (parser_utils2.c:45)
-==50069==    by 0x115D4F: dispatch_parse (parser.c:27)
-==50069==    by 0x115F2F: parse_line (parser.c:56)
-==50069==    by 0x116017: process_line (parser.c:77)
-==50069==    by 0x1160B3: parse_scene (parser.c:101)
-==50069==    by 0x110AB7: main (main.c:48)
-==50069==  Block was alloc'd at
-==50069==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==50069==    by 0x122AAF: ft_strdup (ft_strdup.c:21)
-==50069==    by 0x11338B: parse_color_tokens (parse_tokens.c:61)
-==50069==    by 0x115BE7: parse_light_color (parse_light_utils.c:43)
-==50069==    by 0x116BD7: parse_light_data (parse_light_utils2.c:37)
-==50069==    by 0x116CC7: parse_light_internal (parse_light_utils2.c:53)
-==50069==    by 0x111CBB: parse_light (parse_scene_elements.c:56)
-==50069==    by 0x115A77: dispatch_and_return (parser_utils2.c:45)
-==50069==    by 0x115D4F: dispatch_parse (parser.c:27)
-==50069==    by 0x115F2F: parse_line (parser.c:56)
-==50069==    by 0x116017: process_line (parser.c:77)
-==50069==    by 0x1160B3: parse_scene (parser.c:101)
-==50069==    by 0x110AB7: main (main.c:48)
-==50069== 
+==52402== 
+==52402== HEAP SUMMARY:
+==52402==     in use at exit: 0 bytes in 0 blocks
+==52402==   total heap usage: 170 allocs, 171 frees, 6,533 bytes allocated
+==52402== 
+==52402== All heap blocks were freed -- no leaks are possible
+==52402== 
+==52402== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==52402== 
+==52402== 1 errors in context 1 of 1:
+==52402== Invalid free() / delete / delete[] / realloc()
+==52402==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==52402==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
+==52402==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==52402==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==52402==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==52402==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==52402==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==52402==    by 0x1150CF: dispatch_parse (parser.c:27)
+==52402==    by 0x1152AF: parse_line (parser.c:56)
+==52402==    by 0x115397: process_line (parser.c:77)
+==52402==    by 0x115433: parse_scene (parser.c:101)
+==52402==    by 0x110AB7: main (main.c:48)
+==52402==  Address 0x4d6f6a0 is 0 bytes inside a block of size 1 free'd
+==52402==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==52402==    by 0x1159F7: handle_single_token (parse_token_utils.c:74)
+==52402==    by 0x11549F: handle_single_token_res (parse_tokens.c:22)
+==52402==    by 0x11569B: parse_color_tokens (parse_tokens.c:67)
+==52402==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==52402==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==52402==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==52402==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==52402==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==52402==    by 0x1150CF: dispatch_parse (parser.c:27)
+==52402==    by 0x1152AF: parse_line (parser.c:56)
+==52402==    by 0x115397: process_line (parser.c:77)
+==52402==    by 0x115433: parse_scene (parser.c:101)
+==52402==    by 0x110AB7: main (main.c:48)
+==52402==  Block was alloc'd at
+==52402==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==52402==    by 0x121AAF: ft_strdup (ft_strdup.c:21)
+==52402==    by 0x11565F: parse_color_tokens (parse_tokens.c:61)
+==52402==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==52402==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==52402==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==52402==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==52402==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==52402==    by 0x1150CF: dispatch_parse (parser.c:27)
+==52402==    by 0x1152AF: parse_line (parser.c:56)
+==52402==    by 0x115397: process_line (parser.c:77)
+==52402==    by 0x115433: parse_scene (parser.c:101)
+==52402==    by 0x110AB7: main (main.c:48)
+==52402== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Free
@@ -229,4 +229,4 @@
    fun:parse_scene
    fun:main
 }
-==50069== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==52402== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

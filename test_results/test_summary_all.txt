@@ -1,5 +1,5 @@
 === miniRT Valgrind Test Summary ===
-Date: Mon Aug 25 10:03:03 CEST 2025
+Date: Mon Aug 25 10:15:47 CEST 2025
 
   ✅ PASSED
   ✅ PASSED
