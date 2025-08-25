@@ -1,0 +1,79 @@
+# Build artifacts
+obj/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+miniRT
+
+# MLX42
+MLX42/
+MLX42.zip
+
+# Library files
+libft.a
+libft/libft.a
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.out
+
+# Test results
+test_results/
+*.txt
+
+# Backup files
+*.bak
+*.backup
+
+# CMake build files
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Compiled libraries
+*.lib
+*.dll.a
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Coverage files
+*.gcov
+*.gcda
+*.gcno
+
+# Valgrind output
+valgrind-out.txt
+*.vglog
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+*.rt.bak
+scenes/*.rt~
