@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 #include <math.h>
 
 static t_color	checkerboard_texture(t_object *obj, t_vec3 point)

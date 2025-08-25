@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 
 int	parse_ambient_color(char **tokens, int *idx, int token_count,
 		t_clr_res *cr)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 
 // ANSI escape codes
 #define C_RESET   "\033[0m"

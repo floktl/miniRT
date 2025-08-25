@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 #include <math.h>
 
 t_vec3_res	parse_vec3_tokens(char **tokens, int *idx, int token_count)

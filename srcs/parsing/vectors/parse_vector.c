@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 #include <math.h>
 
 t_vec3	parse_vec3(char *str)

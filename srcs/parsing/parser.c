@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>

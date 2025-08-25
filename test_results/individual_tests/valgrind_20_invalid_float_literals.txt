@@ -1,143 +1,143 @@
-==51923== Memcheck, a memory error detector
-==51923== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==51923== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
-==51923== Command: ./miniRT scenes/miniRT_samples/20_invalid_float_literals.rt
-==51923== Parent PID: 51922
-==51923== 
---51923-- 
---51923-- Valgrind options:
---51923--    --leak-check=full
---51923--    --show-leak-kinds=all
---51923--    --track-origins=yes
---51923--    --show-reachable=yes
---51923--    --suppressions=valgrind.supp
---51923--    --verbose
---51923--    --log-file=valgrind_output.txt
---51923--    --error-exitcode=0
---51923--    --demangle=no
---51923--    --num-callers=20
---51923--    --track-origins=yes
---51923--    --show-mismatched-frees=yes
---51923--    --show-possibly-lost=yes
---51923--    --gen-suppressions=all
---51923-- Contents of /proc/version:
---51923--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
---51923-- 
---51923-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
---51923-- Page sizes: currently 4096, max supported 65536
---51923-- Valgrind library directory: /usr/libexec/valgrind
---51923-- Reading syms from /app/miniRT
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
---51923--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
---51923--   .. build-id is valid
---51923-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
---51923--    object doesn't have a symbol table
---51923--    object doesn't have a dynamic symbol table
---51923-- Scheduler: using generic scheduler lock implementation.
---51923-- Reading suppressions file: valgrind.supp
---51923-- Reading suppressions file: /usr/libexec/valgrind/default.supp
-==51923== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-51923-by-???-on-docker-desktop
-==51923== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-51923-by-???-on-docker-desktop
-==51923== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-51923-by-???-on-docker-desktop
-==51923== 
-==51923== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==51923== don't want to do, unless you know exactly what you're doing,
-==51923== or are doing some strange experiment):
-==51923==   /usr/bin/vgdb --pid=51923 ...command...
-==51923== 
-==51923== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==51923==   /path/to/gdb ./miniRT
-==51923== and then give GDB the following command
-==51923==   target remote | /usr/bin/vgdb --pid=51923
-==51923== --pid is optional if only one valgrind process is running
-==51923== 
---51923-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
---51923-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
---51923-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
---51923-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
---51923--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
---51923--   .. build-id is valid
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
---51923--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
---51923--   .. build-id is valid
-==51923== WARNING: new redirection conflicts with existing -- ignoring it
---51923--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51923--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==51923== WARNING: new redirection conflicts with existing -- ignoring it
---51923--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51923--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
-==51923== WARNING: new redirection conflicts with existing -- ignoring it
---51923--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51923--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==51923== WARNING: new redirection conflicts with existing -- ignoring it
---51923--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51923--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
---51923--    object doesn't have a symbol table
---51923-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
---51923--    object doesn't have a symbol table
---51923-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51923-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51923-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51923-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51923-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51923-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
---51923-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
---51923-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
---51923-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
---51923-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
---51923-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
-==51923== Invalid free() / delete / delete[] / realloc()
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
-==51923==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Address 0x4d75b00 is 0 bytes inside a block of size 1 free'd
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x1159F7: handle_single_token (parse_token_utils.c:74)
-==51923==    by 0x11549F: handle_single_token_res (parse_tokens.c:22)
-==51923==    by 0x11569B: parse_color_tokens (parse_tokens.c:67)
-==51923==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Block was alloc'd at
-==51923==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x121AAF: ft_strdup (ft_strdup.c:21)
-==51923==    by 0x11565F: parse_color_tokens (parse_tokens.c:61)
-==51923==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923== 
+==55055== Memcheck, a memory error detector
+==55055== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==55055== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==55055== Command: ./miniRT scenes/miniRT_samples/20_invalid_float_literals.rt
+==55055== Parent PID: 55054
+==55055== 
+--55055-- 
+--55055-- Valgrind options:
+--55055--    --leak-check=full
+--55055--    --show-leak-kinds=all
+--55055--    --track-origins=yes
+--55055--    --show-reachable=yes
+--55055--    --suppressions=valgrind.supp
+--55055--    --verbose
+--55055--    --log-file=valgrind_output.txt
+--55055--    --error-exitcode=0
+--55055--    --demangle=no
+--55055--    --num-callers=20
+--55055--    --track-origins=yes
+--55055--    --show-mismatched-frees=yes
+--55055--    --show-possibly-lost=yes
+--55055--    --gen-suppressions=all
+--55055-- Contents of /proc/version:
+--55055--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
+--55055-- 
+--55055-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
+--55055-- Page sizes: currently 4096, max supported 65536
+--55055-- Valgrind library directory: /usr/libexec/valgrind
+--55055-- Reading syms from /app/miniRT
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+--55055--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
+--55055--   .. build-id is valid
+--55055-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
+--55055--    object doesn't have a symbol table
+--55055--    object doesn't have a dynamic symbol table
+--55055-- Scheduler: using generic scheduler lock implementation.
+--55055-- Reading suppressions file: valgrind.supp
+--55055-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==55055== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-55055-by-???-on-docker-desktop
+==55055== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-55055-by-???-on-docker-desktop
+==55055== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-55055-by-???-on-docker-desktop
+==55055== 
+==55055== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==55055== don't want to do, unless you know exactly what you're doing,
+==55055== or are doing some strange experiment):
+==55055==   /usr/bin/vgdb --pid=55055 ...command...
+==55055== 
+==55055== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==55055==   /path/to/gdb ./miniRT
+==55055== and then give GDB the following command
+==55055==   target remote | /usr/bin/vgdb --pid=55055
+==55055== --pid is optional if only one valgrind process is running
+==55055== 
+--55055-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
+--55055-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
+--55055-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
+--55055-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
+--55055--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
+--55055--   .. build-id is valid
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
+--55055--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
+--55055--   .. build-id is valid
+==55055== WARNING: new redirection conflicts with existing -- ignoring it
+--55055--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--55055--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==55055== WARNING: new redirection conflicts with existing -- ignoring it
+--55055--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--55055--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+==55055== WARNING: new redirection conflicts with existing -- ignoring it
+--55055--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--55055--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==55055== WARNING: new redirection conflicts with existing -- ignoring it
+--55055--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--55055--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
+--55055--    object doesn't have a symbol table
+--55055-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
+--55055--    object doesn't have a symbol table
+--55055-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--55055-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--55055-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--55055-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--55055-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--55055-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
+--55055-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
+--55055-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
+--55055-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
+--55055-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
+--55055-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
+==55055== Invalid free() / delete / delete[] / realloc()
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
+==55055==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Address 0x4d75b00 is 0 bytes inside a block of size 1 free'd
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x1159F7: handle_single_token (parse_token_utils.c:74)
+==55055==    by 0x11549F: handle_single_token_res (parse_tokens.c:22)
+==55055==    by 0x11569B: parse_color_tokens (parse_tokens.c:67)
+==55055==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Block was alloc'd at
+==55055==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x121AAF: ft_strdup (ft_strdup.c:21)
+==55055==    by 0x11565F: parse_color_tokens (parse_tokens.c:61)
+==55055==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Free
@@ -152,38 +152,38 @@
    fun:parse_scene
    fun:main
 }
-==51923== Invalid free() / delete / delete[] / realloc()
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
-==51923==    by 0x1130E3: parse_cylinder (parse_cylinder.c:53)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Address 0x4d75520 is 0 bytes inside a block of size 120 free'd
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
-==51923==    by 0x1134A7: parse_cylinder_color (parse_primitive_utils3.c:42)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Block was alloc'd at
-==51923==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x112C7B: init_object_and_count (parse_primitive_utils.c:52)
-==51923==    by 0x112FDB: parse_cylinder (parse_cylinder.c:43)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923== 
+==55055== Invalid free() / delete / delete[] / realloc()
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
+==55055==    by 0x1130E3: parse_cylinder (parse_cylinder.c:53)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Address 0x4d75520 is 0 bytes inside a block of size 120 free'd
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
+==55055==    by 0x1134A7: parse_cylinder_color (parse_primitive_utils3.c:42)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Block was alloc'd at
+==55055==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x112C7B: init_object_and_count (parse_primitive_utils.c:52)
+==55055==    by 0x112FDB: parse_cylinder (parse_cylinder.c:43)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Free
@@ -197,48 +197,48 @@
    fun:parse_scene
    fun:main
 }
-==51923== 
-==51923== HEAP SUMMARY:
-==51923==     in use at exit: 0 bytes in 0 blocks
-==51923==   total heap usage: 445 allocs, 447 frees, 12,216 bytes allocated
-==51923== 
-==51923== All heap blocks were freed -- no leaks are possible
-==51923== 
-==51923== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
-==51923== 
-==51923== 1 errors in context 1 of 2:
-==51923== Invalid free() / delete / delete[] / realloc()
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
-==51923==    by 0x1130E3: parse_cylinder (parse_cylinder.c:53)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Address 0x4d75520 is 0 bytes inside a block of size 120 free'd
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
-==51923==    by 0x1134A7: parse_cylinder_color (parse_primitive_utils3.c:42)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Block was alloc'd at
-==51923==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x112C7B: init_object_and_count (parse_primitive_utils.c:52)
-==51923==    by 0x112FDB: parse_cylinder (parse_cylinder.c:43)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923== 
+==55055== 
+==55055== HEAP SUMMARY:
+==55055==     in use at exit: 0 bytes in 0 blocks
+==55055==   total heap usage: 445 allocs, 447 frees, 12,216 bytes allocated
+==55055== 
+==55055== All heap blocks were freed -- no leaks are possible
+==55055== 
+==55055== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==55055== 
+==55055== 1 errors in context 1 of 2:
+==55055== Invalid free() / delete / delete[] / realloc()
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
+==55055==    by 0x1130E3: parse_cylinder (parse_cylinder.c:53)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Address 0x4d75520 is 0 bytes inside a block of size 120 free'd
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
+==55055==    by 0x1134A7: parse_cylinder_color (parse_primitive_utils3.c:42)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Block was alloc'd at
+==55055==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x112C7B: init_object_and_count (parse_primitive_utils.c:52)
+==55055==    by 0x112FDB: parse_cylinder (parse_cylinder.c:43)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Free
@@ -252,45 +252,45 @@
    fun:parse_scene
    fun:main
 }
-==51923== 
-==51923== 1 errors in context 2 of 2:
-==51923== Invalid free() / delete / delete[] / realloc()
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
-==51923==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Address 0x4d75b00 is 0 bytes inside a block of size 1 free'd
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x1159F7: handle_single_token (parse_token_utils.c:74)
-==51923==    by 0x11549F: handle_single_token_res (parse_tokens.c:22)
-==51923==    by 0x11569B: parse_color_tokens (parse_tokens.c:67)
-==51923==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923==  Block was alloc'd at
-==51923==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x121AAF: ft_strdup (ft_strdup.c:21)
-==51923==    by 0x11565F: parse_color_tokens (parse_tokens.c:61)
-==51923==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
-==51923==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
-==51923==    by 0x115433: parse_scene (parser.c:101)
-==51923==    by 0x110AB7: main (main.c:48)
-==51923== 
+==55055== 
+==55055== 1 errors in context 2 of 2:
+==55055== Invalid free() / delete / delete[] / realloc()
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
+==55055==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Address 0x4d75b00 is 0 bytes inside a block of size 1 free'd
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x1159F7: handle_single_token (parse_token_utils.c:74)
+==55055==    by 0x11549F: handle_single_token_res (parse_tokens.c:22)
+==55055==    by 0x11569B: parse_color_tokens (parse_tokens.c:67)
+==55055==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055==  Block was alloc'd at
+==55055==    at 0x4865058: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x121AAF: ft_strdup (ft_strdup.c:21)
+==55055==    by 0x11565F: parse_color_tokens (parse_tokens.c:61)
+==55055==    by 0x113487: parse_cylinder_color (parse_primitive_utils3.c:40)
+==55055==    by 0x1130C7: parse_cylinder (parse_cylinder.c:52)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
+==55055==    by 0x115433: parse_scene (parser.c:101)
+==55055==    by 0x110AB7: main (main.c:48)
+==55055== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Free
@@ -305,4 +305,4 @@
    fun:parse_scene
    fun:main
 }
-==51923== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==55055== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

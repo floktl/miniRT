@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 #include <math.h>
 
 static t_color	cleanup_and_return_error(char **parts, char *clean_str,

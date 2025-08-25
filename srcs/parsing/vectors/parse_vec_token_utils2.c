@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 
 t_vec3_res	process_single(char **tokens, int *local_idx, char **str)
 {

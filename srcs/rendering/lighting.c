@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 
 static t_color	process_light_contribution(t_light *light,
 		t_light_params *params, t_color texture_color)

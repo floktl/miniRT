@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/miniRT.h"
+#include "miniRT.h"
 
 static int	is_not_rt(char *file)
 {

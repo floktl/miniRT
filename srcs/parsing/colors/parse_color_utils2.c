@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 
 int	validate_and_parse_parts(char **trimmed_parts, char **parts,
 		char *clean_str)

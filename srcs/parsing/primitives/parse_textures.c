@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#include "miniRT.h"
 
 int	parse_texture_type(t_object *obj, char **tokens, int *idx, int token_count)
 {

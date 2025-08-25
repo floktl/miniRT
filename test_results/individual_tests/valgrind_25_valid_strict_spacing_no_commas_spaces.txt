@@ -1,111 +1,111 @@
-==51828== Memcheck, a memory error detector
-==51828== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==51828== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
-==51828== Command: ./miniRT scenes/miniRT_samples/25_valid_strict_spacing_no_commas_spaces.rt
-==51828== Parent PID: 51827
-==51828== 
---51828-- 
---51828-- Valgrind options:
---51828--    --leak-check=full
---51828--    --show-leak-kinds=all
---51828--    --track-origins=yes
---51828--    --show-reachable=yes
---51828--    --suppressions=valgrind.supp
---51828--    --verbose
---51828--    --log-file=valgrind_output.txt
---51828--    --error-exitcode=0
---51828--    --demangle=no
---51828--    --num-callers=20
---51828--    --track-origins=yes
---51828--    --show-mismatched-frees=yes
---51828--    --show-possibly-lost=yes
---51828--    --gen-suppressions=all
---51828-- Contents of /proc/version:
---51828--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
---51828-- 
---51828-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
---51828-- Page sizes: currently 4096, max supported 65536
---51828-- Valgrind library directory: /usr/libexec/valgrind
---51828-- Reading syms from /app/miniRT
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
---51828--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
---51828--   .. build-id is valid
---51828-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
---51828--    object doesn't have a symbol table
---51828--    object doesn't have a dynamic symbol table
---51828-- Scheduler: using generic scheduler lock implementation.
---51828-- Reading suppressions file: valgrind.supp
---51828-- Reading suppressions file: /usr/libexec/valgrind/default.supp
-==51828== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-51828-by-???-on-docker-desktop
-==51828== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-51828-by-???-on-docker-desktop
-==51828== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-51828-by-???-on-docker-desktop
-==51828== 
-==51828== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==51828== don't want to do, unless you know exactly what you're doing,
-==51828== or are doing some strange experiment):
-==51828==   /usr/bin/vgdb --pid=51828 ...command...
-==51828== 
-==51828== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==51828==   /path/to/gdb ./miniRT
-==51828== and then give GDB the following command
-==51828==   target remote | /usr/bin/vgdb --pid=51828
-==51828== --pid is optional if only one valgrind process is running
-==51828== 
---51828-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
---51828-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
---51828-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
---51828-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
---51828--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
---51828--   .. build-id is valid
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
---51828--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
---51828--   .. build-id is valid
-==51828== WARNING: new redirection conflicts with existing -- ignoring it
---51828--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51828--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==51828== WARNING: new redirection conflicts with existing -- ignoring it
---51828--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51828--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
-==51828== WARNING: new redirection conflicts with existing -- ignoring it
---51828--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51828--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
-==51828== WARNING: new redirection conflicts with existing -- ignoring it
---51828--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
---51828--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
---51828--    object doesn't have a symbol table
---51828-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
---51828--    object doesn't have a symbol table
---51828-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51828-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51828-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51828-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51828-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
---51828-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
---51828-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
---51828-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
---51828-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
---51828-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
---51828-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
-==51828== 
-==51828== HEAP SUMMARY:
-==51828==     in use at exit: 0 bytes in 0 blocks
-==51828==   total heap usage: 368 allocs, 368 frees, 10,657 bytes allocated
-==51828== 
-==51828== All heap blocks were freed -- no leaks are possible
-==51828== 
-==51828== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==54960== Memcheck, a memory error detector
+==54960== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==54960== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==54960== Command: ./miniRT scenes/miniRT_samples/25_valid_strict_spacing_no_commas_spaces.rt
+==54960== Parent PID: 54959
+==54960== 
+--54960-- 
+--54960-- Valgrind options:
+--54960--    --leak-check=full
+--54960--    --show-leak-kinds=all
+--54960--    --track-origins=yes
+--54960--    --show-reachable=yes
+--54960--    --suppressions=valgrind.supp
+--54960--    --verbose
+--54960--    --log-file=valgrind_output.txt
+--54960--    --error-exitcode=0
+--54960--    --demangle=no
+--54960--    --num-callers=20
+--54960--    --track-origins=yes
+--54960--    --show-mismatched-frees=yes
+--54960--    --show-possibly-lost=yes
+--54960--    --gen-suppressions=all
+--54960-- Contents of /proc/version:
+--54960--   Linux version 6.10.14-linuxkit (root@buildkitsandbox) (gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, GNU ld (GNU Binutils) 2.42) #1 SMP Fri Nov 29 17:22:03 UTC 2024
+--54960-- 
+--54960-- Arch and hwcaps: ARM64, LittleEndian, v8-fhm-dpbcvadp-sha3-rdm-atomics-fp16-vfp16
+--54960-- Page sizes: currently 4096, max supported 65536
+--54960-- Valgrind library directory: /usr/libexec/valgrind
+--54960-- Reading syms from /app/miniRT
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+--54960--   Considering /usr/lib/debug/.build-id/49/4a2ec622d7bf359c224715aa85710018df74f9.debug ..
+--54960--   .. build-id is valid
+--54960-- Reading syms from /usr/libexec/valgrind/memcheck-arm64-linux
+--54960--    object doesn't have a symbol table
+--54960--    object doesn't have a dynamic symbol table
+--54960-- Scheduler: using generic scheduler lock implementation.
+--54960-- Reading suppressions file: valgrind.supp
+--54960-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==54960== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-54960-by-???-on-docker-desktop
+==54960== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-54960-by-???-on-docker-desktop
+==54960== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-54960-by-???-on-docker-desktop
+==54960== 
+==54960== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==54960== don't want to do, unless you know exactly what you're doing,
+==54960== or are doing some strange experiment):
+==54960==   /usr/bin/vgdb --pid=54960 ...command...
+==54960== 
+==54960== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==54960==   /path/to/gdb ./miniRT
+==54960== and then give GDB the following command
+==54960==   target remote | /usr/bin/vgdb --pid=54960
+==54960== --pid is optional if only one valgrind process is running
+==54960== 
+--54960-- REDIR: 0x401ee40 (ld-linux-aarch64.so.1:strlen) redirected to 0x580b918c (???)
+--54960-- REDIR: 0x401de40 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580b91e0 (???)
+--54960-- REDIR: 0x401dd80 (ld-linux-aarch64.so.1:index) redirected to 0x580b91b4 (???)
+--54960-- Reading syms from /usr/libexec/valgrind/vgpreload_core-arm64-linux.so
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libglfw.so.3.3
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libm.so.6
+--54960--   Considering /usr/lib/debug/.build-id/87/7dcaf224254ad9748139283a59c8f1a6a5df4b.debug ..
+--54960--   .. build-id is valid
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libc.so.6
+--54960--   Considering /usr/lib/debug/.build-id/a1/0ee556ec5706640b27d9a9c346cb29e9516cec.debug ..
+--54960--   .. build-id is valid
+==54960== WARNING: new redirection conflicts with existing -- ignoring it
+--54960--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--54960--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==54960== WARNING: new redirection conflicts with existing -- ignoring it
+--54960--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--54960--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+==54960== WARNING: new redirection conflicts with existing -- ignoring it
+--54960--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--54960--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a520 aligned_alloc
+==54960== WARNING: new redirection conflicts with existing -- ignoring it
+--54960--     old: 0x04a2e330 (memalign            ) R-> (1011.0) 0x0486a540 memalign
+--54960--     new: 0x04a2e330 (memalign            ) R-> (1017.0) 0x0486a500 aligned_alloc
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libX11.so.6.4.0
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libxcb.so.1.1.0
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libXau.so.6.0.0
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libXdmcp.so.6.0.0
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libbsd.so.0.11.5
+--54960--    object doesn't have a symbol table
+--54960-- Reading syms from /usr/lib/aarch64-linux-gnu/libmd.so.0.0.5
+--54960--    object doesn't have a symbol table
+--54960-- REDIR: 0x4a31620 (libc.so.6:memchr) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--54960-- REDIR: 0x4a30650 (libc.so.6:strlen) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--54960-- REDIR: 0x4a31f70 (libc.so.6:memcpy) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--54960-- REDIR: 0x4a31990 (libc.so.6:memset) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--54960-- REDIR: 0x4a31850 (libc.so.6:memmove) redirected to 0x4840710 (_vgnU_ifunc_wrapper)
+--54960-- REDIR: 0x4a30a40 (libc.so.6:rindex) redirected to 0x486ac40 (rindex)
+--54960-- REDIR: 0x4a2d630 (libc.so.6:malloc) redirected to 0x4864fe0 (malloc)
+--54960-- REDIR: 0x4a2dbc4 (libc.so.6:free) redirected to 0x4867a60 (free)
+--54960-- REDIR: 0x4a33700 (libc.so.6:strchrnul) redirected to 0x486f914 (strchrnul)
+--54960-- REDIR: 0x4a398c0 (libc.so.6:__GI_strlen) redirected to 0x486b2a0 (__GI_strlen)
+--54960-- REDIR: 0x4a37b40 (libc.so.6:__GI_memcpy) redirected to 0x486cf00 (__GI_memcpy)
+==54960== 
+==54960== HEAP SUMMARY:
+==54960==     in use at exit: 0 bytes in 0 blocks
+==54960==   total heap usage: 368 allocs, 368 frees, 10,657 bytes allocated
+==54960== 
+==54960== All heap blocks were freed -- no leaks are possible
+==54960== 
+==54960== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

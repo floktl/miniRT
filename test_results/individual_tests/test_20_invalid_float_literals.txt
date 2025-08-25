@@ -16,19 +16,19 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==51923== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
-==51923== 
-==51923== 1 errors in context 1 of 2:
-==51923== Invalid free() / delete / delete[] / realloc()
-==51923==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==51923==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
-==51923==    by 0x1130E3: parse_cylinder (parse_cylinder.c:53)
-==51923==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==51923==    by 0x1151BF: dispatch_parse (parser.c:33)
-==51923==    by 0x1152AF: parse_line (parser.c:56)
-==51923==    by 0x115397: process_line (parser.c:77)
+==55055== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==55055== 
+==55055== 1 errors in context 1 of 2:
+==55055== Invalid free() / delete / delete[] / realloc()
+==55055==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==55055==    by 0x11245B: cleanup_object_error (parse_primitives.c:18)
+==55055==    by 0x1130E3: parse_cylinder (parse_cylinder.c:53)
+==55055==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==55055==    by 0x1151BF: dispatch_parse (parser.c:33)
+==55055==    by 0x1152AF: parse_line (parser.c:56)
+==55055==    by 0x115397: process_line (parser.c:77)
 --
-==51923== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==55055== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 
 === Debug Information ===
 For detailed error analysis, run:
