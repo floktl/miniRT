@@ -6,11 +6,11 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:27:14 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/18 20:42:08 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:44:46 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
 //This function implements a custom printf to format and print data to the
 //standard output based on the provided format string and variable arguments.

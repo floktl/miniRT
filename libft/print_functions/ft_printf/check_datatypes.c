@@ -6,11 +6,11 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:48:07 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/18 20:42:05 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:44:39 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
 //
 //function for checking which dataformat is given as argument

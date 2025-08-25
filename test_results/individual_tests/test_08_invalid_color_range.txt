@@ -16,19 +16,19 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==55532== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==55532== 
-==55532== 1 errors in context 1 of 1:
-==55532== Invalid free() / delete / delete[] / realloc()
-==55532==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==55532==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
-==55532==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
-==55532==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
-==55532==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
-==55532==    by 0x11430F: parse_light (parse_scene_elements.c:56)
-==55532==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
+==57005== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==57005== 
+==57005== 1 errors in context 1 of 1:
+==57005== Invalid free() / delete / delete[] / realloc()
+==57005==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==57005==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
+==57005==    by 0x114CE7: parse_light_color (parse_light_utils.c:43)
+==57005==    by 0x114E67: parse_light_data (parse_light_utils2.c:37)
+==57005==    by 0x114F57: parse_light_internal (parse_light_utils2.c:53)
+==57005==    by 0x11430F: parse_light (parse_scene_elements.c:56)
+==57005==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
 --
-==55532== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==57005== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 === Debug Information ===
 For detailed error analysis, run:

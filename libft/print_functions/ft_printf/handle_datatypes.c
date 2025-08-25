@@ -6,11 +6,11 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:39:23 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 09:59:52 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:44:51 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
 //
 //Functions for handling different data formats (u, i, x, X, p)

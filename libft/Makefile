@@ -6,14 +6,14 @@
 #    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 09:46:50 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/25 10:03:06 by Florian Kei      ###   ########.fr        #
+#    Updated: 2025/08/25 10:44:20 by Florian Kei      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 FT_PRINTFDIR = print_functions/ft_printf
-GET_NEXT_LINEDIR = print_functions/get_next_line
+GET_NEXT_LINEDIR = get_next_line
 
 FUNCTIONS = conversion/ft_atoi.c conversion/ft_atof.c conversion/ft_atof_utils.c conversion/ft_itoa.c conversion/ft_tolower.c conversion/ft_toupper.c \
 	list_functions/ft_lstadd_back.c list_functions/ft_lstadd_front.c list_functions/ft_lstclear.c list_functions/ft_lstdelone.c list_functions/ft_lstiter.c list_functions/ft_lstlast.c list_functions/ft_lstmap.c list_functions/ft_lstnew.c list_functions/ft_lstsize.c \
@@ -44,7 +44,7 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR) $(OBJ_DIR)/conversion $(OBJ_DIR)/list_functions $(OBJ_DIR)/memory_manipulation $(OBJ_DIR)/print_functions/ft_printf $(OBJ_DIR)/print_functions/get_next_line $(OBJ_DIR)/string_checks $(OBJ_DIR)/string_manipulation
+	mkdir -p $(OBJ_DIR) $(OBJ_DIR)/conversion $(OBJ_DIR)/list_functions $(OBJ_DIR)/memory_manipulation $(OBJ_DIR)/print_functions/ft_printf $(OBJ_DIR)/get_next_line $(OBJ_DIR)/string_checks $(OBJ_DIR)/string_manipulation
 
 clean:
 	$(RM) $(OBJECTS) all

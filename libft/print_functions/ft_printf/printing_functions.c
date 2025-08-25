@@ -6,11 +6,11 @@
 /*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:26:24 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/18 20:42:02 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 10:44:55 by Florian Kei      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
 //
 //functions for the actual printing
