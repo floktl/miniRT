@@ -16,25 +16,19 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==56940== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==56940== 
-==56940== 1 errors in context 1 of 1:
-==56940== Invalid free() / delete / delete[] / realloc()
-==56940==    at 0x4867AD0: free (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
-==56940==    by 0x1156FB: parse_color_tokens (parse_tokens.c:74)
-==56940==    by 0x1146E3: parse_ambient_color (parse_scene_utils3.c:18)
-==56940==    by 0x114123: parse_ambient (parse_scene_elements.c:28)
-==56940==    by 0x114B77: dispatch_and_return (parser_utils2.c:45)
-==56940==    by 0x11502F: dispatch_parse (parser.c:23)
-==56940==    by 0x1152AF: parse_line (parser.c:56)
+==3482== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==3482== 
+==3482== 1 errors in context 1 of 1:
+==3482== Invalid free() / delete / delete[] / realloc()
+==3482==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3482==    by 0x10EFA7: parse_color_tokens (parse_tokens.c:74)
+==3482==    by 0x10E454: parse_ambient_color (parse_scene_utils3.c:18)
+==3482==    by 0x10DF11: parse_ambient (parse_scene_elements.c:28)
+==3482==    by 0x10EA3D: dispatch_and_return (parser_utils2.c:45)
+==3482==    by 0x10BFA4: dispatch_parse (parser.c:23)
+==3482==    by 0x10C223: parse_line (parser.c:56)
 --
-==56940== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-
-=== Debug Information ===
-For detailed error analysis, run:
-  ./debug_error.sh valgrind_output.txt
-
-Quick error summary:
-- Invalid free detected in free_scene function
+==3482== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 === Test Complete ===
+❌ Valgrind FAILED (see valgrind_output.txt).

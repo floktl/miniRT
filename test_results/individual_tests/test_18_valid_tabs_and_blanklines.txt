@@ -16,8 +16,7 @@ Checking for memory errors and leaks...
 
 === Error Summary ===
 Valgrind Error Summary:
-==56823== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-
-=== Debug Information ===
+==3507== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
 === Test Complete ===
+✅ Valgrind PASSED (0 errors).

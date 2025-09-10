@@ -1,32 +1,49 @@
 #!/bin/bash
+set -euo pipefail
 
 echo "=== Testing All Scenes with Valgrind ==="
 echo "This will test all .rt files found in scenes/ and scenes/miniRT_samples/"
 echo ""
 
 # Create test_results directory and subdirectories if they don't exist
-mkdir -p test_results
 mkdir -p test_results/individual_tests
 
-# Create summary file (overwrite existing)
+# Create/overwrite summary file
 SUMMARY_FILE="test_results/test_summary_all.txt"
-echo "=== miniRT Valgrind Test Summary ===" > "$SUMMARY_FILE"
-echo "Date: $(date)" >> "$SUMMARY_FILE"
-echo "" >> "$SUMMARY_FILE"
+{
+  echo "=== miniRT Valgrind Test Summary ==="
+  echo "Date: $(date)"
+  echo ""
+} > "$SUMMARY_FILE"
 
-# Check if container is running
-if ! docker ps | grep -q minirt-valgrind-test; then
-    echo "Starting container..."
-    ./docker-test/run.sh > /dev/null 2>&1
+# Ensure container exists and is running
+CONTAINER="minirt-valgrind-test"
+
+if ! docker ps --format '{{.Names}}' | grep -qx "$CONTAINER"
+then
+    if docker ps -a --format '{{.Names}}' | grep -qx "$CONTAINER"
+    then
+        echo "Starting existing container..."
+        docker start "$CONTAINER" >/dev/null
+    else
+        echo "Creating and starting container..."
+        ./docker-test/run.sh >/dev/null 2>&1
+    fi
 fi
 
-# Find all .rt files
+# Collect *.rt files
 SCENE_FILES=()
-if [ -d "scenes" ]; then
-    SCENE_FILES+=($(find scenes -name "*.rt" -type f))
+if [ -d "scenes" ]
+then
+    # POSIX-safe find (no -print0 needed here)
+    while IFS= read -r -d '' f
+    do
+        SCENE_FILES+=("$f")
+    done < <(find scenes -type f -name '*.rt' -print0)
 fi
 
-if [ ${#SCENE_FILES[@]} -eq 0 ]; then
+if [ ${#SCENE_FILES[@]} -eq 0 ]
+then
     echo "❌ No .rt files found in scenes/ directory!"
     exit 1
 fi
@@ -35,62 +52,59 @@ echo "Found ${#SCENE_FILES[@]} scene files to test..."
 echo "Running tests (results will be saved to files)..."
 echo ""
 
-# Initialize counters
+# Counters
 PASSED=0
 FAILED=0
-WARNINGS=0
 
-# Test each scene
-for scene in "${SCENE_FILES[@]}"; do
-    echo "Testing: $(basename "$scene")"
+for scene in "${SCENE_FILES[@]}"
+do
+    base="$(basename "$scene" .rt)"
+    echo "Testing: ${base}.rt"
 
-    # Create individual test result file (overwrite existing)
-    TEST_RESULT_FILE="test_results/individual_tests/test_$(basename "$scene" .rt).txt"
+    TEST_RESULT_FILE="test_results/individual_tests/test_${base}.txt"
+    VALGRIND_LOG_HOST="test_results/individual_tests/valgrind_${base}.txt"
 
-    # Run valgrind test and capture output
-    docker exec -it minirt-valgrind-test bash -c "./run_valgrind.sh \"$scene\" 2>&1" > "$TEST_RESULT_FILE"
+    # Run inside container; DO NOT allocate TTY (-t)
+    # Capture exit code reliably.
+    set +e
+    docker exec -i "$CONTAINER" bash -lc "./run_valgrind.sh \"$scene\"" > "$TEST_RESULT_FILE" 2>&1
+    rc=$?
+    set -e
 
-    # Copy detailed valgrind results to host (overwrite existing)
-    docker cp minirt-valgrind-test:/app/valgrind_output.txt ./test_results/individual_tests/valgrind_$(basename "$scene" .rt).txt
+    # Pull container-side valgrind log to host (ignore errors if not present)
+    docker cp "$CONTAINER":/app/valgrind_output.txt "$VALGRIND_LOG_HOST" >/dev/null 2>&1 || true
 
-    # Analyze results
-    if grep -q "❌ DEFINITE LEAKS DETECTED\|❌ INVALID READS DETECTED\|❌ INVALID WRITES DETECTED\|❌ UNINITIALIZED VALUES DETECTED\|❌ CONDITIONAL JUMPS ON UNINITIALIZED VALUES DETECTED" "$TEST_RESULT_FILE"; then
-        echo "  ❌ FAILED" >> "$SUMMARY_FILE"
-        echo "  ❌ FAILED"
-        ((FAILED++))
-    elif grep -q "⚠️  INDIRECT LEAKS DETECTED\|⚠️  POSSIBLE LEAKS DETECTED" "$TEST_RESULT_FILE"; then
-        echo "  ⚠️  WARNING" >> "$SUMMARY_FILE"
-        echo "  ⚠️  WARNING"
-        ((WARNINGS++))
-    else
-        echo "  ✅ PASSED" >> "$SUMMARY_FILE"
+    if [ $rc -eq 0 ]
+    then
         echo "  ✅ PASSED"
-        ((PASSED++))
+        echo "  ✅ PASSED" >> "$SUMMARY_FILE"
+        : $((PASSED++))
+    else
+        echo "  ❌ FAILED (exit code $rc)"
+        echo "  ❌ FAILED (exit code $rc)" >> "$SUMMARY_FILE"
+        : $((FAILED++))
     fi
 done
 
-# Write summary statistics
-echo "" >> "$SUMMARY_FILE"
-echo "=== Summary Statistics ===" >> "$SUMMARY_FILE"
-echo "Total tests: ${#SCENE_FILES[@]}" >> "$SUMMARY_FILE"
-echo "Passed: $PASSED" >> "$SUMMARY_FILE"
-echo "Failed: $FAILED" >> "$SUMMARY_FILE"
-echo "Warnings: $WARNINGS" >> "$SUMMARY_FILE"
+# Summary
+{
+  echo ""
+  echo "=== Summary Statistics ==="
+  echo "Total tests: ${#SCENE_FILES[@]}"
+  echo "Passed: $PASSED"
+  echo "Failed: $FAILED"
+} >> "$SUMMARY_FILE"
 
-# Show summary in terminal
 echo ""
 echo "=== Test Summary ==="
 echo "Total tests: ${#SCENE_FILES[@]}"
 echo "✅ Passed: $PASSED"
 echo "❌ Failed: $FAILED"
-echo "⚠️  Warnings: $WARNINGS"
 
-if [ $FAILED -eq 0 ] && [ $WARNINGS -eq 0 ]; then
+if [ $FAILED -eq 0 ]
+then
     echo ""
-    echo "🎉 All tests passed! No memory leaks detected."
-elif [ $FAILED -eq 0 ]; then
-    echo ""
-    echo "⚠️  All tests passed but some warnings detected."
+    echo "🎉 All tests passed! No memory leaks or errors (per Valgrind)."
 else
     echo ""
     echo "❌ Some tests failed. Check individual result files for details."

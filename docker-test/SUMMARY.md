@@ -38,25 +38,6 @@ A complete Docker setup has been created for testing your miniRT project with va
 3. **MLX42 Library** - Cloned and built with cmake
 4. **miniRT Project** - Compiled with all dependencies
 
-## 🧪 Testing Results
-
-### Test Coverage
-- **29 scene files** tested successfully
-- **32 valgrind output files** generated
-- **0 memory leaks** detected across all scenes
-
-### Scene Categories Tested
-- ✅ Valid minimal scenes
-- ✅ Complex scenes with multiple objects
-- ✅ Invalid scenes (error handling)
-- ✅ Edge cases and boundary conditions
-- ✅ Bonus features (multiple lights)
-
-### Memory Leak Analysis
-- **Definite leaks**: 0 detected
-- **Indirect leaks**: 0 detected
-- **Possible leaks**: 0 detected
-
 ## 🚀 Usage Commands
 
 ### Quick Start
@@ -114,20 +95,9 @@ docker exec -it minirt-valgrind-test bash
 - **Easy management** - Simple commands for all operations
 - **Memory leak detection** - Comprehensive valgrind configuration
 
-## 📈 Performance
-
-- **Build time**: ~30 seconds for initial build
-- **Test time**: ~2-3 seconds per scene
-- **Total test suite**: ~2 minutes for all 29 scenes
-- **Memory usage**: Minimal Docker container overhead
-
 ## 🔧 Troubleshooting
 
 - **Docker not running**: Start Docker Desktop first
 - **Build failures**: Check internet connection for MLX42 download
 - **Permission issues**: Ensure scripts are executable (`chmod +x docker-test/*.sh`)
 - **Port conflicts**: Container uses host networking mode
-
-## 🎉 Conclusion
-
-The Docker setup provides a robust, reliable environment for testing your miniRT project with valgrind. All 29 scenes tested successfully with no memory leaks detected, confirming the quality of your memory management implementation.
