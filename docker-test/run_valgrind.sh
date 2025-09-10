@@ -41,23 +41,29 @@ echo "=== Valgrind Summary ==="
 echo "Full output saved to: valgrind_output.txt"
 echo "Checking for memory errors and leaks..."
 
-if grep -q "definitely lost" valgrind_output.txt; then
+definitely_line=$(grep "definitely lost" valgrind_output.txt)
+definitely_bytes=$(echo "$definitely_line" | awk '{print $4}')
+if [ "$definitely_bytes" != "0" ]; then
     echo "❌ DEFINITE LEAKS DETECTED!"
-    grep "definitely lost" valgrind_output.txt
+    echo "$definitely_line"
 else
     echo "✅ No definite leaks detected"
 fi
 
-if grep -q "indirectly lost" valgrind_output.txt; then
+indirect_line=$(grep "indirectly lost" valgrind_output.txt)
+indirect_bytes=$(echo "$indirect_line" | awk '{print $4}')
+if [ "$indirect_bytes" != "0" ]; then
     echo "⚠️  INDIRECT LEAKS DETECTED!"
-    grep "indirectly lost" valgrind_output.txt
+    echo "$indirect_line"
 else
     echo "✅ No indirect leaks detected"
 fi
 
-if grep -q "possibly lost" valgrind_output.txt; then
+possible_line=$(grep "possibly lost" valgrind_output.txt)
+possible_bytes=$(echo "$possible_line" | awk '{print $4}')
+if [ "$possible_bytes" != "0" ]; then
     echo "⚠️  POSSIBLE LEAKS DETECTED!"
-    grep "possibly lost" valgrind_output.txt
+    echo "$possible_line"
 else
     echo "✅ No possible leaks detected"
 fi
@@ -121,7 +127,7 @@ fi
 
 echo ""
 echo "=== Debug Information ==="
-if grep -q "Invalid read\|Invalid write\|Invalid free\|definitely lost" valgrind_output.txt; then
+if grep -Eq "Invalid read|Invalid write|Invalid free|definitely lost: [1-9]" valgrind_output.txt; then
     echo "For detailed error analysis, run:"
     echo "  ./debug_error.sh valgrind_output.txt"
     echo ""
@@ -136,7 +142,7 @@ if grep -q "Invalid read\|Invalid write\|Invalid free\|definitely lost" valgrind
     if grep -q "Invalid free" valgrind_output.txt; then
         echo "- Invalid free detected in free_scene function"
     fi
-    if grep -q "definitely lost" valgrind_output.txt; then
+    if grep -q "definitely lost: [1-9]" valgrind_output.txt; then
         echo "- Memory leak detected"
     fi
 fi
