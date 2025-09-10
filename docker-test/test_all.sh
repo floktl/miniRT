@@ -17,7 +17,11 @@ echo "" >> "$SUMMARY_FILE"
 # Check if container is running
 if ! docker ps | grep -q minirt-valgrind-test; then
     echo "Starting container..."
-    ./docker-test/run.sh > /dev/null 2>&1
+    ./docker-test/run.sh
+    if [ $? -ne 0 ]; then
+        echo "❌ Failed to start container. Aborting tests."
+        exit 1
+    fi
 fi
 
 # Find all .rt files
@@ -48,10 +52,20 @@ for scene in "${SCENE_FILES[@]}"; do
     TEST_RESULT_FILE="test_results/individual_tests/test_$(basename "$scene" .rt).txt"
 
     # Run valgrind test and capture output
-    docker exec -it minirt-valgrind-test bash -c "./run_valgrind.sh \"$scene\" 2>&1" > "$TEST_RESULT_FILE"
+    # Use interactive TTY when available
+    if [ -t 1 ]; then
+        TTY_FLAGS="-it"
+    else
+        TTY_FLAGS="-i"
+    fi
+    docker exec $TTY_FLAGS minirt-valgrind-test bash -c "./run_valgrind.sh \"$scene\" 2>&1" > "$TEST_RESULT_FILE"
 
-    # Copy detailed valgrind results to host (overwrite existing)
-    docker cp minirt-valgrind-test:/app/valgrind_output.txt ./test_results/individual_tests/valgrind_$(basename "$scene" .rt).txt
+    # Copy detailed valgrind results to host if it exists
+    if docker exec $TTY_FLAGS minirt-valgrind-test test -f /app/valgrind_output.txt; then
+        docker cp minirt-valgrind-test:/app/valgrind_output.txt ./test_results/individual_tests/valgrind_$(basename "$scene" .rt).txt
+    else
+        echo "Valgrind output not found" >> "$TEST_RESULT_FILE"
+    fi
 
     # Analyze results
     if grep -q "❌ DEFINITE LEAKS DETECTED\|❌ INVALID READS DETECTED\|❌ INVALID WRITES DETECTED\|❌ UNINITIALIZED VALUES DETECTED\|❌ CONDITIONAL JUMPS ON UNINITIALIZED VALUES DETECTED" "$TEST_RESULT_FILE"; then
