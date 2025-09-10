@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
+#    By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:27 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/25 14:19:21 by Florian Kei      ###   ########.fr        #
+#    Updated: 2025/09/10 17:10:52 by fkeitel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,11 +144,11 @@ container-test-all:
 		echo "Container not running, starting it first..."; \
 		./docker-test/run.sh; \
 	fi
-       @echo "Rebuilding project before testing..."
-       @# Use -it when a TTY is available
-       @if [ -t 1 ]; then TTY=-it; else TTY=-i; fi; \
-               docker exec $$TTY minirt-valgrind-test bash -c "make re"
-       @./docker-test/test_all.sh
+		@echo "Rebuilding project before testing..."
+		@# Use -it when a TTY is available
+		@if [ -t 1 ]; then TTY=-it; else TTY=-i; fi; \
+				docker exec $$TTY minirt-valgrind-test bash -c "make re"
+		@./docker-test/test_all.sh
 
 
 # Usage: make container-rebuild (rebuild after code changes)
