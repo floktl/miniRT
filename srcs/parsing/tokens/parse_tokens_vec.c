@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tokens_vec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:39:16 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:39:16 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
-t_vec3_res	parse_vec3_tokens(char **tokens, int *idx, int token_count)
+t_vec3d_res	parse_vec3d_tokens(char **tokens, int *idx, int token_count)
 {
-	t_vec3_res		res;
+	t_vec3d_res		res;
 	char			*str;
 	int				local_idx;
 
-	res = init_vec3_res();
+	res = init_vec3d_res();
 	str = ft_strdup("");
 	local_idx = *idx;
 	if (local_idx >= token_count)

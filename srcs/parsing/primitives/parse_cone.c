@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:45:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 09:32:15 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Parses complete cone object from tokens and adds to scene */
 int	parse_cone(char **tokens, t_scene *scene)
 {
 	t_object		*obj;

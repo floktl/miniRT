@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:50:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 14:31:54 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
 /*
  * TEXTURE MAPPING AND BUMP MAPPING CALCULATIONS
@@ -29,24 +28,24 @@
  * - Texture sampling: Extracting color values from texture patterns
  */
 
-static t_color	checkerboard_texture(t_object *obj, t_vec3 point)
+static t_color	checkerboard_texture(t_object *obj, t_vec3d point)
 {
 	return (obj->color);
 }
 
-t_color	apply_texture(t_object *obj, t_vec3 point)
+t_color	apply_texture(t_object *obj, t_vec3d point)
 {
 	if (obj->texture_type == TEXTURE_CHECKERBOARD)
 		return (checkerboard_texture(obj, point));
 	return (obj->color);
 }
 
-static t_vec3	bump_map_normal(t_object *obj, t_vec3 point, t_vec3 normal)
+static t_vec3d	bump_map_normal(t_object *obj, t_vec3d point, t_vec3d normal)
 {
 	return (normal);
 }
 
-t_vec3	apply_bump_mapping(t_object *obj, t_vec3 point, t_vec3 normal)
+t_vec3d	apply_bump_mapping(t_object *obj, t_vec3d point, t_vec3d normal)
 {
 	if (obj->texture_type == TEXTURE_BUMP_MAP)
 		return (bump_map_normal(obj, point, normal));

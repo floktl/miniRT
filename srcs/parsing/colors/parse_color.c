@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:26:49 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 16:39:10 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
 static t_color	cleanup_and_return_error(char **parts, char *clean_str,
 	char **trimmed_parts)
@@ -73,6 +72,7 @@ t_color	parse_color(char *str)
 	return (parse_color_internal(str));
 }
 
+/* Checks if color is zero (black) */
 int	is_color_zero(t_color c)
 {
 	return (c.r == 0 && c.g == 0 && c.b == 0);

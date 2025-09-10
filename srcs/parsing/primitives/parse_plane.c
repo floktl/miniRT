@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 19:06:24 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Parses complete plane object from tokens and adds to scene */
 int	parse_plane(char **tokens, t_scene *scene)
 {
 	t_object	*obj;

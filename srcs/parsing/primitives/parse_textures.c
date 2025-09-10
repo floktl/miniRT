@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 18:40:48 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:22:04 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Parses texture type from tokens (checkerboard or bump) */
 int	parse_texture_type(t_object *obj, char **tokens, int *idx, int token_count)
 {
 	if (*idx >= token_count)
@@ -31,6 +32,7 @@ int	parse_texture_type(t_object *obj, char **tokens, int *idx, int token_count)
 	return (0);
 }
 
+/* Parses texture scale factor from tokens */
 int	parse_texture_scale(t_object *obj, char **tokens, int *idx, int token_count)
 {
 	t_float_res	scale_res;

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:39:28 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:39:28 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:24:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
 static t_clr_res	handle_single_token_res(char **tokens, int *idx,
 		char *str)
@@ -52,6 +51,7 @@ static t_clr_res	handle_loop_res(char **tokens, int *idx,
 	return ((t_clr_res){{0, 0, 0}, 0});
 }
 
+/* Parses color tokens and returns color result with success status */
 t_clr_res	parse_color_tokens(char **tokens, int *idx, int token_count)
 {
 	t_clr_res	res;

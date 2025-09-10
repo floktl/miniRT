@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tokens_float.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:37:48 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 17:58:56 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:37:48 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:22:04 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
 static t_float_res	init_float_res(void)
 {
@@ -21,6 +20,7 @@ static t_float_res	init_float_res(void)
 	return (res);
 }
 
+/* Checks if float value is valid (not NaN or infinity) */
 static int	check_float_validity(float f)
 {
 	if (isnan(f) || isinf(f))
@@ -28,6 +28,7 @@ static int	check_float_validity(float f)
 	return (1);
 }
 
+/* Processes a single float token by copying it to string */
 static int	process_float_token(char **tokens, int *local_idx, char **str)
 {
 	char	*tmp;
@@ -49,6 +50,7 @@ static t_float_res	set_float_res(float f, int local_idx, int *idx)
 	return (res);
 }
 
+/* Parses float tokens and returns float result with success status */
 t_float_res	parse_float_tokens(char **tokens, int *idx, int token_count)
 {
 	t_float_res	res;

@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:24:39 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:19:28 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
 
+/* Routes tokens to appropriate parser based on identifier */
 static int	dispatch_parse(char **tokens, int token_count, t_scene *scene)
 {
 	trim_all_tokens(tokens, token_count);
@@ -38,6 +36,7 @@ static int	dispatch_parse(char **tokens, int token_count, t_scene *scene)
 	return (1);
 }
 
+/* Parses a single line from scene file into scene data */
 int	parse_line(char *line, t_scene *scene)
 {
 	char	**tokens;
@@ -58,6 +57,7 @@ int	parse_line(char *line, t_scene *scene)
 	return (status);
 }
 
+/* Validates that scene has required camera and ambient elements */
 static int	validate_scene(t_scene *scene)
 {
 	if (scene->camera.fov == 0 || scene->ambient.ratio == 0)
@@ -70,20 +70,26 @@ static int	validate_scene(t_scene *scene)
 	return (0);
 }
 
-static int	process_line(char *line, t_scene *scene, int fd)
+/* Processes a single line from file, handles comments and empty lines */
+static int	process_line(char **line, t_scene *scene, int fd)
 {
-	printf("Read line: %s\n", line);
-	if (line[0] != '#' && line[0] != '\n'
-		&& line[0] != 0 && parse_line(line, scene) != 0)
+	printf("Read line: %s\n", *line);
+	if ((*line)[0] != '#' && (*line)[0] != '\n' && (*line)[0] != 0)
 	{
-		free(line);
-		close(fd);
-		return (1);
+		if (parse_line(*line, scene) != 0)
+		{
+			free(*line);
+			*line = NULL;
+			close(fd);
+			return (1);
+		}
 	}
-	free(line);
+	free(*line);
+	*line = NULL;
 	return (0);
 }
 
+/* Main function to parse entire scene file and populate scene struct */
 int	parse_scene(const char *filename, t_scene *scene)
 {
 	int		fd;
@@ -98,7 +104,7 @@ int	parse_scene(const char *filename, t_scene *scene)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (process_line(line, scene, fd))
+		if (process_line(&line, scene, fd))
 			return (1);
 		line = get_next_line(fd);
 	}

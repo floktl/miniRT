@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_utils2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:49:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 15:23:13 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:49:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Validates that color parts are valid integer strings */
 int	validate_and_parse_parts(char **trimmed_parts, char **parts,
 		char *clean_str)
 {
@@ -26,6 +27,7 @@ int	validate_and_parse_parts(char **trimmed_parts, char **parts,
 	return (1);
 }
 
+/* Frees all allocated memory for color parsing */
 void	cleanup_memory(char **trimmed_parts, char **parts, char *clean_str)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 19:06:22 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	parse_sphere_center(t_object *obj, char **tokens, int *idx,
 int	parse_sphere_color(t_object *obj, char **tokens, int *idx, int token_count);
 int	validate_sphere_data(t_object *obj, t_float_res dr);
 
+/* Parses sphere diameter from tokens and converts to radius */
 int	parse_sphere_diameter(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
@@ -29,6 +30,7 @@ int	parse_sphere_diameter(t_object *obj, char **tokens, int *idx,
 	return (0);
 }
 
+/* Parses optional sphere parameters like shininess and textures */
 static int	parse_sphere_optional(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
@@ -41,6 +43,7 @@ static int	parse_sphere_optional(t_object *obj, char **tokens, int *idx,
 	return (0);
 }
 
+/* Parses complete sphere object from tokens and adds to scene */
 int	parse_sphere(char **tokens, t_scene *scene)
 {
 	t_object	*obj;

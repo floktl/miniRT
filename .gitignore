@@ -80,3 +80,5 @@ scenes/*.rt~
 
 # Documentation
 miniRT.pdf
+test_results/
+test_results/

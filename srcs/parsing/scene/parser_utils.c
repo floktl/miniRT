@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 13:52:39 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Counts the number of tokens in a token array */
 int	count_tokens(char **tokens)
 {
 	int	count;
@@ -22,6 +23,7 @@ int	count_tokens(char **tokens)
 	return (count);
 }
 
+/* Removes trailing whitespace and newline characters from a token */
 void	trim_token(char *s)
 {
 	int	len;
@@ -37,6 +39,7 @@ void	trim_token(char *s)
 	}
 }
 
+/* Trims all tokens in array to remove whitespace and newlines */
 void	trim_all_tokens(char **tokens, int token_count)
 {
 	int	i;
@@ -49,6 +52,7 @@ void	trim_all_tokens(char **tokens, int token_count)
 	}
 }
 
+/* Replaces all tab characters with spaces in a line */
 void	replace_tabs_with_spaces(char *line)
 {
 	int	i;
