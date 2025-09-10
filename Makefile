@@ -144,9 +144,11 @@ container-test-all:
 		echo "Container not running, starting it first..."; \
 		./docker-test/run.sh; \
 	fi
-	@echo "Rebuilding project before testing..."
-	@docker exec -it minirt-valgrind-test bash -c "make re"
-	@./docker-test/test_all.sh
+       @echo "Rebuilding project before testing..."
+       @# Use -it when a TTY is available
+       @if [ -t 1 ]; then TTY=-it; else TTY=-i; fi; \
+               docker exec $$TTY minirt-valgrind-test bash -c "make re"
+       @./docker-test/test_all.sh
 
 
 # Usage: make container-rebuild (rebuild after code changes)

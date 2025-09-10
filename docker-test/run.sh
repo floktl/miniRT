@@ -4,8 +4,18 @@ echo "=== Starting miniRT Docker Container ==="
 echo "Container will start in interactive mode"
 echo ""
 
-# Start the container in interactive mode
-docker-compose -f docker-test/docker-compose.yml up -d
+# Detect available docker-compose command
+if command -v docker-compose >/dev/null 2>&1; then
+    COMPOSE_CMD=(docker-compose)
+elif command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+    COMPOSE_CMD=(docker compose)
+else
+    echo "❌ Neither docker-compose nor docker compose is installed." >&2
+    exit 1
+fi
+
+# Start the container in detached mode
+"${COMPOSE_CMD[@]}" -f docker-test/docker-compose.yml up -d
 
 if [ $? -eq 0 ]; then
     echo ""
