@@ -3,25 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 13:45:27 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:46:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-// Forward declarations for types defined in miniRT.h
-typedef struct s_scene		t_scene;
-typedef struct s_object		t_object;
-typedef struct s_light		t_light;
-typedef struct s_color		t_color;
-typedef struct s_vec3		t_vec3;
-typedef struct s_color_res	t_clr_res;
-typedef struct s_vec3_res	t_vec3_res;
-typedef struct s_float_res	t_float_res;
+#include "structs.h"
 
 // parsing/parser.c
 // @param filename: Path to the .rt scene file to parse
@@ -73,23 +65,23 @@ int			count_and_init_tokens(char **tokens, int *token_count, int *idx);
 int			parse_ambient_ratio(char **tokens, int *idx, int token_count,
 				t_float_res *fr);
 int			set_ambient_data(t_scene *scene, t_float_res fr, t_color col);
-int			set_camera_data(t_scene *scene, t_vec3_res pr, t_vec3_res dr,
+int			set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 				t_float_res fr);
 
 // parsing/scene/parse_scene_utils3.c
 int			parse_ambient_color(char **tokens, int *idx, int token_count,
 				t_clr_res *cr);
 int			parse_camera_position(char **tokens, int *idx, int token_count,
-				t_vec3_res *pr);
+				t_vec3d_res *pr);
 int			parse_camera_direction(char **tokens, int *idx, int token_count,
-				t_vec3_res *dr);
+				t_vec3d_res *dr);
 int			parse_camera_fov(char **tokens, int *idx, int token_count,
 				t_float_res *fr);
 
 // parsing/scene/parse_light_utils.c
 int			cleanup_light_error(t_light *light, const char *message);
 int			parse_light_position(char **tokens, int *idx, int token_count,
-				t_vec3_res *pr);
+				t_vec3d_res *pr);
 int			parse_light_brightness(char **tokens, int *idx, int token_count,
 				t_float_res *br);
 int			parse_light_color(char **tokens, int *idx, int token_count,
@@ -110,7 +102,7 @@ int			parse_sphere_color(t_object *obj, char **tokens, int *idx,
 int			validate_sphere_data(t_object *obj, t_float_res dr);
 
 // parsing/primitives/parse_primitive_utils.c
-int			validate_plane_normal(t_vec3 normal);
+int			validate_plane_normal(t_vec3d normal);
 int			validate_cylinder_dimensions(float diameter, float height);
 int			init_object_and_count(t_object **obj, char **tokens,
 				int *token_count, int *idx);
@@ -199,9 +191,9 @@ int			validate_and_parse_parts(char **trimmed_parts, char **parts,
 void		cleanup_memory(char **trimmed_parts, char **parts, char *clean_str);
 
 // parsing/vectors/parse_vector.c
-t_vec3		parse_vec3(char *str);
-int			is_vec_zero(t_vec3 v);
-int			is_vec_normalized(t_vec3 v);
+t_vec3d		parse_vec3d(char *str);
+int			is_vec_zero(t_vec3d v);
+int			is_vec_normalized(t_vec3d v);
 
 // parsing/validation/parse_validation.c
 int			is_integer_string(const char *str);
@@ -217,18 +209,18 @@ int			process_color_tokens_loop(char **tokens, int *idx, int token_count,
 t_clr_res	init_clr_res(void);
 
 // parsing/tokens/parse_tokens_vec.c
-t_vec3_res	parse_vec3_tokens(char **tokens, int *idx, int token_count);
+t_vec3d_res	parse_vec3d_tokens(char **tokens, int *idx, int token_count);
 
 // parsing/vectors/parse_vec_token_utils.c
-t_vec3_res	init_vec3_res(void);
-t_vec3_res	process_single(char **tokens, int *local_idx, char **str);
-t_vec3_res	handle_loop(char **tokens, int *local_idx, int token_count,
+t_vec3d_res	init_vec3d_res(void);
+t_vec3d_res	process_single(char **tokens, int *local_idx, char **str);
+t_vec3d_res	handle_loop(char **tokens, int *local_idx, int token_count,
 				char **str);
 
 // parsing/vectors/parse_vec_token_utils2.c
 int			handle_single_vec_token(char **tokens, int *local_idx, char **str);
-int			check_vec_validity(t_vec3 v, char *str);
-t_vec3_res	set_vec3_res(t_vec3 v, int local_idx, int *idx);
+int			check_vec_validity(t_vec3d v, char *str);
+t_vec3d_res	set_vec3d_res(t_vec3d v, int local_idx, int *idx);
 int			process_vec_tokens_loop(char **tokens, int *local_idx,
 				int token_count, char **str);
 

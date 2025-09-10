@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_utils2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:49:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 17:33:26 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:49:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:22:04 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Validates camera field of view is within valid range */
 int	validate_camera_fov(float fov)
 {
 	if (fov < 0 || fov > 180)
@@ -19,6 +20,7 @@ int	validate_camera_fov(float fov)
 	return (0);
 }
 
+/* Validates light brightness is within valid range */
 int	validate_light_brightness(float brightness)
 {
 	if (brightness < 0 || brightness > 1)
@@ -29,12 +31,14 @@ int	validate_light_brightness(float brightness)
 	return (0);
 }
 
+/* Prints error message and returns error status */
 int	parse_error(const char *element, const char *message)
 {
 	printf("[%s] %s\n", element, message);
 	return (1);
 }
 
+/* Counts tokens and initializes index for parsing */
 int	count_and_init_tokens(char **tokens, int *token_count, int *idx)
 {
 	*token_count = 0;
@@ -44,6 +48,7 @@ int	count_and_init_tokens(char **tokens, int *token_count, int *idx)
 	return (0);
 }
 
+/* Parses ambient ratio from tokens */
 int	parse_ambient_ratio(char **tokens, int *idx, int token_count,
 		t_float_res *fr)
 {

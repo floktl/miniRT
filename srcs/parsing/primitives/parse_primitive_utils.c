@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_primitive_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 17:58:55 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	validate_plane_normal(t_vec3 normal)
+/* Validates plane normal vector is non-zero and normalized */
+int	validate_plane_normal(t_vec3d normal)
 {
 	if (is_vec_zero(normal))
 	{
@@ -27,6 +28,7 @@ int	validate_plane_normal(t_vec3 normal)
 	return (0);
 }
 
+/* Validates cylinder diameter and height are positive values */
 int	validate_cylinder_dimensions(float diameter, float height)
 {
 	if (diameter <= 0)
@@ -42,6 +44,7 @@ int	validate_cylinder_dimensions(float diameter, float height)
 	return (0);
 }
 
+/* Initializes object struct and counts tokens for parsing */
 int	init_object_and_count(t_object **obj, char **tokens, int *token_count,
 		int *idx)
 {

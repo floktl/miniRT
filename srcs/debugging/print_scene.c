@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:03:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 18:59:00 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define C_YELLOW  "\033[33m"
 #define C_RED     "\033[31m"
 
-static void	print_vec3(const char *label, t_vec3 v)
+static void	print_vec3d(const char *label, t_vec3d v)
 {
 	printf(C_YELLOW "%s" C_RESET "(%.6f, %.6f, %.6f)\n",
 		label, v.x, v.y, v.z);
@@ -40,7 +40,7 @@ static void	print_lights(const t_light *light)
 	while (light)
 	{
 		printf(C_CYAN "Light[%d]:" C_RESET "\n", index);
-		print_vec3("  position=", light->position);
+		print_vec3d("  position=", light->position);
 		printf("  brightness=%.6f\n", light->brightness);
 		print_color("  color   =", light->color);
 		light = light->next;
@@ -65,8 +65,8 @@ void	print_scene(const t_scene *scene)
 	printf("  ratio=%.6f\n", scene->ambient.ratio);
 	print_color("  color=", scene->ambient.color);
 	printf(C_CYAN "Camera:\n" C_RESET);
-	print_vec3("  position=", scene->camera.position);
-	print_vec3("  direction=", scene->camera.direction);
+	print_vec3d("  position=", scene->camera.position);
+	print_vec3d("  direction=", scene->camera.direction);
 	printf("  fov=%.6f\n", scene->camera.fov);
 	printf(C_CYAN "Lights:\n" C_RESET);
 	print_lights(scene->lights);

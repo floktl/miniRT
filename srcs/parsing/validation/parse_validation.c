@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:38:22 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 13:40:24 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:38:22 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
+/* Checks if string contains only valid integer characters */
 int	is_integer_string(const char *str)
 {
 	if (!str || !*str)

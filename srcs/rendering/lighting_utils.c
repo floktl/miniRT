@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 14:32:12 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ t_color	add_colors(t_color a, t_color b)
 	return (a);
 }
 
-double	compute_diffuse(t_vec3 light_dir, t_vec3 normal)
+double	compute_diffuse(t_vec3d light_dir, t_vec3d normal)
 {
 	return (0);
 }
 
-double	compute_specular(t_vec3 light_dir, t_vec3 normal,
-		t_vec3 view_dir, double shininess)
+double	compute_specular(t_vec3d light_dir, t_vec3d normal,
+		t_vec3d view_dir, double shininess)
 {
 	return (0);
 }

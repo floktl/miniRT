@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_elements.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:07:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Parses ambient lighting configuration from tokens */
 int	parse_ambient(char **tokens, t_scene *scene)
 {
 	int			token_count;
@@ -31,12 +32,13 @@ int	parse_ambient(char **tokens, t_scene *scene)
 	return (set_ambient_data(scene, fr, col));
 }
 
+/* Parses camera configuration from tokens */
 int	parse_camera(char **tokens, t_scene *scene)
 {
 	int				token_count;
 	int				idx;
-	t_vec3_res		pr;
-	t_vec3_res		dr;
+	t_vec3d_res		pr;
+	t_vec3d_res		dr;
 	t_float_res		fr;
 
 	if (check_camera_duplicate(scene))
@@ -51,6 +53,7 @@ int	parse_camera(char **tokens, t_scene *scene)
 	return (set_camera_data(scene, pr, dr, fr));
 }
 
+/* Parses light source configuration from tokens */
 int	parse_light(char **tokens, t_scene *scene)
 {
 	return (parse_light_internal(tokens, scene));

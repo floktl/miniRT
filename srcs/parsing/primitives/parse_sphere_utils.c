@@ -3,26 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:10:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Parses sphere center position from tokens */
 int	parse_sphere_center(t_object *obj, char **tokens, int *idx, int token_count)
 {
-	t_vec3_res	cr;
+	t_vec3d_res	cr;
 
-	cr = parse_vec3_tokens(tokens, idx, token_count);
+	cr = parse_vec3d_tokens(tokens, idx, token_count);
 	if (!cr.success)
 		return (cleanup_object_error(obj, "[Sphere] Failed to parse center"));
 	obj->data.s_sphere.center = cr.v;
 	return (0);
 }
 
+/* Parses sphere color from tokens */
 int	parse_sphere_color(t_object *obj, char **tokens, int *idx, int token_count)
 {
 	t_clr_res	colr;
@@ -34,6 +36,7 @@ int	parse_sphere_color(t_object *obj, char **tokens, int *idx, int token_count)
 	return (0);
 }
 
+/* Validates sphere diameter and radius are positive values */
 int	validate_sphere_data(t_object *obj, t_float_res dr)
 {
 	if (dr.f <= 0)

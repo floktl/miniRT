@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_primitives.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:07:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 19:06:22 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Cleans up object memory and returns error on parsing failure */
 int	cleanup_object_error(t_object *obj, const char *message)
 {
 	printf("[Object] %s\n", message);

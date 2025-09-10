@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 14:32:12 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 static t_ray	get_ray(t_app *app, int x, int y)
 {
-	return ((t_ray){(t_vec3){0, 0, 0}, (t_vec3){0, 0, 1}});
+	return ((t_ray){(t_vec3d){0, 0, 0}, (t_vec3d){0, 0, 1}});
 }
 
 static double	find_closest_intersection(t_ray ray,
@@ -41,9 +41,9 @@ static double	find_closest_intersection(t_ray ray,
 	return (-1.0);
 }
 
-static t_vec3	get_normal(t_vec3 point, t_object *obj)
+static t_vec3d	get_normal(t_vec3d point, t_object *obj)
 {
-	return ((t_vec3){0, 0, 1});
+	return ((t_vec3d){0, 0, 1});
 }
 
 void	render_scene(t_app *app)

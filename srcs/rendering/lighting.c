@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 14:31:54 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_color	process_light_contribution(t_light *light,
 	return (texture_color);
 }
 
-t_color	compute_lighting(t_vec3 point, t_vec3 normal,
+t_color	compute_lighting(t_vec3d point, t_vec3d normal,
 		t_scene *scene, t_object *obj)
 {
 	return (obj->color);

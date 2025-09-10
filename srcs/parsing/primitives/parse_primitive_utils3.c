@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_primitive_utils3.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 14:06:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 14:06:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Parses cylinder diameter and height dimensions from tokens */
 int	parse_cylinder_dimensions(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
@@ -32,6 +33,7 @@ int	parse_cylinder_dimensions(t_object *obj, char **tokens, int *idx,
 	return (0);
 }
 
+/* Parses cylinder color from tokens */
 int	parse_cylinder_color(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
@@ -44,6 +46,7 @@ int	parse_cylinder_color(t_object *obj, char **tokens, int *idx,
 	return (0);
 }
 
+/* Validates cylinder dimensions and data integrity */
 int	validate_cylinder_data(t_object *obj, t_float_res dr, t_float_res hr)
 {
 	if (validate_cylinder_dimensions(dr.f, hr.f))

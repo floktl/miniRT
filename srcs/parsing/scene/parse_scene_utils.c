@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 17:58:59 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Checks if color is invalid (zero but not explicitly 0,0,0) */
 int	color_invalid(t_color c, const char *raw)
 {
 	if (c.r == 0 && c.g == 0 && c.b == 0 && ft_strncmp(raw, "0,0,0", 5) != 0)
@@ -19,6 +20,7 @@ int	color_invalid(t_color c, const char *raw)
 	return (0);
 }
 
+/* Checks if ambient element already exists in scene */
 int	check_ambient_duplicate(t_scene *scene)
 {
 	if (scene->ambient.ratio != 0.0)
@@ -29,6 +31,7 @@ int	check_ambient_duplicate(t_scene *scene)
 	return (0);
 }
 
+/* Validates ambient ratio is within valid range */
 int	validate_ambient_ratio(float ratio)
 {
 	if (ratio < 0 || ratio > 1)
@@ -39,6 +42,7 @@ int	validate_ambient_ratio(float ratio)
 	return (0);
 }
 
+/* Checks if camera element already exists in scene */
 int	check_camera_duplicate(t_scene *scene)
 {
 	if (scene->camera.fov != 0.0)
@@ -49,7 +53,8 @@ int	check_camera_duplicate(t_scene *scene)
 	return (0);
 }
 
-int	set_camera_data(t_scene *scene, t_vec3_res pr, t_vec3_res dr,
+/* Sets camera data in scene after validation */
+int	set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 	t_float_res fr)
 {
 	scene->camera.position = pr.v;

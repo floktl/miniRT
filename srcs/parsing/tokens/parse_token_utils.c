@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_token_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/25 09:43:58 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:24:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Checks if color is valid or represents zero color */
 int	check_color_validity(t_color c, char *str)
 {
 	if (!is_color_zero(c) || (ft_strncmp(str, "0,0,0", 5) == 0
@@ -27,6 +28,7 @@ static int	cleanup_and_return(char **str, int status)
 	return (status);
 }
 
+/* Processes color tokens in a loop to build complete color string */
 int	process_color_tokens_loop(char **tokens, int *local_idx,
 		int token_count, char **str)
 {
@@ -56,6 +58,7 @@ int	process_color_tokens_loop(char **tokens, int *local_idx,
 	return (cleanup_and_return(str, 0));
 }
 
+/* Initializes color result struct with default values */
 t_clr_res	init_clr_res(void)
 {
 	t_clr_res	res;
@@ -64,6 +67,7 @@ t_clr_res	init_clr_res(void)
 	return (res);
 }
 
+/* Handles a single token by copying it to string */
 int	handle_single_token(char **tokens, int *local_idx, char **str)
 {
 	char	*tmp;

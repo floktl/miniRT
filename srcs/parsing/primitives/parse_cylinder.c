@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 09:28:54 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Validates cylinder data after all parameters are parsed */
 static int	validate_cylinder_final(t_object *obj)
 {
 	t_float_res	dr;
@@ -22,6 +23,7 @@ static int	validate_cylinder_final(t_object *obj)
 	return (validate_cylinder_data(obj, dr, hr));
 }
 
+/* Parses optional cylinder parameters like shininess and textures */
 static int	parse_cylinder_optional(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
@@ -34,6 +36,7 @@ static int	parse_cylinder_optional(t_object *obj, char **tokens, int *idx,
 	return (0);
 }
 
+/* Parses complete cylinder object from tokens and adds to scene */
 int	parse_cylinder(char **tokens, t_scene *scene)
 {
 	t_object	*obj;

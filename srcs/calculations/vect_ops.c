@@ -3,38 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   vect_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:17:50 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 17:17:24 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <math.h>
 
-t_vec3	vec_normalize(t_vec3 v)
+t_vec3d	vec_normalize(t_vec3d v)
 {
 	double	length;
 
 	length = vec_length(v);
 	if (length == 0.0)
 	{
-		return ((t_vec3){0, 0, 0});
+		return ((t_vec3d){0, 0, 0});
 	}
-	return ((t_vec3){v.x / length, v.y / length, v.z / length});
+	return ((t_vec3d){v.x / length, v.y / length, v.z / length});
 }
 
-t_vec3	vec_cross(t_vec3 a, t_vec3 b)
+t_vec3d	vec_cross(t_vec3d a, t_vec3d b)
 {
-	return ((t_vec3){
+	return ((t_vec3d){
 		a.y * b.z - a.z * b.y,
 		a.z * b.x - a.x * b.z,
 		a.x * b.y - a.y * b.x
 	});
 }
 
-t_vec3	vec_reflect(t_vec3 incident, t_vec3 normal)
+t_vec3d	vec_reflect(t_vec3d incident, t_vec3d normal)
 {
 	double	dot_product;
 

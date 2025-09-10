@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 13:43:30 by Florian Kei       #+#    #+#             */
-/*   Updated: 2025/08/24 15:23:13 by Florian Kei      ###   ########.fr       */
+/*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/08/25 15:22:04 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Validates color and cleans up memory on invalid color */
 t_color	validate_color(t_color color, char **parts)
 {
 	int	i;
@@ -30,6 +31,7 @@ t_color	validate_color(t_color color, char **parts)
 	return (color);
 }
 
+/* Validates color values are within valid RGB range */
 int	validate_color_values(t_color c)
 {
 	if (c.r < 0 || c.r > 255)
@@ -41,6 +43,7 @@ int	validate_color_values(t_color c)
 	return (0);
 }
 
+/* Removes newline characters from string */
 int	clean_newlines(char *str)
 {
 	int	i;
@@ -58,6 +61,7 @@ int	clean_newlines(char *str)
 	return (0);
 }
 
+/* Trims whitespace from color part and allocates trimmed string */
 int	trim_part(char *part, char **trimmed)
 {
 	int	len;
@@ -74,6 +78,7 @@ int	trim_part(char *part, char **trimmed)
 	return (1);
 }
 
+/* Processes all color parts and trims whitespace from each */
 int	process_parts(char **parts, char **trimmed_parts)
 {
 	int	i;

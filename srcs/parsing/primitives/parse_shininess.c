@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shininess.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:15:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/24 17:17:24 by Florian Kei      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:14:53 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/* Validates shininess value is within valid range */
 static int	validate_shininess(double shininess)
 {
 	if (shininess < 0.0 || shininess > 1000.0)
@@ -19,6 +20,7 @@ static int	validate_shininess(double shininess)
 	return (1);
 }
 
+/* Parses object shininess value from tokens */
 int	parse_object_shininess(t_object *obj, char **tokens, int *idx,
 		int token_count)
 {
