@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:19:57 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/12 14:45:45 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,24 @@ typedef enum e_obj_type
 // @param s_cone: Cone data (center point, axis, radius, height)
 typedef union u_obj_data
 {
-	struct
+	struct //sphere
 	{
 		t_vec3d	center;		// Center point of the sphere
 		double	radius;		// Radius of the sphere
 	}	s_sphere;
-	struct
+	struct //plane
 	{
 		t_vec3d	point;		// Point on the plane
 		t_vec3d	normal;		// Normal vector of the plane
 	}	s_plane;
-	struct
+	struct //cylinder
 	{
 		t_vec3d	base;		// Base center point of cylinder
 		t_vec3d	axis;		// Axis direction vector
 		double	radius;		// Radius of cylinder
 		double	height;		// Height of cylinder
 	}	s_cylinder;
-	struct
+	struct //cone
 	{
 		t_vec3d	center;		// Center point of cone base
 		t_vec3d	axis;		// Axis direction vector
