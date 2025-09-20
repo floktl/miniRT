@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:23:20 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 10:41:38 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:34:14 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 ** - left_mouse_dragging: Flag indicating left mouse button is being dragged
 ** - right_mouse_dragging: Flag indicating right mouse button is being dragged
 ** - last_mouse_x/y: Previous mouse position for calculating movement delta
-** - mouse_sensitivity: Multiplier for mouse movement to camera rotation
+** - left_mouse_sensitivity: Multiplier for left mouse movement to camera panning
+** - right_mouse_sensitivity: Multiplier for right mouse movement to camera rotation
 ** - accumulated_mouse_x/y: Accumulated mouse movement for smooth rotation
 **
 ** Zoom Variables:
@@ -74,7 +75,8 @@ void	init_mouse_variables(t_app *app)
 	app->right_mouse_dragging = false;
 	app->last_mouse_x = 0;
 	app->last_mouse_y = 0;
-	app->mouse_sensitivity = 0.002;
+	app->left_mouse_sensitivity = 0.01;
+	app->right_mouse_sensitivity = 0.002;
 	app->accumulated_mouse_x = 0.0;
 	app->accumulated_mouse_y = 0.0;
 }

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 10:41:18 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:34:14 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,8 @@ typedef struct s_app
 	bool		right_mouse_dragging;	// Whether right mouse is being dragged
 	int			last_mouse_x;	// Last mouse X position
 	int			last_mouse_y;	// Last mouse Y position
-	double		mouse_sensitivity;	// Mouse sensitivity for rotation
+	double		left_mouse_sensitivity;	// Mouse sensitivity for left mouse (panning)
+	double		right_mouse_sensitivity;	// Mouse sensitivity for right mouse (rotation)
 	double		zoom_factor;	// Current zoom factor
 	double		zoom_speed;		// Zoom speed multiplier
 	double		min_zoom;		// Minimum zoom level

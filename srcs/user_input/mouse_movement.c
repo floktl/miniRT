@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:13:11 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:34:14 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,16 @@ void	cursor_hook(double xpos, double ypos, void *param)
 		return ;
 	delta_x = xpos - app->last_mouse_x;
 	delta_y = ypos - app->last_mouse_y;
-	app->accumulated_mouse_x += delta_x * app->mouse_sensitivity;
-	app->accumulated_mouse_y += delta_y * app->mouse_sensitivity;
+	if (app->left_mouse_dragging)
+	{
+		app->accumulated_mouse_x += delta_x * app->left_mouse_sensitivity;
+		app->accumulated_mouse_y += delta_y * app->left_mouse_sensitivity;
+	}
+	else if (app->right_mouse_dragging)
+	{
+		app->accumulated_mouse_x += delta_x * app->right_mouse_sensitivity;
+		app->accumulated_mouse_y += delta_y * app->right_mouse_sensitivity;
+	}
 	yaw_angle = app->accumulated_mouse_x;
 	pitch_angle = app->accumulated_mouse_y;
 	if (fabs(app->accumulated_mouse_x) > 0.001
