@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram name="Sphere Intersection" id="sphere-intersection">
-        <mxGraphModel dx="760" dy="543" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="382" dy="1222" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="title" value="Sphere-Ray Intersection Algorithm" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="400" y="20" width="400" height="40" as="geometry"/>
+                    <mxGeometry x="250" y="-10" width="400" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="visual-title" value="Visual Representation" style="text;html=1;strokeColor=none;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="50" y="80" width="200" height="30" as="geometry"/>
@@ -61,8 +61,8 @@
                 <mxCell id="sphere-equation" value="Sphere Equation:&#10;|P - C|² = r²&#10;&#10;Where:&#10;• C = sphere center&#10;• r = sphere radius&#10;• P = point on sphere&#10;• |P - C| = distance from center" style="text;html=1;strokeColor=none;fillColor=#e8f5e8;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="350" y="230" width="200" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="intersection-equation" value="Intersection:&#10;|O + t·u - C|² = r²&#10;&#10;Expanding:&#10;|u|²t² + 2(u·OC)t + |OC|² - r² = 0&#10;&#10;Where OC = O - C" style="text;html=1;strokeColor=none;fillColor=#fff3e0;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="340" width="200" height="120" as="geometry"/>
+                <mxCell id="intersection-equation" value="Intersection:&#10;|O + t·u - C|² = r²&#10;&#10;Expanding to quadratic:&#10;at² + bt + c = 0&#10;&#10;Where:&#10;• a = |u|² (ray direction magnitude)&#10;• b = u·OC (alignment factor)&#10;• c = |OC|² - r² (distance factor)&#10;• OC = O - C (purple arrow)" style="text;html=1;strokeColor=none;fillColor=#fff3e0;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="340" width="200" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="algorithm-title" value="Algorithm Steps" style="text;html=1;strokeColor=none;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="600" y="80" width="200" height="30" as="geometry"/>
@@ -70,17 +70,17 @@
                 <mxCell id="step1" value="Step 1: Calculate OC&#10;OC = O - C&#10;&#10;Vector from sphere center&#10;to ray origin" style="text;html=1;strokeColor=none;fillColor=#e3f2fd;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="600" y="120" width="180" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="step2" value="Step 2: Compute coefficients&#10;b = u · OC&#10;c = |OC|² - r²&#10;&#10;For quadratic equation" style="text;html=1;strokeColor=none;fillColor=#e8f5e8;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="210" width="180" height="80" as="geometry"/>
+                <mxCell id="step2" value="Step 2: Compute coefficients&#10;b = u · OC (alignment factor)&#10;• b &gt; 0: ray points toward sphere&#10;• b = 0: ray perpendicular to sphere&#10;• b &lt; 0: ray points away from sphere&#10;&#10;c = |OC|² - r² (distance factor)&#10;• How far ray origin is from sphere" style="text;html=1;strokeColor=none;fillColor=#e8f5e8;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="210" width="180" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="step3" value="Step 3: Calculate discriminant&#10;disc = b² - c&#10;&#10;Determines intersection:&#10;• disc &lt; 0: no intersection&#10;• disc = 0: tangent&#10;• disc &gt; 0: two intersections" style="text;html=1;strokeColor=none;fillColor=#fce4ec;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="300" width="180" height="100" as="geometry"/>
+                    <mxGeometry x="600" y="340" width="180" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="step4" value="Step 4: Find solutions&#10;t1 = -b - √disc&#10;t2 = -b + √disc&#10;&#10;Two intersection distances" style="text;html=1;strokeColor=none;fillColor=#f3e5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="410" width="180" height="80" as="geometry"/>
+                    <mxGeometry x="600" y="450" width="180" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="step5" value="Step 5: Choose valid t&#10;• t &gt; 0: in front of ray&#10;• t &lt; 0: behind ray&#10;• Return smallest positive t" style="text;html=1;strokeColor=none;fillColor=#e0f2f1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="500" width="180" height="80" as="geometry"/>
+                    <mxGeometry x="600" y="540" width="180" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="code-title" value="Code Implementation" style="text;html=1;strokeColor=none;fillColor=#fff3e0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="50" y="300" width="250" height="30" as="geometry"/>
@@ -94,35 +94,47 @@
                 <mxCell id="code-solutions" value="Solutions:&#10;double t1 = -b - sqrt(disc);&#10;double t2 = -b + sqrt(disc);&#10;&#10;// Return smallest positive t&#10;if (t1 &gt; 0.0) return t1;&#10;if (t2 &gt; 0.0) return t2;&#10;return -1.0;  // both behind" style="text;html=1;strokeColor=none;fillColor=#f5f5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="50" y="560" width="250" height="100" as="geometry"/>
                 </mxCell>
+                <mxCell id="variables-title" value="Variable Meanings" style="text;html=1;strokeColor=none;fillColor=#fff3e0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="500" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="variable-b" value="Variable b (Alignment Factor):&#10;b = u · OC&#10;&#10;• b &gt; 0: Ray points TOWARD sphere&#10;• b = 0: Ray is PERPENDICULAR to sphere&#10;• b &lt; 0: Ray points AWAY from sphere&#10;&#10;Think: &quot;How much does my ray&#10;direction align with the direction&#10;to the sphere?&quot;" style="text;html=1;strokeColor=none;fillColor=#e3f2fd;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="540" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="variable-c" value="Variable c (Distance Factor):&#10;c = |OC|² - r²&#10;&#10;• c &lt; 0: Ray origin INSIDE sphere&#10;• c = 0: Ray origin ON sphere surface&#10;• c &gt; 0: Ray origin OUTSIDE sphere&#10;&#10;Think: &quot;How far am I from the&#10;sphere's surface?&quot; (squared distances)" style="text;html=1;strokeColor=none;fillColor=#e8f5e8;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="690" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="variable-discriminant" value="Variable disc (Intersection Gatekeeper):&#10;disc = b² - c&#10;&#10;• disc &lt; 0: Ray MISSES sphere&#10;• disc = 0: Ray TANGENT to sphere&#10;• disc &gt; 0: Ray INTERSECTS sphere&#10;&#10;Think: &quot;Can my ray even&#10;reach the sphere?&quot; (quadratic solutions)" style="text;html=1;strokeColor=none;fillColor=#fce4ec;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="840" width="200" height="140" as="geometry"/>
+                </mxCell>
                 <mxCell id="concepts-title" value="Key Concepts" style="text;html=1;strokeColor=none;fillColor=#fff3e0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="480" width="200" height="30" as="geometry"/>
+                    <mxGeometry x="350" y="990" width="200" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="concept-discriminant" value="Discriminant Analysis:&#10;• disc &lt; 0: Ray misses sphere&#10;• disc = 0: Ray tangent to sphere&#10;• disc &gt; 0: Ray intersects sphere&#10;&#10;Physical meaning:&#10;Determines if ray path&#10;intersects sphere volume" style="text;html=1;strokeColor=none;fillColor=#e3f2fd;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="520" width="200" height="120" as="geometry"/>
+                    <mxGeometry x="350" y="1030" width="200" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="concept-distance" value="Distance Parameter t:&#10;• t &gt; 0: Intersection in front&#10;• t &lt; 0: Intersection behind&#10;• t = 0: Intersection at origin&#10;&#10;Ray tracing needs:&#10;Only positive t values&#10;(forward intersections)" style="text;html=1;strokeColor=none;fillColor=#e8f5e8;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="650" width="200" height="120" as="geometry"/>
+                    <mxGeometry x="350" y="1160" width="200" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="performance-title" value="Performance Notes" style="text;html=1;strokeColor=none;fillColor=#fff3e0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="600" width="200" height="30" as="geometry"/>
+                    <mxGeometry x="600" y="640" width="200" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="performance-optimizations" value="Optimizations:&#10;• Early exit if disc &lt; 0&#10;• Use squared distances when possible&#10;• Cache dot products&#10;• SIMD for multiple rays&#10;&#10;Complexity: O(1) per ray&#10;Very fast intersection test" style="text;html=1;strokeColor=none;fillColor=#f3e5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="640" width="200" height="120" as="geometry"/>
+                    <mxGeometry x="600" y="680" width="200" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend-title" value="Legend" style="text;html=1;strokeColor=none;fillColor=#f5f5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="50" y="802" width="800" height="25" as="geometry"/>
+                    <mxGeometry x="55" y="1300" width="800" height="25" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend-visual" value="Visual Elements:&#10;• Red arrow: Ray&#10;• Blue circle: Sphere&#10;• Orange dot: Ray origin&#10;• Green dot: Sphere center&#10;• Red dots: Intersections" style="text;html=1;strokeColor=none;fillColor=#fafafa;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="50" y="840" width="200" height="80" as="geometry"/>
+                    <mxGeometry x="55" y="1338" width="200" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend-math" value="Mathematical Terms:&#10;• O: Ray origin point&#10;• u: Ray direction vector&#10;• C: Sphere center point&#10;• r: Sphere radius&#10;• t: Distance parameter" style="text;html=1;strokeColor=none;fillColor=#fafafa;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="270" y="840" width="200" height="80" as="geometry"/>
+                    <mxGeometry x="275" y="1338" width="200" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="legend-algorithm" value="Algorithm Terms:&#10;• OC: Vector from C to O&#10;• b: First coefficient&#10;• c: Second coefficient&#10;• disc: Discriminant&#10;• t1, t2: Solutions" style="text;html=1;strokeColor=none;fillColor=#fafafa;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="480" y="840" width="200" height="80" as="geometry"/>
+                <mxCell id="legend-algorithm" value="Algorithm Terms:&#10;• OC: Vector from C to O&#10;• b: Alignment factor&#10;• c: Distance factor&#10;• disc: Discriminant&#10;• t1, t2: Solutions" style="text;html=1;strokeColor=none;fillColor=#fafafa;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="485" y="1338" width="200" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend-results" value="Return Values:&#10;• t &gt; 0: Valid intersection&#10;• t = -1: No intersection&#10;• Smallest t: Closest point&#10;• Multiple t: Two intersections&#10;• Behind ray: Invalid" style="text;html=1;strokeColor=none;fillColor=#fafafa;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="690" y="840" width="200" height="80" as="geometry"/>
+                    <mxGeometry x="695" y="1338" width="200" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

@@ -1,0 +1,122 @@
+<mxfile host="app.diagrams.net" modified="2025-01-27T12:00:00.000Z" agent="5.0" etag="abc123" version="24.7.17" type="device">
+  <diagram name="Lighting System Overview" id="lighting-overview">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="miniRT Lighting System Explained" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Phong Lighting Model Section -->
+        <mxCell id="phong-title" value="Phong Lighting Model" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Ambient Light -->
+        <mxCell id="ambient-box" value="Ambient Light&#xa;Base illumination&#xa;from all directions&#xa;Color: (150,150,150)&#xa;Ratio: 0.2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontSize=12;fontColor=#01579B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Diffuse Light -->
+        <mxCell id="diffuse-box" value="Diffuse Light&#xa;Lambert's cosine law&#xa;Surface orientation&#xa;depends on normal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#4A148C;fontSize=12;fontColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="200" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Specular Light -->
+        <mxCell id="specular-box" value="Specular Light&#xa;Phong reflection&#xa;View-dependent&#xa;Shininess factor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=12;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="350" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Light Bulb Visualization Section -->
+        <mxCell id="bulb-title" value="Light Bulb Visualization" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Light Bulb Features -->
+        <mxCell id="bulb-features" value="• 3D to 2D projection&#xa;• Color-coded bulbs&#xa;• Real-time positioning&#xa;• Multiple light support&#xa;• Screen bounds checking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#2E7D32;fontSize=12;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="600" y="120" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Multiple Lights Section -->
+        <mxCell id="multi-title" value="Multiple Light Sources" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Light Accumulation -->
+        <mxCell id="accumulation" value="Light Accumulation Process:&#xa;&#xa;1. Start with ambient light&#xa;2. For each light source:&#xa;   - Calculate diffuse contribution&#xa;   - Calculate specular contribution&#xa;   - Add to final color&#xa;3. Clamp to [0,255] range" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;fontSize=12;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="50" y="290" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Light Bulb Drawing -->
+        <mxCell id="bulb-drawing" value="Light Bulb Drawing:&#xa;&#xa;• Radius: 12 pixels&#xa;• Inner circle: Light color&#xa;• Outer glow: White border&#xa;• Anti-aliasing: Smooth edges" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F8E9;strokeColor=#33691E;fontSize=12;fontColor=#33691E;" vertex="1" parent="1">
+          <mxGeometry x="350" y="290" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- 3D Scene Visualization -->
+        <mxCell id="scene-title" value="3D Scene with Light Bulbs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="600" y="250" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Scene Diagram -->
+        <mxCell id="scene-box" value="Camera at (0,0,-10)&#xa;Looking at (0,0,1)&#xa;&#xa;Light Positions:&#xa;• White: (-3,3,-3)&#xa;• Blue: (3,3,-3)&#xa;• Red: (0,5,2)&#xa;• Green: (-2,-1,5)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#0277BD;fontSize=12;fontColor=#0277BD;" vertex="1" parent="1">
+          <mxGeometry x="600" y="290" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Code Flow Section -->
+        <mxCell id="code-title" value="Code Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Code Flow Steps -->
+        <mxCell id="code-flow" value="1. render_scene() - Main rendering loop&#xa;2. compute_lighting() - Calculate Phong lighting&#xa;3. process_light_contribution() - Single light&#xa;4. render_light_bulbs() - Draw light icons&#xa;5. project_to_screen() - 3D to 2D conversion&#xa;6. draw_light_bulb() - Draw individual bulb" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;fontSize=12;fontColor=#C2185B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="490" width="300" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- File Locations -->
+        <mxCell id="files-title" value="File Locations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="400" y="450" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- File Paths -->
+        <mxCell id="file-paths" value="• srcs/rendering/lighting.c&#xa;  - compute_lighting()&#xa;  - process_light_contribution()&#xa;&#xa;• srcs/rendering/render.c&#xa;  - render_light_bulbs()&#xa;  - project_to_screen()&#xa;  - draw_light_bulb()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=12;fontColor=#7B1FA2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="490" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows showing connections -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="ambient-box" target="diffuse-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="160" as="sourcePoint" />
+            <mxPoint x="250" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="diffuse-box" target="specular-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="160" as="sourcePoint" />
+            <mxPoint x="400" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="accumulation" target="bulb-drawing">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="350" as="sourcePoint" />
+            <mxPoint x="400" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#2F5233;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend" value="🔵 Ambient Light&#xa;🟣 Diffuse Light&#xa;🟠 Specular Light&#xa;🟢 Light Bulbs&#xa;🟡 Accumulation&#xa;🔴 Code Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#757575;fontSize=12;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="700" y="490" width="150" height="120" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

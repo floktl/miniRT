@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:19:57 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 10:15:20 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,29 @@ int			init_app(t_app *app);
 // @param app: Pointer to application struct containing scene and mlx data
 void		render_scene(t_app *app);
 
+// @param app: Pointer to application struct
+// @param x: X pixel coordinate
+// @param y: Y pixel coordinate
+// @return: Ray from camera through pixel
+t_ray		get_ray(t_app *app, int x, int y);
+
+// rendering/optimized_render.c
+// @param app: Pointer to application struct
+void		optimized_re_render_scene(t_app *app);
+
+// @param app: Pointer to application struct
+void		mark_scene_dirty(t_app *app);
+
+// @param app: Pointer to application struct
+void		force_re_render_scene(t_app *app);
+
+// rendering/progressive_render.c
+// @param app: Pointer to application struct
+void		progressive_re_render_scene(t_app *app);
+
+// @param app: Pointer to application struct
+// @param active: True to enable interaction mode, false to disable
+
 // rendering/intersections.c
 // @param ray: Ray to test for intersection
 // @param s_sphere: Sphere object to test against
@@ -57,6 +80,17 @@ double		intersect_cylinder(t_ray ray, t_object *s_cylinder);
 // @param s_cone: Cone object to test against
 // @return: Distance to intersection point, -1 if no intersection
 double		intersect_cone(t_ray ray, t_object *s_cone);
+
+// @param ray: Ray to test for intersection
+// @param scene: Scene containing all objects
+// @param hit_obj: Pointer to store the hit object
+// @return: Distance to closest intersection, -1 if no intersection
+double		find_closest_intersection(t_ray ray, t_scene *scene, t_object **hit_obj);
+
+// @param point: Point on object surface
+// @param obj: Object to calculate normal for
+// @return: Surface normal vector at the point
+t_vec3d		get_normal(t_vec3d point, t_object *obj);
 
 // rendering/lighting.c
 // @param point: Point on surface to calculate lighting for
@@ -103,50 +137,53 @@ t_color		apply_texture(t_object *obj, t_vec3d point);
 // @return: Modified normal vector with bump mapping applied
 t_vec3d		apply_bump_mapping(t_object *obj, t_vec3d point, t_vec3d normal);
 
-// calculations/vec_ops.c
-// @param a: First vector
-// @param b: Second vector
-// @return: Sum of the two vectors
+
 t_vec3d		vec_add(t_vec3d a, t_vec3d b);
 
-// @param a: First vector
-// @param b: Second vector
-// @return: Difference of the two vectors (a - b)
+
 t_vec3d		vec_sub(t_vec3d a, t_vec3d b);
 
-// @param a: Vector to multiply
-// @param scalar: Scalar value to multiply by
-// @return: Vector multiplied by scalar
+
 t_vec3d		vec_mul(t_vec3d a, double scalar);
 
-// @param a: First vector
-// @param b: Second vector
-// @return: Dot product of the two vectors
+
 double		vec_dot(t_vec3d a, t_vec3d b);
 
-// @param v: Vector to calculate length of
-// @return: Length (magnitude) of the vector
+
 double		vec_length(t_vec3d v);
 
-// calculations/vec_utils.c
-// @param v: Vector to normalize
-// @return: Normalized vector (unit vector)
+
 t_vec3d		vec_normalize(t_vec3d v);
 
-// @param a: First vector
-// @param b: Second vector
-// @return: Cross product of the two vectors
+
 t_vec3d		vec_cross(t_vec3d a, t_vec3d b);
 
-// @param incident: Incident ray direction
-// @param normal: Surface normal vector
-// @return: Reflected ray direction
+
 t_vec3d		vec_reflect(t_vec3d incident, t_vec3d normal);
 
 // user_input/keys.c
 // @param keydata: Key event data from MLX42
 // @param param: User parameter (typically app pointer)
 void		key_hook(mlx_key_data_t keydata, void *param);
+
+// Camera movement functions
+// @param app: Pointer to application struct
+void		move_camera_forward(t_app *app);
+void		move_camera_backward(t_app *app);
+void		move_camera_left(t_app *app);
+void		move_camera_right(t_app *app);
+void		move_camera_up(t_app *app);
+void		move_camera_down(t_app *app);
+void		re_render_scene(t_app *app);
+
+// Mouse movement functions
+// @param app: Pointer to application struct
+void		rotate_camera_horizontal(t_app *app, double angle);
+void		rotate_camera_vertical(t_app *app, double angle);
+void		rotate_camera_roll(t_app *app, double angle);
+void		mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		cursor_hook(double xpos, double ypos, void *param);
+void		scroll_hook(double xdelta, double ydelta, void *param);
 
 // cleanup/cleanup.c
 // @param scene: Scene struct to free all allocated memory from
@@ -158,5 +195,6 @@ void		free_tokens(char **tokens);
 // debugging/print_scene.c
 // @param scene: Scene struct to print debug information for
 void		print_scene(const t_scene *scene);
+
 
 #endif

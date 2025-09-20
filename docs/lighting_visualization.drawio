@@ -1,0 +1,127 @@
+<mxfile host="65bd71144e">
+    <diagram name="Lighting Visualization" id="lighting-visual">
+        <mxGraphModel dx="900" dy="675" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="miniRT Lighting Visualization" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="20" width="400" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="scene-title" value="3D Scene Layout" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="80" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="camera" value="📷 Camera&#10;(0,0,-10)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=12;fontColor=#D32F2F;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="120" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="light1" value="💡 White Light&#10;(-3,3,-3)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="120" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="light2" value="💡 Blue Light&#10;(3,3,-3)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=12;fontColor=#1976D2;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="120" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="light3" value="💡 Red Light&#10;(0,5,2)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontSize=12;fontColor=#D32F2F;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="200" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="light4" value="💡 Green Light&#10;(-2,-1,5)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#388E3C;fontSize=12;fontColor=#388E3C;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="280" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sphere1" value="⚪ Sphere 1&#10;(2,0,0)&#10;Radius: 1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=12;fontColor=#0277BD;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="200" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sphere2" value="⚪ Sphere 2&#10;(-1,0,10)&#10;Radius: 5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=12;fontColor=#7B1FA2;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="280" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="cylinder" value="🔵 Cylinder&#10;(0,-3,3)&#10;Height: 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#2E7D32;fontSize=12;fontColor=#2E7D32;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="350" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ray1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=3;dashed=1;" parent="1" source="light1" target="sphere1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="200" y="150" as="sourcePoint"/>
+                        <mxPoint x="250" y="100" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ray2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#0000FF;strokeWidth=3;dashed=1;" parent="1" source="light2" target="sphere1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="300" y="150" as="sourcePoint"/>
+                        <mxPoint x="350" y="100" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ray3" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=3;dashed=1;" parent="1" source="light3" target="sphere2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="250" y="230" as="sourcePoint"/>
+                        <mxPoint x="500" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ray4" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#00FF00;strokeWidth=3;dashed=1;" parent="1" source="light4" target="cylinder" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="340" as="sourcePoint"/>
+                        <mxPoint x="350" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="screen-title" value="Screen Projection (2D View)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="80" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="screen" value="Screen (800x600)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#757575;fontSize=14;fontColor=#424242;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="120" width="200" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="bulb1-screen" value="💡" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="140" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="bulb2-screen" value="💡" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="140" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="bulb3-screen" value="💡" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#D32F2F;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="715" y="180" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="bulb4-screen" value="💡" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#388E3C;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="690" y="220" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="sphere1-screen" value="⚪" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="180" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="sphere2-screen" value="⚪" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="220" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="cylinder-screen" value="🔵" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#2E7D32;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="250" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="proj-arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;dashed=1;" parent="1" source="light1" target="bulb1-screen" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="200" y="150" as="sourcePoint"/>
+                        <mxPoint x="650" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="proj-arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;dashed=1;" parent="1" source="light2" target="bulb2-screen" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="300" y="150" as="sourcePoint"/>
+                        <mxPoint x="750" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="calc-title" value="Lighting Calculation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="400" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="formula" value="Final Color = Ambient + Σ(Diffuse + Specular)&#10;&#10;Ambient = Ambient_Color × Ambient_Ratio&#10;Diffuse = Light_Color × Light_Brightness × max(0, N·L)&#10;Specular = Light_Color × Light_Brightness × max(0, R·V)^shininess" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57F17;fontSize=12;fontColor=#F57F17;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="440" width="400" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="variables" value="Variables:&#10;N = Surface Normal&#10;L = Light Direction&#10;V = View Direction&#10;R = Reflection Vector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#2E7D32;fontSize=12;fontColor=#2E7D32;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="440" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="code-title" value="Code Implementation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="580" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="code-flow" value="1. render_scene() - Main loop&#10;2. For each pixel:&#10;   - Cast ray from camera&#10;   - Find intersection&#10;   - compute_lighting()&#10;3. For each light:&#10;   - process_light_contribution()&#10;   - Add to final color&#10;4. render_light_bulbs() - Draw icons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;fontSize=12;fontColor=#C2185B;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="620" width="300" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="performance" value="Performance:&#10;• O(pixels × objects × lights)&#10;• Optimized with early exits&#10;• Light bulb rendering: O(lights)&#10;• 3D projection: O(1) per light" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontSize=12;fontColor=#01579B;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="620" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend-title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="400" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend" value="📷 Camera Position&#10;💡 Light Sources&#10;⚪ Spheres&#10;🔵 Cylinder&#10;--- Light Rays&#10;... Projection Lines" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#757575;fontSize=12;fontColor=#424242;" parent="1" vertex="1">
+                    <mxGeometry x="715" y="440" width="150" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

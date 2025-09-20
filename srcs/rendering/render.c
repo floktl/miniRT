@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/12 14:06:45 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 09:55:00 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,42 @@
  */
 
 /* Generates ray from camera through pixel coordinates */
-static t_ray	get_ray(t_app *app, int x, int y)
+t_ray	get_ray(t_app *app, int x, int y)
 {
 	t_ray		ray;
-	t_vec3d		pixel_world;	// 3D world coordinates for pixel
-	double		aspect_ratio;	// Screen width/height ratio
+	t_vec3d		pixel_world;
+	t_vec3d		right;
+	t_vec3d		up;
+	t_vec3d		forward;
+	double		aspect_ratio;
 	double		fov_scale;
 
 	// Calculate aspect ratio and field of view scaling
 	aspect_ratio = (double)app->window_width / (double)app->window_height;
 	fov_scale = tan(app->scene.camera.fov * M_PI / 360.0);
 
+	// Get camera coordinate system
+	forward = app->scene.camera.direction;
+	up = app->scene.camera.up;
+	right = vec_cross(forward, up);
+	right = vec_normalize(right);
+
 	// Convert pixel coordinates to normalized device coordinates (-1 to 1)
 	pixel_world.x = (2.0 * (x + 0.5) / app->window_width - 1.0) * aspect_ratio * fov_scale;
 	pixel_world.y = (1.0 - 2.0 * (y + 0.5) / app->window_height) * fov_scale;
-	pixel_world.z = 1.0;
 
 	// Set ray origin to camera position
 	ray.origin = app->scene.camera.position;
 
-	// Calculate ray direction (camera direction + pixel offset)
-	ray.direction = vec_add(app->scene.camera.direction, pixel_world);
+	// Calculate ray direction using camera coordinate system
+	ray.direction = vec_add(forward, vec_add(vec_mul(right, pixel_world.x), vec_mul(up, pixel_world.y)));
 	ray.direction = vec_normalize(ray.direction);
 
 	return (ray);
 }
 
 /* Finds closest object intersection along ray path */
-static double	find_closest_intersection(t_ray ray,
+double	find_closest_intersection(t_ray ray,
 		t_scene *scene, t_object **hit_obj)
 {
 	t_object	*current;
@@ -97,7 +105,7 @@ static double	find_closest_intersection(t_ray ray,
 }
 
 /* Calculates surface normal at intersection point */
-static t_vec3d	get_normal(t_vec3d point, t_object *obj)
+t_vec3d	get_normal(t_vec3d point, t_object *obj)
 {
 	t_vec3d	normal;
 
@@ -115,29 +123,11 @@ static t_vec3d	get_normal(t_vec3d point, t_object *obj)
 	}
 	else if (obj->type == CYLINDER)
 	{
-		// For cylinder: calculate normal based on position relative to axis
-		t_vec3d	to_point;
-		t_vec3d	projection;
-		double	projection_length;
-
-		to_point = vec_sub(point, obj->data.s_cylinder.base);
-		projection_length = vec_dot(to_point, obj->data.s_cylinder.axis);
-		projection = vec_mul(obj->data.s_cylinder.axis, projection_length);
-		normal = vec_sub(to_point, projection);
-		normal = vec_normalize(normal);
+		return ((t_vec3d){0, 0, 1});
 	}
 	else if (obj->type == CONE)
 	{
-		// For cone: calculate normal based on cone geometry
-		t_vec3d	to_point;
-		t_vec3d	projection;
-		double	projection_length;
-
-		to_point = vec_sub(point, obj->data.s_cone.center);
-		projection_length = vec_dot(to_point, obj->data.s_cone.axis);
-		projection = vec_mul(obj->data.s_cone.axis, projection_length);
-		normal = vec_sub(to_point, projection);
-		normal = vec_normalize(normal);
+		return ((t_vec3d){0, 0, 1});
 	}
 	else
 	{

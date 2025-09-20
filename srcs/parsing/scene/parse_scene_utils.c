@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 09:46:24 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,21 @@ int	check_camera_duplicate(t_scene *scene)
 int	set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 	t_float_res fr)
 {
+	t_vec3d	right;
+	t_vec3d	up;
+
 	scene->camera.position = pr.v;
 	scene->camera.direction = vec_normalize(dr.v);
 	scene->camera.fov = fr.f;
+
+	// Initialize camera up vector for roll rotation
+	// Calculate right vector (cross product of direction and world up)
+	right = vec_cross(scene->camera.direction, (t_vec3d){0, 1, 0});
+	right = vec_normalize(right);
+	// Calculate up vector (cross product of right and direction)
+	up = vec_cross(right, scene->camera.direction);
+	scene->camera.up = vec_normalize(up);
+
 	if (validate_camera_fov(scene->camera.fov))
 		return (1);
 	return (0);

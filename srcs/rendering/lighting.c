@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/12 14:03:33 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/19 14:14:13 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_color	process_light_contribution(t_light *light,
 	t_vec3d	light_dir;
 	t_vec3d	reflect_dir;
 	double	dot_product;
+	double	light_intensity;
 
 	// Calculate light direction
 	light_dir = vec_sub(light->position, params->point);
@@ -52,10 +53,13 @@ static t_color	process_light_contribution(t_light *light,
 	dot_product = vec_dot(params->view_dir, reflect_dir);
 	specular_factor = pow(fmax(0.0, dot_product), params->shininess);
 
-	// Combine lighting components
-	result.r = (int)(texture_color.r * (0.1 + 0.7 * diffuse_factor + 0.2 * specular_factor));
-	result.g = (int)(texture_color.g * (0.1 + 0.7 * diffuse_factor + 0.2 * specular_factor));
-	result.b = (int)(texture_color.b * (0.1 + 0.7 * diffuse_factor + 0.2 * specular_factor));
+	// Calculate total light intensity
+	light_intensity = light->brightness * (diffuse_factor + specular_factor);
+
+	// Apply light color and intensity to texture color
+	result.r = (int)(texture_color.r * light->color.r * light_intensity / 255.0);
+	result.g = (int)(texture_color.g * light->color.g * light_intensity / 255.0);
+	result.b = (int)(texture_color.b * light->color.b * light_intensity / 255.0);
 
 	// Clamp values to valid range
 	result.r = fmin(255, fmax(0, result.r));
@@ -91,7 +95,13 @@ t_color	compute_lighting(t_vec3d point, t_vec3d normal,
 	current_light = scene->lights;
 	while (current_light)
 	{
-		final_color = process_light_contribution(current_light, &params, obj->color);
+		t_color light_contribution = process_light_contribution(current_light, &params, obj->color);
+
+		// Add light contribution to final color
+		final_color.r = fmin(255, final_color.r + light_contribution.r);
+		final_color.g = fmin(255, final_color.g + light_contribution.g);
+		final_color.b = fmin(255, final_color.b + light_contribution.b);
+
 		current_light = current_light->next;
 	}
 

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/12 14:45:45 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 09:46:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct s_camera
 {
 	t_vec3d	position;	// 3D position of the camera
 	t_vec3d	direction;	// Direction vector the camera is facing
+	t_vec3d	up;			// Up vector for camera orientation (for roll rotation)
 	double	fov;		// Field of view in degrees
 }	t_camera;
 
@@ -194,6 +195,25 @@ typedef struct s_app
 	t_scene		scene;			// Complete scene data
 	int			window_width;	// Window width in pixels
 	int			window_height;	// Window height in pixels
+	t_vec3d		camera_original_pos;	// Original camera position
+	t_vec3d		camera_original_dir;	// Original camera direction
+	double		move_speed;		// Camera movement speed
+	bool		mouse_dragging;	// Whether mouse is being dragged
+	bool		right_mouse_dragging;	// Whether right mouse is being dragged
+	int			last_mouse_x;	// Last mouse X position
+	int			last_mouse_y;	// Last mouse Y position
+	double		mouse_sensitivity;	// Mouse sensitivity for rotation
+	double		zoom_factor;	// Current zoom factor
+	double		zoom_speed;		// Zoom speed multiplier
+	double		min_zoom;		// Minimum zoom level
+	double		max_zoom;		// Maximum zoom level
+	bool		scene_dirty;	// Flag indicating scene needs re-render
+	int			frame_counter;	// Frame counter for simple frame limiting
+	int			render_skip_frames;	// Skip frames during interaction (higher = less frequent renders)
+	double		accumulated_mouse_x;	// Accumulated mouse movement for smoothing
+	double		accumulated_mouse_y;	// Accumulated mouse movement for smoothing
+	bool		interaction_mode;	// True when user is actively interacting
+	int			render_scale;		// Render scale factor (1 = full resolution, 2 = half, etc.)
 }	t_app;
 
 // Additional parsing utils
