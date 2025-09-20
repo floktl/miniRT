@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:19:58 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/19 13:23:41 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:18:29 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,50 +35,16 @@
 // o : origin of the line
 // d : distance from the origin of the line
 // u : direction of line (a non-zero vector)
-double	intersect_sphere(t_ray ray, t_object *obj)
-{
-	t_vec3d o = ray.origin;					// ray origin
-	t_vec3d u = ray.direction;				// ray direction
-	t_vec3d c = obj->data.s_sphere.center;	// sphere center
-	double  r = obj->data.s_sphere.radius;	// sphere radius
 
-	// Vector from sphere center to ray origin
-	t_vec3d oc = vec_sub(o, c);
-
-	// Compute terms of quadratic
-	double b = vec_dot(u, oc);				// u · (o - c)
-	double c_term = vec_dot(oc, oc) - r * r;
-
-	// Discriminant
-	double disc = b * b - c_term;
-
-	if (disc < 0.0)
-		return (-1.0);  // no intersection
-
-	// Two possible solutions
-	double t1 = -b - sqrt(disc);
-	double t2 = -b + sqrt(disc);
-
-	// Pick the smallest positive t
-	if (t1 > 0.0)
-		return (t1);
-	if (t2 > 0.0)
-		return (t2);
-
-	return (-1.0); // both are behind ray origin
-}
-
-double	intersect_plane(t_ray ray, t_object *obj)
-{
-	return (-1.0);
-}
-
-double	intersect_cylinder(t_ray ray, t_object *obj)
-{
-	return (-1.0);
-}
-
-double	intersect_cone(t_ray ray, t_object *obj)
-{
-	return (-1.0);
-}
+/*
+* INTERSECTION FUNCTION MOCKUPS
+*
+* These functions are implemented in separate files:
+* - intersect_plane() -> plane_intersection.c
+* - intersect_cylinder() -> cylinder_intersection.c
+* - intersect_cone() -> cone_intersection.c
+* - intersect_sphere() -> sphere_intersection.c
+*
+* Each file contains the full implementation for its respective
+* geometric primitive intersection calculation.
+*/

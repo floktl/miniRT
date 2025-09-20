@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 10:07:41 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:20:26 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,18 @@ void	optimized_re_render_scene(t_app *app)
 	y = 0;
 	x = 0;
 	if (!app->scene_dirty)
-		return;
+		return ;
 	if (app->interaction_mode
 		&& (app->frame_counter % app->render_skip_frames != 0))
 	{
 		app->frame_counter++;
-		return;
+		return ;
 	}
-	mlx_image_t *img = app->img;
 	while (y < app->window_height)
 	{
 		while (x < app->window_width)
 		{
-			mlx_put_pixel(img, x++, y, 0x00000000);
+			mlx_put_pixel(app->img, x++, y, 0x00000000);
 		}
 		y++;
 	}
@@ -51,9 +50,8 @@ void	mark_scene_dirty(t_app *app)
 /* Forces an immediate re-render regardless of frame rate */
 void	force_re_render_scene(t_app *app)
 {
-	mlx_image_t *img = app->img;
-	int	y;
-	int	x;
+	int			y;
+	int			x;
 
 	y = 0;
 	x = 0;
@@ -61,7 +59,7 @@ void	force_re_render_scene(t_app *app)
 	{
 		while (x < app->window_width)
 		{
-			mlx_put_pixel(img, x++, y, 0x00000000);
+			mlx_put_pixel(app->img, x++, y, 0x00000000);
 		}
 		y++;
 	}

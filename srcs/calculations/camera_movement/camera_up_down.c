@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   camera_up_down.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 14:14:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:13:11 by fkeitel          ###   ########.fr       */
+/*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/09/20 11:06:38 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-/* Handles keyboard input for camera movement and application control */
-void	key_hook(mlx_key_data_t keydata, void *param)
+/* Moves camera up (Y-axis) */
+void	move_camera_up(t_app *app)
 {
-	t_app	*app;
+	t_vec3d	move_vec;
 
-	app = (t_app *)param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(app->mlx);
-	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
-		handle_movement_keys(app, keydata);
+	move_vec = (t_vec3d){0, app->move_speed, 0};
+	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
+}
+
+/* Moves camera down (Y-axis) */
+void	move_camera_down(t_app *app)
+{
+	t_vec3d	move_vec;
+
+	move_vec = (t_vec3d){0, -app->move_speed, 0};
+	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
 }

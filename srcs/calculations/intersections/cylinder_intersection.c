@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   cylinder_intersection.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 14:14:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:13:11 by fkeitel          ###   ########.fr       */
+/*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
+/*   Updated: 2025/09/20 11:18:31 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-/* Handles keyboard input for camera movement and application control */
-void	key_hook(mlx_key_data_t keydata, void *param)
+double	intersect_cylinder(t_ray ray, t_object *obj)
 {
-	t_app	*app;
-
-	app = (t_app *)param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(app->mlx);
-	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
-		handle_movement_keys(app, keydata);
+	(void)ray;
+	(void)obj;
+	return (-1.0);
 }
