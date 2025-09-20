@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:28:46 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:47:57 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_ray		get_ray(t_app *app, int x, int y);
 void		optimized_re_render_scene(t_app *app);
 
 // @param app: Pointer to application struct
-void		mark_scene_dirty(t_app *app);
+void		mark_needs_rerender(t_app *app);
 
 // @param app: Pointer to application struct
 void		force_re_render_scene(t_app *app);

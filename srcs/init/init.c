@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:23:20 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:34:14 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:50:16 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **
 ** Camera Variables:
 ** - camera_original_pos: Stores initial camera position for reset functionality
-** - camera_original_dir: Stores initial camera direction for reset functionality
+** - camera_original_dir: Stores initial camera direction for res. functionality
 ** - move_speed: Speed multiplier for camera movement (world units per input)
 **
 ** Mouse Control Variables:
@@ -25,7 +25,7 @@
 ** - right_mouse_dragging: Flag indicating right mouse button is being dragged
 ** - last_mouse_x/y: Previous mouse position for calculating movement delta
 ** - left_mouse_sensitivity: Multiplier for left mouse movement to camera panning
-** - right_mouse_sensitivity: Multiplier for right mouse movement to camera rotation
+** - right_mouse_sensitivity: Multiplier for right mouse move. to camera rotation
 ** - accumulated_mouse_x/y: Accumulated mouse movement for smooth rotation
 **
 ** Zoom Variables:
@@ -35,7 +35,7 @@
 ** - max_zoom: Maximum allowed zoom level (prevents over-zooming in)
 **
 ** Performance Optimization Variables:
-** - scene_dirty: Flag indicating scene needs re-rendering
+** - needs_rerender: Flag indicating scene needs re-rendering
 ** - frame_counter: Counter for frame-based performance optimization
 ** - render_skip_frames: Number of frames to skip during interaction
 ** - interaction_mode: Flag indicating user is actively interacting
@@ -46,7 +46,7 @@ int	init_app(t_app *app)
 {
 	app->window_width = WINDOW_WIDTH;
 	app->window_height = WINDOW_HEIGHT;
-	app->mlx = mlx_init(app->window_width, app->window_height, "miniRT", true);
+	app->mlx = mlx_init(app->window_width, app->window_height, "miniRT", false);
 	if (!app->mlx)
 		return (1);
 	app->img = mlx_new_image(app->mlx, app->window_width, app->window_height);
@@ -91,7 +91,7 @@ void	init_zoom_variables(t_app *app)
 
 void	init_performance_variables(t_app *app)
 {
-	app->scene_dirty = true;
+	app->needs_rerender = true;
 	app->frame_counter = 0;
 	app->render_skip_frames = 2;
 	app->interaction_mode = false;

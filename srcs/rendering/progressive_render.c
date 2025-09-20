@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 10:16:45 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:47:59 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	clear_buffer(t_app *app)
 /* Progressive render that switches between full & low resolution */
 void	progressive_re_render_scene(t_app *app)
 {
-	if (!app->scene_dirty)
+	if (!app->needs_rerender)
 		return ;
 	if (app->interaction_mode
 		&& (app->frame_counter % app->render_skip_frames != 0))
@@ -121,6 +121,6 @@ void	progressive_re_render_scene(t_app *app)
 		app->render_scale = 1;
 		render_scene(app);
 	}
-	app->scene_dirty = false;
+	app->needs_rerender = false;
 	app->frame_counter++;
 }

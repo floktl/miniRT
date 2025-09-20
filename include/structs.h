@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:34:14 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:47:57 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ typedef struct s_app
 	double		zoom_speed;		// Zoom speed multiplier
 	double		min_zoom;		// Minimum zoom level
 	double		max_zoom;		// Maximum zoom level
-	bool		scene_dirty;	// Flag indicating scene needs re-render
+	bool		needs_rerender;	// Flag indicating scene needs re-rendering
 	int			frame_counter;	// Frame counter for simple frame limiting
 	int			render_skip_frames;	// Skip frames during interaction (higher = less frequent renders)
 	double		accumulated_mouse_x;	// Accumulated mouse movement for smoothing

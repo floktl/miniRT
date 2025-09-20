@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:06:38 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 11:47:59 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	move_camera_pan(t_app *app, double x_offset, double y_offset)
 /* Re-renders the scene after camera movement */
 void	re_render_scene(t_app *app)
 {
-	mark_scene_dirty(app);
+	mark_needs_rerender(app);
 	optimized_re_render_scene(app);
 }
