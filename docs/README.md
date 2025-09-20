@@ -23,10 +23,3 @@ These files are created with [draw.io](https://app.diagrams.net/) and can be ope
 - VS Code with the draw.io extension
 - Any application that supports the .drawio format
 
-## Purpose
-
-These diagrams serve as:
-- Visual documentation for complex algorithms
-- Learning aids for understanding ray tracing concepts
-- Reference material for debugging and optimization
-- Documentation for code reviews and project understanding

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 10:15:20 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 10:53:58 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@
 // init.c
 // @param app: Pointer to application struct to initialize
 int			init_app(t_app *app);
+
+// @param app: Pointer to application struct
+void		init_camera_variables(t_app *app);
+
+// @param app: Pointer to application struct
+void		init_mouse_variables(t_app *app);
+
+// @param app: Pointer to application struct
+void		init_zoom_variables(t_app *app);
+
+// @param app: Pointer to application struct
+void		init_performance_variables(t_app *app);
 
 // rendering/render.c
 // @param app: Pointer to application struct containing scene and mlx data
@@ -181,6 +193,7 @@ void		re_render_scene(t_app *app);
 void		rotate_camera_horizontal(t_app *app, double angle);
 void		rotate_camera_vertical(t_app *app, double angle);
 void		rotate_camera_roll(t_app *app, double angle);
+void		move_camera_pan(t_app *app, double x_offset, double y_offset);
 void		mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 void		cursor_hook(double xpos, double ypos, void *param);
 void		scroll_hook(double xdelta, double ydelta, void *param);

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:14:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 10:15:20 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 10:53:57 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,21 @@ void	rotate_camera_roll(t_app *app, double angle)
 	app->scene.camera.up = vec_normalize(new_up);
 }
 
+/* Moves camera in X and Y directions (panning) */
+void	move_camera_pan(t_app *app, double x_offset, double y_offset)
+{
+	t_vec3d	right;
+	t_vec3d	up;
+	t_vec3d	move_vec;
+
+	right = vec_cross(app->scene.camera.direction, app->scene.camera.up);
+	right = vec_normalize(right);
+	up = app->scene.camera.up;
+	up = vec_normalize(up);
+	move_vec = vec_add(vec_mul(right, x_offset), vec_mul(up, -y_offset));
+	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
+}
+
 /* Handles mouse button events */
 void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
 {
@@ -152,7 +167,7 @@ void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *
 	{
 		if (action == MLX_PRESS)
 		{
-			app->mouse_dragging = true;
+			app->left_mouse_dragging = true;
 			if (!app->interaction_mode)
 			{
 				app->interaction_mode = true;
@@ -162,7 +177,7 @@ void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *
 		}
 		else if (action == MLX_RELEASE)
 		{
-			app->mouse_dragging = false;
+			app->left_mouse_dragging = false;
 			if (!app->right_mouse_dragging && app->interaction_mode)
 			{
 				app->interaction_mode = false;
@@ -185,7 +200,7 @@ void	mouse_hook(mouse_key_t button, action_t action, modifier_key_t mods, void *
 		else if (action == MLX_RELEASE)
 		{
 			app->right_mouse_dragging = false;
-			if (!app->mouse_dragging && app->interaction_mode)
+			if (!app->left_mouse_dragging && app->interaction_mode)
 			{
 				app->interaction_mode = false;
 				mark_scene_dirty(app);
@@ -204,7 +219,7 @@ void	cursor_hook(double xpos, double ypos, void *param)
 	double	pitch_angle;
 
 	app = (t_app *)param;
-	if (!app->mouse_dragging && !app->right_mouse_dragging)
+	if (!app->left_mouse_dragging && !app->right_mouse_dragging)
 		return;
 	delta_x = xpos - app->last_mouse_x;
 	delta_y = ypos - app->last_mouse_y;
@@ -214,14 +229,14 @@ void	cursor_hook(double xpos, double ypos, void *param)
 	pitch_angle = app->accumulated_mouse_y;
 	if (fabs(app->accumulated_mouse_x) > 0.001 || fabs(app->accumulated_mouse_y) > 0.001)
 	{
-		if (app->mouse_dragging)
+		if (app->left_mouse_dragging)
 		{
-			rotate_camera_horizontal(app, yaw_angle);
-			rotate_camera_vertical(app, pitch_angle);
+			move_camera_pan(app, yaw_angle, pitch_angle);
 		}
 		else if (app->right_mouse_dragging)
 		{
-			rotate_camera_roll(app, yaw_angle);
+			rotate_camera_horizontal(app, -yaw_angle);
+			rotate_camera_vertical(app, pitch_angle);
 		}
 		app->accumulated_mouse_x = 0.0;
 		app->accumulated_mouse_y = 0.0;

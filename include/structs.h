@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 09:46:23 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 10:41:18 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ typedef struct s_app
 	t_vec3d		camera_original_pos;	// Original camera position
 	t_vec3d		camera_original_dir;	// Original camera direction
 	double		move_speed;		// Camera movement speed
-	bool		mouse_dragging;	// Whether mouse is being dragged
+	bool		left_mouse_dragging;	// Whether mouse is being dragged
 	bool		right_mouse_dragging;	// Whether right mouse is being dragged
 	int			last_mouse_x;	// Last mouse X position
 	int			last_mouse_y;	// Last mouse Y position

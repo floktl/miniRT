@@ -6,11 +6,40 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:23:20 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 09:42:51 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 10:41:38 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+/*
+** Initializes all application variables for miniRT ray tracer
+**
+** Camera Variables:
+** - camera_original_pos: Stores initial camera position for reset functionality
+** - camera_original_dir: Stores initial camera direction for reset functionality
+** - move_speed: Speed multiplier for camera movement (world units per input)
+**
+** Mouse Control Variables:
+** - left_mouse_dragging: Flag indicating left mouse button is being dragged
+** - right_mouse_dragging: Flag indicating right mouse button is being dragged
+** - last_mouse_x/y: Previous mouse position for calculating movement delta
+** - mouse_sensitivity: Multiplier for mouse movement to camera rotation
+** - accumulated_mouse_x/y: Accumulated mouse movement for smooth rotation
+**
+** Zoom Variables:
+** - zoom_factor: Current zoom level (1.0 = normal, >1.0 = zoomed in)
+** - zoom_speed: Speed multiplier for zoom operations
+** - min_zoom: Minimum allowed zoom level (prevents over-zooming out)
+** - max_zoom: Maximum allowed zoom level (prevents over-zooming in)
+**
+** Performance Optimization Variables:
+** - scene_dirty: Flag indicating scene needs re-rendering
+** - frame_counter: Counter for frame-based performance optimization
+** - render_skip_frames: Number of frames to skip during interaction
+** - interaction_mode: Flag indicating user is actively interacting
+** - render_scale: Resolution scale (1 = full, 2 = half resolution)
+*/
 
 int	init_app(t_app *app)
 {
@@ -25,33 +54,44 @@ int	init_app(t_app *app)
 		mlx_terminate(app->mlx);
 		return (1);
 	}
+	init_camera_variables(app);
+	init_mouse_variables(app);
+	init_zoom_variables(app);
+	init_performance_variables(app);
+	return (0);
+}
 
-	// Initialize camera movement variables
+void	init_camera_variables(t_app *app)
+{
 	app->camera_original_pos = app->scene.camera.position;
 	app->camera_original_dir = app->scene.camera.direction;
-	app->move_speed = 0.1; // Movement speed in world units
+	app->move_speed = 0.1;
+}
 
-	// Initialize mouse movement variables
-	app->mouse_dragging = false;
+void	init_mouse_variables(t_app *app)
+{
+	app->left_mouse_dragging = false;
 	app->right_mouse_dragging = false;
 	app->last_mouse_x = 0;
 	app->last_mouse_y = 0;
-	app->mouse_sensitivity = 0.002; // Mouse sensitivity for rotation
+	app->mouse_sensitivity = 0.002;
 	app->accumulated_mouse_x = 0.0;
 	app->accumulated_mouse_y = 0.0;
+}
 
-	// Initialize zoom variables
-	app->zoom_factor = 1.0; // Start with no zoom
-	app->zoom_speed = 0.1; // Zoom speed multiplier
-	app->min_zoom = 0.1; // Minimum zoom (very zoomed out)
-	app->max_zoom = 10.0; // Maximum zoom (very zoomed in)
+void	init_zoom_variables(t_app *app)
+{
+	app->zoom_factor = 1.0;
+	app->zoom_speed = 0.1;
+	app->min_zoom = 0.1;
+	app->max_zoom = 10.0;
+}
 
-	// Initialize performance optimization variables
-	app->scene_dirty = true; // Scene needs initial render
-	app->frame_counter = 0; // Start frame counter at 0
-	app->render_skip_frames = 2; // Skip every 2nd frame during interaction for performance
-	app->interaction_mode = false; // Start in normal mode
-	app->render_scale = 1; // Start with full resolution
-
-	return (0);
+void	init_performance_variables(t_app *app)
+{
+	app->scene_dirty = true;
+	app->frame_counter = 0;
+	app->render_skip_frames = 2;
+	app->interaction_mode = false;
+	app->render_scale = 1;
 }
