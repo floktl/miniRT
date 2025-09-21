@@ -6,45 +6,57 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:28:46 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 13:14:02 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-/*
- * RAY TRACING RENDERING ENGINE
- *
- * Ray tracing is a rendering technique that simulates light transport:
- * - Rays are cast from the camera through each pixel into the scene
- * - Intersection testing determines which objects are hit by each ray
- * - Surface normals are calculated at intersection points
- * - Lighting models compute the final color at each point
- *
- * The ray tracing algorithm simulates how light travels:
- * 1. Cast rays from camera through image plane pixels
- * 2. Find closest object intersections along ray paths
- * 3. Calculate surface properties and lighting at hit points
- * 4. Apply material properties and texture mapping
- * 5. Determine final pixel color from lighting calculations
- */
-
-void	render_scene(t_app *app)
+//  ┌─────────────────────────────────────────────────────────────────┐
+//  │                    FRAME LOGIC DECISION TREE                    │
+//  ├─────────────────────────────────────────────────────────────────┤
+//  │                                                                 │
+//  │ 1. Check: needs_rerender?                                       │
+//  │    ❌ NO  → return (skip this frame)                            │
+//  │    ✅ YES → continue                                            │
+//  │                                                                 │
+//  │ 2. Check: interaction_mode?                                     │
+//  │    ❌ NO  → Full Resolution Rendering                           │
+//  │    ✅ YES → Frame Skipping Logic                                │
+//  │                                                                 │
+//  │ 3. Frame Skipping (during interaction):                         │
+//  │    Check: frame_counter % render_skip_frames == 0?              │
+//  │    ❌ NO  → frame_counter++, return (skip this frame)           │
+//  │    ✅ YES → Low Resolution Rendering                            │
+//  │                                                                 │
+//  │ 4. After Rendering:                                             │
+//  │    • needs_rerender = false                                     │
+//  │    • frame_counter++                                            │
+//  │                                                                 │
+//  └─────────────────────────────────────────────────────────────────┘
+/* Progressive render that switches between full & low resolution */
+void	progressive_re_render_scene(t_app *app)
 {
-	int			x;
-	int			y;
-	uint32_t	pixel_color;
-
-	y = 0;
-	while (y < app->window_height)
+	if (!app->needs_rerender)
+		return ;
+	if (app->interaction_mode
+		&& (app->frame_counter % app->render_skip_frames != 0))
 	{
-		x = 0;
-		while (x < app->window_width)
-		{
-			pixel_color = render_pixel(app, x, y);
-			mlx_put_pixel(app->img, x, y, pixel_color);
-			x++;
-		}
-		y++;
+		app->frame_counter++;
+		return ;
 	}
+	if (app->interaction_mode)
+	{
+		app->render_scale = 2;
+		fill_window_with_raytracing_low_res(app, render_pixel);
+		update_input_state(app);
+	}
+	else
+	{
+		app->render_scale = 1;
+		fill_window_with_raytracing(app, render_pixel);
+	}
+	render_debug_camera_ray(app);
+	app->needs_rerender = false;
+	app->frame_counter++;
 }

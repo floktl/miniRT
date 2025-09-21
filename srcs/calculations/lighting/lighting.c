@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:18:29 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:47:57 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,31 @@
  * - Diffuse: Light scattered equally in all directions (Lambert's law)
  * - Specular: Light reflected in mirror-like direction (Phong model)
  * - Final color combines all components from all light sources
+ *
+ * Special cases:
+ * - Light spheres: Always appear at full brightness (emit light)
+ * - Spheres containing light spheres: Glow at full brightness (sun effect)
  */
+
+/* Checks if any light sphere is inside the given sphere object */
+static bool	is_light_inside_sphere(t_object *sphere_obj, t_light *lights)
+{
+	t_light	*current_light;
+	double	distance_to_center;
+
+	if (sphere_obj->type != SPHERE)
+		return (false);
+	current_light = lights;
+	while (current_light)
+	{
+		distance_to_center = vec_length(vec_sub(current_light->position,
+					sphere_obj->data.s_sphere.center));
+		if (distance_to_center < sphere_obj->data.s_sphere.radius)
+			return (true);
+		current_light = current_light->next;
+	}
+	return (false);
+}
 
 static t_color	process_light_contribution(t_light *light,
 		t_light_params *params, t_color texture_color)
@@ -73,6 +97,14 @@ t_color	compute_lighting(t_vec3d point, t_vec3d normal,
 	t_color			ambient_color;
 	t_color			light_color;
 
+	if (obj->is_light_sphere)
+	{
+		return (obj->color);
+	}
+	if (is_light_inside_sphere(obj, scene->lights))
+	{
+		return (obj->color);
+	}
 	params.point = point;
 	params.normal = normal;
 	params.view_dir = vec_normalize(vec_sub(scene->camera.position, point));

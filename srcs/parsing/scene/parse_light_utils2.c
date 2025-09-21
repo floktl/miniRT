@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:03:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:42:06 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,25 @@
 /* Sets up light in scene after validation and adds to light list */
 int	setup_light(t_light *light, t_scene *scene)
 {
+	t_object	*light_sphere;
+
 	if (validate_light_brightness(light->brightness))
 		return (cleanup_light_error(light, "Brightness validation failed"));
 	light->next = scene->lights;
 	scene->lights = light;
+	light_sphere = malloc(sizeof(t_object));
+	if (!light_sphere)
+		return (cleanup_light_error(light, "Failed to allocate light sphere"));
+	light_sphere->type = SPHERE;
+	light_sphere->data.s_sphere.center = light->position;
+	light_sphere->data.s_sphere.radius = 0.1;
+	light_sphere->color = light->color;
+	light_sphere->shininess = 100.0;
+	light_sphere->texture_type = TEXTURE_NONE;
+	light_sphere->texture_scale = 1.0;
+	light_sphere->is_light_sphere = true;
+	light_sphere->next = scene->objects;
+	scene->objects = light_sphere;
 	return (0);
 }
 

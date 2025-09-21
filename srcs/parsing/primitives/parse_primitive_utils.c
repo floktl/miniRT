@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:44:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	init_object_and_count(t_object **obj, char **tokens, int *token_count,
 	(*obj)->shininess = 32.0;
 	(*obj)->texture_type = TEXTURE_NONE;
 	(*obj)->texture_scale = 1.0;
+	(*obj)->is_light_sphere = false;
 	return (0);
 }

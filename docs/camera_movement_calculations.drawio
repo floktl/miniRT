@@ -1,0 +1,106 @@
+<mxfile host="65bd71144e">
+    <diagram name="Camera Movement Calculations" id="camera-movement-system">
+        <mxGraphModel dx="488" dy="398" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Camera Movement Mathematics" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="20" width="400" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="coordinate-title" value="Camera Coordinate System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="80" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="forward-vec" value="Forward Vector&#10;(camera.direction)&#10;&#10;• Points where camera looks&#10;• Unit vector (length = 1)&#10;• Primary movement axis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=12;fontColor=#D32F2F;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="120" width="140" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="up-vec" value="Up Vector&#10;(camera.up)&#10;&#10;• Points upward from camera&#10;• Usually (0,1,0)&#10;• Vertical movement axis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=12;fontColor=#388E3C;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="120" width="140" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="right-vec" value="Right Vector&#10;(cross product)&#10;&#10;• right = direction × up&#10;• Perpendicular to both&#10;• Lateral movement axis&#10;&#10;Cross Product Formula:&#10;right.x = dir.y × up.z - dir.z × up.y&#10;right.y = dir.z × up.x - dir.x × up.z&#10;right.z = dir.x × up.y - dir.y × up.x" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;fontSize=11;fontColor=#F57C00;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="100" width="170" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="movement-title" value="Vector Movement Mathematics" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="250" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="forward-back" value="Forward/Backward Movement&#10;&#10;Formula:&#10;pos += direction × speed&#10;&#10;• Forward: +speed&#10;• Backward: -speed&#10;• Direct movement along&#10;  camera's view direction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontSize=11;fontColor=#01579B;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="290" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="left-right" value="Left/Right Movement&#10;&#10;Formula:&#10;right = direction × (0,1,0)&#10;pos += right × speed&#10;&#10;• Left: -speed&#10;• Right: +speed&#10;• Strafe movement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontColor=#7B1FA2;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="290" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="up-down" value="Up/Down Movement&#10;&#10;Formula:&#10;pos += (0,1,0) × speed&#10;&#10;• Down: -speed&#10;• Up: +speed&#10;• Vertical movement&#10;• Independent of camera angle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#4CAF50;fontSize=11;fontColor=#4CAF50;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="290" width="180" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="panning-title" value="Vector Panning Mathematics" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="80" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="panning-formula" value="Panning Movement&#10;&#10;Formula:&#10;move = right × x + up × (-y)&#10;pos += move × sensitivity&#10;&#10;Where:&#10;• x = horizontal mouse delta&#10;• y = vertical mouse delta&#10;• sensitivity = 0.01" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F9A825;fontSize=11;fontColor=#F9A825;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="120" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="rotation-title" value="Vector Rotation Mathematics" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="280" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="rotation-explanation" value="Mathematical Foundation:&#10;&#10;2D Rotation Formula (basis for 3D):&#10;new_x = old_x × cos(θ) + old_y × sin(θ)&#10;new_y = old_y × cos(θ) - old_x × sin(θ)&#10;&#10;In 3D camera rotation:&#10;• We rotate vectors around axes&#10;• We choose the perpendicular axis as the 'y' component&#10;• We maintain orthogonality with cross products&#10;&#10;Visual Example (90° horizontal rotation):&#10;Before: direction = (0,0,-1), right = (1,0,0)&#10;After: new_dir = (0,0,-1)×0 + (1,0,0)×1 = (1,0,0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F9A825;fontSize=10;fontColor=#F9A825;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="530" width="280" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="yaw-rotation" value="Yaw (Horizontal Rotation)&#10;Rotation around up vector&#10;&#10;2D Rotation Formula:&#10;new_x = old_x × cos(θ) + old_y × sin(θ)&#10;&#10;3D Camera Application:&#10;new_dir = dir × cos(θ) + right × sin(θ)&#10;&#10;Step-by-step:&#10;1. Calculate right vector: right = dir × up&#10;2. Rotate direction around up axis&#10;3. Recalculate up: new_up = right × new_dir&#10;4. Normalize all vectors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=10;fontColor=#D32F2F;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="320" width="240" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="pitch-rotation" value="Pitch (Vertical Rotation)&#10;Rotation around right vector&#10;&#10;2D Rotation Formula:&#10;new_x = old_x × cos(θ) + old_y × sin(θ)&#10;&#10;3D Camera Application:&#10;new_dir = dir × cos(θ) + up × sin(θ)&#10;&#10;Step-by-step:&#10;1. Calculate right vector: right = dir × up&#10;2. Rotate direction around right axis&#10;3. Recalculate up: new_up = right × new_dir&#10;4. Normalize all vectors&#10;&#10;Note: Uses 'up' instead of 'right' as perpendicular" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontColor=#388E3C;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="320" width="240" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="code-title" value="Mathematical Processing Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="450" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="code-flow" value="1. handle_input() - Process user input&#10;2. calculate_vector_movement() - Compute position changes&#10;3. calculate_rotation_vectors() - Compute direction changes&#10;4. apply_vector_transforms() - Apply mathematical changes&#10;5. normalize_direction() - Ensure unit vectors&#10;6. update_camera() - Apply changes to camera&#10;7. trigger_rerender() - Mark scene for redraw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;fontSize=11;fontColor=#C2185B;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="490" width="300" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="files-title" value="Mathematical Function Files" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="450" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="file-paths" value="• srcs/user_input/&#10;  - handle_input.c&#10;  - process_mouse.c&#10;&#10;• srcs/calculations/camera_movement/&#10;  - camera_forward_back.c&#10;  - camera_left_right.c&#10;  - camera_up_down.c&#10;  - camera_pan.c&#10;  - camera_rotation.c&#10;&#10;• srcs/calculations/vectors/&#10;  - vect_ops.c&#10;  - vec_utils.c" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#4CAF50;fontSize=11;fontColor=#4CAF50;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="510" width="280" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="vector-title" value="Vector Operations Used" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#2F5233;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="650" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="vec-add" value="vec_add()&#10;Vector addition&#10;pos += direction × speed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#D32F2F;fontSize=11;fontColor=#D32F2F;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="690" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vec-mul" value="vec_mul()&#10;Scalar multiplication&#10;direction × speed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;fontColor=#388E3C;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="690" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vec-cross" value="vec_cross()&#10;Cross product&#10;right = direction × up" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;fontSize=11;fontColor=#F57C00;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="690" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vec-normalize" value="vec_normalize()&#10;Unit vector&#10;Keep direction unit length" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontSize=11;fontColor=#01579B;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="690" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="math-constants" value="Mathematical Constants:&#10;&#10;Movement speed: 0.1 units&#10;Pan sensitivity: 0.01&#10;Rotation sensitivity: 0.002&#10;&#10;All vectors normalized to unit length" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontColor=#7B1FA2;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="710" width="180" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="coordinate-maintenance" value="Coordinate System Maintenance:&#10;&#10;Why recalculate 'up' vector?&#10;• After rotation, vectors may not be perpendicular&#10;• We need: direction ⊥ right ⊥ up&#10;&#10;Why normalize vectors?&#10;• Rotation changes vector lengths&#10;• Unit vectors ensure consistent behavior&#10;• Normalize: v = v / ||v||&#10;&#10;Cross Product Order Matters:&#10;• right = direction × up (right-hand rule)&#10;• new_up = right × new_direction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=10;fontColor=#1976D2;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="790" width="300" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" parent="1" source="forward-vec" target="forward-back" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="120" y="220" as="sourcePoint"/>
+                        <mxPoint x="130" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" parent="1" source="right-vec" target="left-right" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="440" y="220" as="sourcePoint"/>
+                        <mxPoint x="310" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" parent="1" source="up-vec" target="up-down" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="220" as="sourcePoint"/>
+                        <mxPoint x="490" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

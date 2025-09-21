@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:23:20 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:50:16 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 14:10:37 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,6 @@ void	init_performance_variables(t_app *app)
 	app->render_skip_frames = 2;
 	app->interaction_mode = false;
 	app->render_scale = 1;
+	app->scroll_activity = false;
+	app->shift_pressed = false;
 }

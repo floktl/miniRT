@@ -35,7 +35,6 @@ static int	mlx_functions(t_app *app)
 {
 	if (init_app(app) != 0)
 		return (printf("Error\nFailed to initialize application\n"), 1);
-	force_re_render_scene(app);
 	mlx_key_hook(app->mlx, key_hook, app);
 	mlx_mouse_hook(app->mlx, mouse_hook, app);
 	mlx_cursor_hook(app->mlx, cursor_hook, app);

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:47:59 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 11:32:32 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	handle_left_mouse_press(t_app *app)
 	if (!app->interaction_mode)
 	{
 		app->interaction_mode = true;
-		mark_needs_rerender(app);
+		app->needs_rerender = true;
 	}
 	mlx_get_mouse_pos(app->mlx, &app->last_mouse_x, &app->last_mouse_y);
 }
@@ -31,7 +31,7 @@ void	handle_left_mouse_release(t_app *app)
 	if (!app->right_mouse_dragging && app->interaction_mode)
 	{
 		app->interaction_mode = false;
-		mark_needs_rerender(app);
+		app->needs_rerender = true;
 	}
 }
 
@@ -42,7 +42,7 @@ void	handle_right_mouse_press(t_app *app)
 	if (!app->interaction_mode)
 	{
 		app->interaction_mode = true;
-		mark_needs_rerender(app);
+		app->needs_rerender = true;
 	}
 	mlx_get_mouse_pos(app->mlx, &app->last_mouse_x, &app->last_mouse_y);
 }
@@ -54,7 +54,7 @@ void	handle_right_mouse_release(t_app *app)
 	if (!app->left_mouse_dragging && app->interaction_mode)
 	{
 		app->interaction_mode = false;
-		mark_needs_rerender(app);
+		app->needs_rerender = true;
 	}
 }
 

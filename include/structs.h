@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:47:57 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 14:10:37 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ typedef struct s_vec3d
 	double	y;
 	double	z;
 }	t_vec3d;
+
+// Struct for 2D vectors
+// @param x: X-coordinate component
+// @param y: Y-coordinate component
+typedef struct s_vec2d
+{
+	double	x;
+	double	y;
+}	t_vec2d;
 
 // Struct for colors (RGB 0-255)
 // @param r: Red component (0-255)
@@ -123,6 +132,7 @@ typedef enum e_texture_type
 // @param shininess: Specular reflection shininess factor
 // @param texture_type: Type of texture applied
 // @param texture_scale: Scaling factor for texture
+// @param is_light_sphere: Flag indicating if this object is a light sphere (emits light)
 // @param next: Pointer to next object in linked list
 typedef struct s_object
 {
@@ -132,6 +142,7 @@ typedef struct s_object
 	double			shininess;		// Specular reflection shininess factor
 	t_texture_type	texture_type;	// Type of texture applied
 	double			texture_scale;	// Scaling factor for texture
+	bool			is_light_sphere;	// Flag indicating if this object is a light sphere
 	struct s_object	*next;			// Pointer to next object in linked list
 }	t_object;
 
@@ -171,15 +182,18 @@ typedef struct s_ambient
 
 // Main scene struct
 // @param camera: Camera configuration and position
+// @param debug_camera: Debug camera configuration and position (optional)
 // @param ambient: Ambient lighting settings
 // @param lights: Linked list of light sources
 // @param objects: Linked list of geometric objects
 typedef struct s_scene
 {
-	t_camera	camera;		// Camera configuration and position
-	t_ambient	ambient;	// Ambient lighting settings
-	t_light		*lights;	// Linked list of light sources
-	t_object	*objects;	// Linked list of geometric objects
+	t_camera	camera;			// Camera configuration and position
+	t_camera	debug_camera;	// Debug camera configuration and position (optional)
+	bool		has_debug_camera;	// Flag indicating if debug camera is present
+	t_ambient	ambient;		// Ambient lighting settings
+	t_light		*lights;		// Linked list of light sources
+	t_object	*objects;		// Linked list of geometric objects
 }	t_scene;
 
 // Main app struct
@@ -215,6 +229,9 @@ typedef struct s_app
 	double		accumulated_mouse_y;	// Accumulated mouse movement for smoothing
 	bool		interaction_mode;	// True when user is actively interacting
 	int			render_scale;		// Render scale factor (1 = full resolution, 2 = half, etc.)
+	uint32_t	sphere_color;		// Color for drawing spheres in debug mode
+	bool		scroll_activity;	// True when scroll wheel is being used
+	bool		shift_pressed;		// True when Shift key is currently pressed
 }	t_app;
 
 // Additional parsing utils

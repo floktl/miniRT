@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:45:06 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,12 @@ void	replace_tabs_with_spaces(char *line)
 			line[i] = ' ';
 		i++;
 	}
+}
+
+/* Checks if color is invalid (zero but not explicitly 0,0,0) */
+int	color_invalid(t_color c, const char *raw)
+{
+	if (c.r == 0 && c.g == 0 && c.b == 0 && ft_strncmp(raw, "0,0,0", 5) != 0)
+		return (1);
+	return (0);
 }

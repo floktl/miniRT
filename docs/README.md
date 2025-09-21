@@ -16,6 +16,9 @@ This folder contains visual documentation and diagrams for the miniRT ray tracin
 ### Mathematical Concepts
 - **vector_operations_explained.drawio** - Vector mathematics used throughout the ray tracer
 
+### Camera System
+- **camera_movement_calculations.drawio** - Complete camera movement system including coordinate system, movement types, rotations, and input handling
+
 ## How to View
 
 These files are created with [draw.io](https://app.diagrams.net/) and can be opened in:

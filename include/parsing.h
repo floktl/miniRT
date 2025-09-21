@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:46:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 12:24:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int			parse_ambient(char **tokens, t_scene *scene);
 // @return: 0 on success, 1 on error
 int			parse_camera(char **tokens, t_scene *scene);
 
+// @param tokens: Array of strings representing debug camera line tokens
+// @param scene: Scene struct to set debug camera data in
+// @return: 0 on success, 1 on error
+int			parse_debug_camera(char **tokens, t_scene *scene);
+
 // @param tokens: Array of strings representing light line tokens
 // @param scene: Scene struct to add light to
 // @return: 0 on success, 1 on error
@@ -54,10 +59,13 @@ int			parse_light(char **tokens, t_scene *scene);
 
 // parsing/scene/parse_scene_utils.c
 int			check_ambient_duplicate(t_scene *scene);
-int			check_camera_duplicate(t_scene *scene);
 int			validate_ambient_ratio(float ratio);
 int			validate_camera_fov(float fov);
 int			validate_light_brightness(float brightness);
+
+// parsing/scene/parse_scene_camera.c
+int			check_camera_duplicate(t_scene *scene);
+int			check_debug_camera_duplicate(t_scene *scene);
 
 // parsing/scene/parse_scene_utils2.c
 int			parse_error(const char *element, const char *message);
@@ -66,6 +74,8 @@ int			parse_ambient_ratio(char **tokens, int *idx, int token_count,
 				t_float_res *fr);
 int			set_ambient_data(t_scene *scene, t_float_res fr, t_color col);
 int			set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
+				t_float_res fr);
+int			set_debug_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 				t_float_res fr);
 
 // parsing/scene/parse_scene_utils3.c

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:07:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:27:11 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,27 @@ int	parse_camera(char **tokens, t_scene *scene)
 	if (parse_camera_fov(tokens, &idx, token_count, &fr))
 		return (1);
 	return (set_camera_data(scene, pr, dr, fr));
+}
+
+/* Parses debug camera configuration from tokens */
+int	parse_debug_camera(char **tokens, t_scene *scene)
+{
+	int				token_count;
+	int				idx;
+	t_vec3d_res		pr;
+	t_vec3d_res		dr;
+	t_float_res		fr;
+
+	if (check_debug_camera_duplicate(scene))
+		return (1);
+	count_and_init_tokens(tokens, &token_count, &idx);
+	if (parse_camera_position(tokens, &idx, token_count, &pr))
+		return (1);
+	if (parse_camera_direction(tokens, &idx, token_count, &dr))
+		return (1);
+	if (parse_camera_fov(tokens, &idx, token_count, &fr))
+		return (1);
+	return (set_debug_camera_data(scene, pr, dr, fr));
 }
 
 /* Parses light source configuration from tokens */

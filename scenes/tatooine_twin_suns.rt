@@ -1,0 +1,23 @@
+# Tatooine Twin Suns - Star Wars Scene (Simple Version)
+# The iconic scene where Luke Skywalker sees the twin suns of Tatooine
+# Minimal version with just the essential elements
+
+# Ambient lighting: Tatooine's harsh desert atmosphere
+A 0.3 255,200,150
+
+# Camera: Positioned like Luke's perspective looking at the twin suns
+C 0,0,-5 0,0,1 60
+
+# Twin Sun 1 - Tatoo I (Primary Sun)
+# Positioned to the left, slightly higher
+L -15,8,0 1.0 255,255,200
+sp -15,8,0 12 255,255,200
+
+# Twin Sun 2 - Tatoo II (Secondary Sun)
+# Positioned to the right, slightly lower
+L 15,5,0 1.0 255,255,180
+sp 15,5,0 10 255,255,180
+
+# Tatooine - Simple desert landscape
+# Large sand dune representing the planet surface
+sp 0,-8,-3 8 255,220,180
