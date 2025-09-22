@@ -7,7 +7,7 @@ A 0.2 255,255,255
 C 0,0,-10 0,0,1 70
 
 # Debug camera - positioned to the side looking at the scene
-DC 5,2,-5 -1,-0.5,1 70
+DC 5,2,-5 -5,-2,5 70
 
 # Light source - positioned right in front of camera for maximum visibility
 L 0,0,3 0.8 255,255,0

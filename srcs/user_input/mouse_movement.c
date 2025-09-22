@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 14:13:53 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:03:47 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	process_mouse_movement(t_app *app, double yaw_angle, double pitch_angle)
 	}
 	app->accumulated_mouse_x = 0.0;
 	app->accumulated_mouse_y = 0.0;
-	app->needs_rerender = true;
 }
 
 /* Updates accumulated mouse movement based on sensitivity */
@@ -94,7 +93,7 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 	app->scroll_activity = true;
 	if (app->shift_pressed)
 	{
-		amount = ydelta * 0.01; /* Different sensitivity for roll */
+		amount = ydelta * 0.01;
 		rotate_camera_roll(app, amount);
 	}
 	else
@@ -102,5 +101,4 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 		amount = ydelta * app->zoom_speed * 0.5;
 		zoom_camera_towards_mouse(app, amount);
 	}
-	app->needs_rerender = true;
 }

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 13:22:16 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 08:42:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_vec3d	calculate_pixel_world_pos(t_app *app, int x, int y)
 **   - right: Camera's right vector (X-axis)
 **   - up: Camera's up vector (Y-axis)
 **   - forward: Camera's forward direction (Z-axis)
-** Return: Ray with origin at camera position and direction pointing through pixel
+** Return: Ray with origin at camera pos. and dir. pointing through pixel
 */
 t_ray	get_ray(t_app *app, int x, int y)
 {

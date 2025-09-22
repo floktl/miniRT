@@ -6,14 +6,14 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 12:24:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:14:30 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-#include "structs.h"
+# include "parsing_structs.h"
 
 // parsing/parser.c
 // @param filename: Path to the .rt scene file to parse
@@ -75,8 +75,8 @@ int			parse_ambient_ratio(char **tokens, int *idx, int token_count,
 int			set_ambient_data(t_scene *scene, t_float_res fr, t_color col);
 int			set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 				t_float_res fr);
-int			set_debug_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
-				t_float_res fr);
+int			set_debug_camera_data(t_scene *scene, t_vec3d_res pr,
+				t_vec3d_res dr, t_float_res fr);
 
 // parsing/scene/parse_scene_utils3.c
 int			parse_ambient_color(char **tokens, int *idx, int token_count,

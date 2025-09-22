@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:40:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 08:56:01 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #define C_RESET   "\033[0m"
 #define C_CYAN    "\033[36m"
 #define C_YELLOW  "\033[33m"
+#define C_RED     "\033[31m"
 
 static void	print_color(const char *label, t_color c)
 {
@@ -48,11 +49,14 @@ static void	print_object_common(const t_object *obj)
 	printf("  texture_scale=%.6f\n", obj->texture_scale);
 }
 
-void	print_objects(const t_object *obj, int *index)
+void	print_objects(const t_object *obj)
 {
+	int	index;
+
+	index = 0;
 	while (obj)
 	{
-		printf(C_CYAN "Object[%d]: type=", (*index)++);
+		printf(C_CYAN "Object[%d]: type=", index++);
 		if (obj->type == SPHERE)
 			print_sphere_data(obj);
 		else if (obj->type == PLANE)
@@ -64,4 +68,6 @@ void	print_objects(const t_object *obj, int *index)
 		print_object_common(obj);
 		obj = obj->next;
 	}
+	if (index == 0)
+		printf(C_RED "(no objects)\n" C_RESET);
 }

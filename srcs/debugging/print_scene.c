@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:03:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 08:46:27 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	print_color(const char *label, t_color c)
 		label, c.r, c.g, c.b);
 }
 
-void	print_objects(const t_object *obj, int *index);
+void	print_objects(const t_object *obj);
 
 static void	print_lights(const t_light *light)
 {
@@ -52,14 +52,8 @@ static void	print_lights(const t_light *light)
 
 void	print_scene(const t_scene *scene)
 {
-	int	index;
-
-	index = 0;
 	if (!scene)
-	{
-		printf(C_RED "Scene: (null)\n" C_RESET);
 		return ;
-	}
 	printf(C_CYAN "\n=== SCENE ===\n\n" C_RESET);
 	printf(C_CYAN "Ambient:\n" C_RESET);
 	printf("  ratio=%.6f\n", scene->ambient.ratio);
@@ -68,11 +62,16 @@ void	print_scene(const t_scene *scene)
 	print_vec3d("  position=", scene->camera.position);
 	print_vec3d("  direction=", scene->camera.direction);
 	printf("  fov=%.6f\n", scene->camera.fov);
+	if (scene->has_debug_camera)
+	{
+		printf(C_CYAN "Debug Camera:\n" C_RESET);
+		print_vec3d("  position=", scene->debug_camera.position);
+		print_vec3d("  direction=", scene->debug_camera.direction);
+		printf("  fov=%.6f\n", scene->debug_camera.fov);
+	}
 	printf(C_CYAN "Lights:\n" C_RESET);
 	print_lights(scene->lights);
 	printf(C_CYAN "Objects:\n" C_RESET);
-	print_objects(scene->objects, &index);
-	if (index == 0)
-		printf(C_RED "(no objects)\n" C_RESET);
+	print_objects(scene->objects);
 	printf(C_CYAN "\n=============\n\n" C_RESET);
 }

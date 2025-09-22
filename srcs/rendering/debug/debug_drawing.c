@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 12:18:43 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 17:56:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_red_pixel(t_app *app, int x, int y)
 	if (x >= 0 && x < app->window_width
 		&& y >= 0 && y < app->window_height)
 	{
-		red_color = 0xDD0000FF;
+		red_color = 0xFF0000FF;
 		mlx_put_pixel(app->img, x, y, red_color);
 	}
 }

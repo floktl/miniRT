@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 12:18:43 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:20:21 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,25 @@ static void	draw_ray_line(t_app *app, t_ray debug_ray, double max_distance)
 	}
 }
 
+static t_ray	get_debug_camera_ray(t_app *app)
+{
+	t_ray	ray;
+	t_vec3d	right;
+	t_vec3d	up;
+	t_vec3d	forward;
+
+	right = vec_cross(app->scene.debug_camera.direction,
+			app->scene.debug_camera.up);
+	right = vec_normalize(right);
+	up = app->scene.debug_camera.up;
+	up = vec_normalize(up);
+	forward = app->scene.debug_camera.direction;
+	ray.origin = app->scene.debug_camera.position;
+	ray.direction = forward;
+	ray.direction = vec_normalize(ray.direction);
+	return (ray);
+}
+
 void	render_debug_camera_ray(t_app *app)
 {
 	t_ray		debug_ray;
@@ -73,8 +92,7 @@ void	render_debug_camera_ray(t_app *app)
 	if (!app->scene.has_debug_camera)
 		return ;
 	draw_debug_camera_sphere(app, app->scene.debug_camera.position);
-	debug_ray.origin = app->scene.debug_camera.position;
-	debug_ray.direction = vec_normalize(app->scene.debug_camera.direction);
+	debug_ray = get_debug_camera_ray(app);
 	intersection_dist = find_closest_intersection(debug_ray, &app->scene,
 			&hit_obj);
 	if (intersection_dist > 0.0 && hit_obj)

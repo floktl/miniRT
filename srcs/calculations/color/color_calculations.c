@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 11:15:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 14:19:09 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/21 17:56:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ uint32_t	calculate_intersection_color(t_ray ray,
 	pixel_color = (final_color.r << 24)
 		| (final_color.g << 16)
 		| (final_color.b << 8)
-		| 0xDD;
+		| 0xFF;
 	return (pixel_color);
 }
 
@@ -50,6 +50,6 @@ uint32_t	calculate_background_color(t_scene *scene)
 	pixel_color = (scene->ambient.color.r << 24)
 		| (scene->ambient.color.g << 16)
 		| (scene->ambient.color.b << 8)
-		| 0xDD;
+		| 0xFF;
 	return (pixel_color);
 }
