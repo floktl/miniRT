@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 13:03:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 13:14:03 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:47:08 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_vec2d	calculate_normalized_coords(t_vec3d world_point, t_app *app)
 	right = vec_cross(app->scene.camera.direction, app->scene.camera.up);
 	right = vec_normalize(right);
 	relative = vec_sub(world_point, app->scene.camera.position);
-	aspect_ratio = (double)app->window_width / (double)app->window_height;
+	aspect_ratio = (double)app->window.width / (double)app->window.height;
 	fov_scale = tan(app->scene.camera.fov * M_PI / 360.0);
 	normalized.x = vec_dot(relative, right) / (aspect_ratio * fov_scale);
 	normalized.y = vec_dot(relative, app->scene.camera.up) / fov_scale;
@@ -49,8 +49,8 @@ t_vec3d	normalized_to_screen_pixels(t_vec2d normalized,
 	t_vec3d	relative;
 
 	relative = vec_sub(world_point, app->scene.camera.position);
-	screen_pos.x = (normalized.x + 1.0) * app->window_width / 2.0;
-	screen_pos.y = (1.0 - normalized.y) * app->window_height / 2.0;
+	screen_pos.x = (normalized.x + 1.0) * app->window.width / 2.0;
+	screen_pos.y = (1.0 - normalized.y) * app->window.height / 2.0;
 	screen_pos.z = vec_dot(relative, app->scene.camera.direction);
 	return (screen_pos);
 }
@@ -75,10 +75,10 @@ t_vec3d	screen_to_world_point(int screen_x, int screen_y, double depth,
 
 	right = vec_cross(app->scene.camera.direction, app->scene.camera.up);
 	right = vec_normalize(right);
-	aspect_ratio = (double)app->window_width / (double)app->window_height;
+	aspect_ratio = (double)app->window.width / (double)app->window.height;
 	fov_scale = tan(app->scene.camera.fov * M_PI / 360.0);
-	normalized.x = (2.0 * screen_x / app->window_width) - 1.0;
-	normalized.y = 1.0 - (2.0 * screen_y / app->window_height);
+	normalized.x = (2.0 * screen_x / app->window.width) - 1.0;
+	normalized.y = 1.0 - (2.0 * screen_y / app->window.height);
 	world_point = vec_add(app->scene.camera.position,
 			vec_mul(app->scene.camera.direction, depth));
 	world_point = vec_add(world_point,

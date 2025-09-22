@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:20:21 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:50:08 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static void	draw_ray_line(t_app *app, t_ray debug_ray, double max_distance)
 		if (screen_pos.z > 0)
 		{
 			if ((int)screen_pos.x >= 0
-				&& (int)screen_pos.x < app->window_width
+				&& (int)screen_pos.x < app->window.width
 				&& (int)screen_pos.y >= 0
-				&& (int)screen_pos.y < app->window_height)
+				&& (int)screen_pos.y < app->window.height)
 			{
 				draw_thick_red_line(app, (int)screen_pos.x,
 					(int)screen_pos.y);

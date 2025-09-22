@@ -14,26 +14,7 @@
 # define APP_STRUCTS_H
 
 # include "MLX42/MLX42.h"
-
-// Struct for 3D vectors
-// @param x: X-coordinate component
-// @param y: Y-coordinate component
-// @param z: Z-coordinate component
-typedef struct s_vec3d
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vec3d;
-
-// Struct for 2D vectors
-// @param x: X-coordinate component
-// @param y: Y-coordinate component
-typedef struct s_vec2d
-{
-	double	x;
-	double	y;
-}	t_vec2d;
+# include "math_structs.h"
 
 // Struct for colors (RGB 0-255)
 // @param r: Red component (0-255)
@@ -45,15 +26,6 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
-
-// Struct for rays
-// @param origin: Starting point of the ray
-// @param direction: Direction vector of the ray (should be normalized)
-typedef struct s_ray
-{
-	t_vec3d	origin;
-	t_vec3d	direction;
-}	t_ray;
 
 // Object types enumeration
 // @param SPHERE: Sphere primitive
@@ -196,42 +168,107 @@ typedef struct s_scene
 	t_object	*objects;	// Linked list of geometric objects
 }	t_scene;
 
-// Main app struct
+// Window and display state
 // @param mlx: MLX42 library instance
 // @param img: MLX42 image for rendering
-// @param scene: Complete scene data
-// @param window_width: Window width in pixels
+// @param width: Window width in pixels
 // @param window_height: Window height in pixels
-typedef struct s_app
+typedef struct s_window_state
 {
 	mlx_t		*mlx;		// MLX42 library instance
 	mlx_image_t	*img;		// MLX42 image for rendering
-	t_scene		scene;		// Complete scene data
-	int			window_width;	// Window width in pixels
-	int			window_height;	// Window height in pixels
-	t_vec3d		camera_original_pos;	// Original camera position
-	t_vec3d		camera_original_dir;	// Original camera direction
+	int			width;	// Window width in pixels
+	int			height;	// Window height in pixels
+}	t_window_state;
+
+// Camera movement state
+// @param original_pos: Original camera position
+// @param original_dir: Original camera direction
+// @param move_speed: Camera movement speed
+typedef struct s_camera_state
+{
+	t_vec3d		original_pos;	// Original camera position
+	t_vec3d		original_dir;	// Original camera direction
 	double		move_speed;	// Camera movement speed
-	bool		left_mouse_dragging;	// Whether mouse is being dragged
-	bool		right_mouse_dragging;	// Whether right mouse being dragged
-	int			last_mouse_x;	// Last mouse X position
-	int			last_mouse_y;	// Last mouse Y position
-	double		left_mouse_sensitivity;	// sensitivity left mouse (panning)
-	double		right_mouse_sensitivity;	// sensitivity right mouse (rot.)
-	double		zoom_factor;	// Current zoom factor
-	double		zoom_speed;	// Zoom speed multiplier
+}	t_camera_state;
+
+// Mouse input state
+// @param left_dragging: Whether left mouse is being dragged
+// @param right_dragging: Whether right mouse is being dragged
+// @param last_x: Last mouse X position
+// @param last_y: Last mouse Y position
+// @param left_sensitivity: Mouse sensitivity for left mouse (panning)
+// @param right_sensitivity: Mouse sensitivity for right mouse (rotation)
+// @param accumulated_x: Accumulated mouse movement for smoothing
+// @param accumulated_y: Accumulated mouse movement for smoothing
+typedef struct s_mouse_state
+{
+	bool		left_dragging;	// Whether left mouse is being dragged
+	bool		right_dragging;	// Whether right mouse is being dragged
+	int			last_x;		// Last mouse X position
+	int			last_y;		// Last mouse Y position
+	double		left_sensitivity;	// Mouse sensitivity for left mouse
+	double		right_sensitivity;	// Mouse sensitivity for right mouse
+	double		accumulated_x;	// Accumulated mouse movement for smoothing
+	double		accumulated_y;	// Accumulated mouse movement for smoothing
+}	t_mouse_state;
+
+// Zoom state
+// @param factor: Current zoom factor
+// @param speed: Zoom speed multiplier
+// @param min_zoom: Minimum zoom level
+// @param max_zoom: Maximum zoom level
+typedef struct s_zoom_state
+{
+	double		factor;		// Current zoom factor
+	double		speed;		// Zoom speed multiplier
 	double		min_zoom;	// Minimum zoom level
 	double		max_zoom;	// Maximum zoom level
+}	t_zoom_state;
+
+// Rendering state
+// @param needs_rerender: Flag indicating scene needs re-rendering
+// @param frame_counter: Frame counter for simple frame limiting
+// @param render_skip_frames: Skip frames during interaction
+// @param render_scale: Render scale factor (1 = full resolution, 2 = half)
+// @param sphere_color: Color for drawing spheres in debug mode
+typedef struct s_render_state
+{
 	bool		needs_rerender;	// Flag indicating scene needs re-rendering
 	int			frame_counter;	// Frame counter for simple frame limiting
 	int			render_skip_frames;	// Skip frames during interaction
-	double		accumulated_mouse_x;	// mouse movement for smoothing
-	double		accumulated_mouse_y;	// mouse movement for smoothing
-	bool		interaction_mode;	// True when user is actively interacting
 	int			render_scale;	// (1 = full resolution, 2 = half, etc.)
 	uint32_t	sphere_color;	// Color for drawing spheres in debug mode
+}	t_render_state;
+
+// Input state
+// @param interaction_mode: True when user is actively interacting
+// @param scroll_activity: True when scroll wheel is being used
+// @param shift_pressed: True when Shift key is currently pressed
+typedef struct s_input_state
+{
+	bool		interaction_mode;	// True when user is actively interacting
 	bool		scroll_activity;	// True when scroll wheel is being used
-	bool		shift_pressed;	// True when Shift key is currently pressed
+	bool		shift_pressed;		// True when Shift key is currently pressed
+}	t_input_state;
+
+// Main app struct
+// @param window: Window and display state
+// @param scene: Complete scene data
+// @param camera: Camera movement state
+// @param mouse: Mouse input state
+// @param zoom: Zoom state
+// @param render: Rendering state
+// @param input: Input state
+typedef struct s_app
+{
+	t_window_state	window;		// Window and display state
+	t_scene			scene;		// Complete scene data
+	t_camera_state	camera;		// Camera movement state
+	t_mouse_state	mouse;		// Mouse input state
+	t_zoom_state	zoom;		// Zoom state
+	t_render_state	render;		// Rendering state
+	t_input_state	input;		// Input state
 }	t_app;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 13:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:03:09 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:30:21 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_vec3d	calculate_mouse_zoom_direction(t_app *app, int mouse_x,
 	mouse_world_point = screen_to_world_point(mouse_x, mouse_y, 1.0, app);
 	zoom_direction = vec_normalize(vec_sub(mouse_world_point,
 				app->scene.camera.position));
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 	return (zoom_direction);
 }
 
@@ -45,9 +45,9 @@ void	zoom_camera_towards_mouse(t_app *app, double zoom_amount)
 	int		mouse_x;
 	int		mouse_y;
 
-	mlx_get_mouse_pos(app->mlx, &mouse_x, &mouse_y);
+	mlx_get_mouse_pos(app->window.mlx, &mouse_x, &mouse_y);
 	zoom_direction = calculate_mouse_zoom_direction(app, mouse_x, mouse_y);
 	app->scene.camera.position = vec_add(app->scene.camera.position,
 			vec_mul(zoom_direction, zoom_amount));
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:02:49 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:29:38 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rotate_camera_horizontal(t_app *app, double angle)
 	app->scene.camera.direction = vec_normalize(new_direction);
 	new_up = vec_cross(right, app->scene.camera.direction);
 	app->scene.camera.up = vec_normalize(new_up);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }
 
 /* Rotates camera vertically (pitch) around the right vector */
@@ -55,7 +55,7 @@ void	rotate_camera_vertical(t_app *app, double angle)
 	app->scene.camera.direction = vec_normalize(new_direction);
 	new_up = vec_cross(right, app->scene.camera.direction);
 	app->scene.camera.up = vec_normalize(new_up);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }
 
 /* Rotates camera around its forward axis (roll) */
@@ -75,5 +75,5 @@ void	rotate_camera_roll(t_app *app, double angle)
 	new_up.y = up.y * cos(angle) + right.y * sin(angle);
 	new_up.z = up.z * cos(angle) + right.z * sin(angle);
 	app->scene.camera.up = vec_normalize(new_up);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }

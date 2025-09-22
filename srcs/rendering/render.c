@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:57:46 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:38:10 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,27 @@
 /* Progressive render that switches between full & low resolution */
 void	progressive_re_render_scene(t_app *app)
 {
-	if (!app->needs_rerender)
+	if (!app->render.needs_rerender)
 		return ;
-	if (app->interaction_mode
-		&& (app->frame_counter % app->render_skip_frames != 0))
+	if (app->input.interaction_mode
+		&& (app->render.frame_counter
+			% app->render.render_skip_frames != 0))
 	{
-		app->frame_counter++;
+		app->render.frame_counter++;
 		return ;
 	}
-	if (app->interaction_mode)
+	if (app->input.interaction_mode)
 	{
-		app->render_scale = 2;
+		app->render.render_scale = 2;
 		fill_window_with_raytracing_low_res(app, render_pixel);
 		update_input_state(app);
 	}
 	else
 	{
-		app->render_scale = 1;
+		app->render.render_scale = 1;
 		fill_window_with_raytracing(app, render_pixel);
 	}
 	render_debug_camera_ray(app);
-	app->needs_rerender = false;
-	app->frame_counter++;
+	app->render.needs_rerender = false;
+	app->render.frame_counter++;
 }

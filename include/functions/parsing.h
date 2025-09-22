@@ -6,14 +6,14 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 10:12:51 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 10:09:52 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "structs/parsing_structs.h"
+# include "../structs/parsing_structs.h"
 
 // parsing/parser.c
 // @param filename: Path to the .rt scene file to parse

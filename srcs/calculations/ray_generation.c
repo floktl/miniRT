@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:42:23 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:33:40 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static t_vec3d	calculate_pixel_world_pos(t_app *app, int x, int y)
 	double	aspect_ratio;
 	double	fov_scale;
 
-	aspect_ratio = (double)app->window_width / (double)app->window_height;
+	aspect_ratio = (double)app->window.width / (double)app->window.height;
 	fov_scale = tan(app->scene.camera.fov * M_PI / 360.0);
-	pixel_world.x = (2.0 * (x + 0.5) / app->window_width - 1.0)
+	pixel_world.x = (2.0 * (x + 0.5) / app->window.width - 1.0)
 		* aspect_ratio * fov_scale;
-	pixel_world.y = (1.0 - 2.0 * (y + 0.5) / app->window_height) * fov_scale;
+	pixel_world.y = (1.0 - 2.0 * (y + 0.5) / app->window.height) * fov_scale;
 	pixel_world.z = 0.0;
 	return (pixel_world);
 }

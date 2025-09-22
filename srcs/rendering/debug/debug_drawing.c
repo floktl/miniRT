@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 17:56:23 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:51:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	draw_red_pixel(t_app *app, int x, int y)
 {
 	uint32_t	red_color;
 
-	if (x >= 0 && x < app->window_width
-		&& y >= 0 && y < app->window_height)
+	if (x >= 0 && x < app->window.width
+		&& y >= 0 && y < app->window.height)
 	{
 		red_color = 0xFF0000FF;
-		mlx_put_pixel(app->img, x, y, red_color);
+		mlx_put_pixel(app->window.img, x, y, red_color);
 	}
 }
 
@@ -48,10 +48,11 @@ static void	draw_sphere_pixel(t_app *app, t_vec3d screen_pos, int x, int y)
 
 	screen_x = (int)screen_pos.x + x;
 	screen_y = (int)screen_pos.y + y;
-	if (screen_x >= 0 && screen_x < app->window_width
-		&& screen_y >= 0 && screen_y < app->window_height)
+	if (screen_x >= 0 && screen_x < app->window.width
+		&& screen_y >= 0 && screen_y < app->window.height)
 	{
-		mlx_put_pixel(app->img, screen_x, screen_y, app->sphere_color);
+		mlx_put_pixel(app->window.img, screen_x, screen_y,
+			app->render.sphere_color);
 	}
 }
 
@@ -65,7 +66,7 @@ static void	draw_colored_sphere(t_app *app, t_vec3d world_pos, t_color color,
 	screen_pos = project_world_to_screen(world_pos, app);
 	if (screen_pos.z <= 0)
 		return ;
-	app->sphere_color = (color.r << 16) | (color.g << 8) | color.b;
+	app->render.sphere_color = (color.r << 16) | (color.g << 8) | color.b;
 	y = -radius;
 	while (y <= radius)
 	{

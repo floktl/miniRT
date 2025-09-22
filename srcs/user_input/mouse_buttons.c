@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/21 11:32:32 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:46:29 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,46 @@
 /* Handles left mouse button press */
 void	handle_left_mouse_press(t_app *app)
 {
-	app->left_mouse_dragging = true;
-	if (!app->interaction_mode)
+	app->mouse.left_dragging = true;
+	if (!app->input.interaction_mode)
 	{
-		app->interaction_mode = true;
-		app->needs_rerender = true;
+		app->input.interaction_mode = true;
+		app->render.needs_rerender = true;
 	}
-	mlx_get_mouse_pos(app->mlx, &app->last_mouse_x, &app->last_mouse_y);
+	mlx_get_mouse_pos(app->window.mlx, &app->mouse.last_x, &app->mouse.last_y);
 }
 
 /* Handles left mouse button release */
 void	handle_left_mouse_release(t_app *app)
 {
-	app->left_mouse_dragging = false;
-	if (!app->right_mouse_dragging && app->interaction_mode)
+	app->mouse.left_dragging = false;
+	if (!app->mouse.right_dragging && app->input.interaction_mode)
 	{
-		app->interaction_mode = false;
-		app->needs_rerender = true;
+		app->input.interaction_mode = false;
+		app->render.needs_rerender = true;
 	}
 }
 
 /* Handles right mouse button press */
 void	handle_right_mouse_press(t_app *app)
 {
-	app->right_mouse_dragging = true;
-	if (!app->interaction_mode)
+	app->mouse.right_dragging = true;
+	if (!app->input.interaction_mode)
 	{
-		app->interaction_mode = true;
-		app->needs_rerender = true;
+		app->input.interaction_mode = true;
+		app->render.needs_rerender = true;
 	}
-	mlx_get_mouse_pos(app->mlx, &app->last_mouse_x, &app->last_mouse_y);
+	mlx_get_mouse_pos(app->window.mlx, &app->mouse.last_x, &app->mouse.last_y);
 }
 
 /* Handles right mouse button release */
 void	handle_right_mouse_release(t_app *app)
 {
-	app->right_mouse_dragging = false;
-	if (!app->left_mouse_dragging && app->interaction_mode)
+	app->mouse.right_dragging = false;
+	if (!app->mouse.left_dragging && app->input.interaction_mode)
 	{
-		app->interaction_mode = false;
-		app->needs_rerender = true;
+		app->input.interaction_mode = false;
+		app->render.needs_rerender = true;
 	}
 }
 

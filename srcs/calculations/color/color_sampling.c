@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 08:55:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:55:13 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:33:17 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ uint32_t	get_supersampled_color(t_app *app,
 	uint32_t	color4;
 
 	color1 = pixel_calculator(app, x, y);
-	if (x + 1 < app->window_width && y + 1 < app->window_height)
+	if (x + 1 < app->window.width && y + 1 < app->window.height)
 	{
 		color2 = pixel_calculator(app, x + 1, y);
 		color3 = pixel_calculator(app, x, y + 1);

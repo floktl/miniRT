@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:02:39 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:29:26 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	move_camera_pan(t_app *app, double x_offset, double y_offset)
 	up = app->scene.camera.up;
 	move_vec = vec_add(vec_mul(right, x_offset), vec_mul(up, -y_offset));
 	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }

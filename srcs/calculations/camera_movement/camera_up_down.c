@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:00:04 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:30:00 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	move_camera_up(t_app *app)
 {
 	t_vec3d	move_vec;
 
-	move_vec = (t_vec3d){0, app->move_speed, 0};
+	move_vec = (t_vec3d){0, app->camera.move_speed, 0};
 	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }
 
 /* Moves camera down (Y-axis) */
@@ -27,7 +27,7 @@ void	move_camera_down(t_app *app)
 {
 	t_vec3d	move_vec;
 
-	move_vec = (t_vec3d){0, -app->move_speed, 0};
+	move_vec = (t_vec3d){0, -app->camera.move_speed, 0};
 	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:02:34 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:29:19 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	move_camera_left(t_app *app)
 
 	right_vector = vec_cross(app->scene.camera.direction, (t_vec3d){0, 1, 0});
 	right_vector = vec_normalize(right_vector);
-	move_vec = vec_mul(right_vector, -app->move_speed);
+	move_vec = vec_mul(right_vector, -app->camera.move_speed);
 	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }
 
 /* Moves camera right (perpendicular to camera direction) */
@@ -33,7 +33,7 @@ void	move_camera_right(t_app *app)
 
 	right_vector = vec_cross(app->scene.camera.direction, (t_vec3d){0, 1, 0});
 	right_vector = vec_normalize(right_vector);
-	move_vec = vec_mul(right_vector, app->move_speed);
+	move_vec = vec_mul(right_vector, app->camera.move_speed);
 	app->scene.camera.position = vec_add(app->scene.camera.position, move_vec);
-	app->needs_rerender = true;
+	app->render.needs_rerender = true;
 }

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 08:45:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:53:00 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:48:50 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	fill_pixel_block(t_app *app, int x, int y, uint32_t pixel_color)
 	int	dy;
 
 	dy = 0;
-	while (dy < app->render_scale && y + dy < app->window_height)
+	while (dy < app->render.render_scale && y + dy < app->window.height)
 	{
 		dx = 0;
-		while (dx < app->render_scale && x + dx < app->window_width)
+		while (dx < app->render.render_scale && x + dx < app->window.width)
 		{
-			mlx_put_pixel(app->img, x + dx, y + dy, pixel_color);
+			mlx_put_pixel(app->window.img, x + dx, y + dy, pixel_color);
 			dx++;
 		}
 		dy++;
@@ -52,15 +52,15 @@ void	fill_window_with_raytracing_low_res(t_app *app,
 	uint32_t	pixel_color;
 
 	y = 0;
-	while (y < app->window_height)
+	while (y < app->window.height)
 	{
 		x = 0;
-		while (x < app->window_width)
+		while (x < app->window.width)
 		{
 			pixel_color = pixel_calculator(app, x, y);
 			fill_pixel_block(app, x, y, pixel_color);
-			x += app->render_scale;
+			x += app->render.render_scale;
 		}
-		y += app->render_scale;
+		y += app->render.render_scale;
 	}
 }

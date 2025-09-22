@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:55:14 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:47:33 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void	fill_entire_window(t_app *app, uint32_t color)
 	int	y;
 
 	y = 0;
-	while (y < app->window_height)
+	while (y < app->window.height)
 	{
 		x = 0;
-		while (x < app->window_width)
+		while (x < app->window.width)
 		{
-			mlx_put_pixel(app->img, x, y, color);
+			mlx_put_pixel(app->window.img, x, y, color);
 			x++;
 		}
 		y++;
@@ -87,13 +87,13 @@ void	fill_window_with_raytracing(t_app *app,
 	uint32_t	pixel_color;
 
 	y = 0;
-	while (y < app->window_height)
+	while (y < app->window.height)
 	{
 		x = 0;
-		while (x < app->window_width)
+		while (x < app->window.width)
 		{
 			pixel_color = get_supersampled_color(app, pixel_calculator, x, y);
-			mlx_put_pixel(app->img, x, y, pixel_color);
+			mlx_put_pixel(app->window.img, x, y, pixel_color);
 			x++;
 		}
 		y++;

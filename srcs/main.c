@@ -35,13 +35,13 @@ static int	mlx_functions(t_app *app)
 {
 	if (init_app(app) != 0)
 		return (printf("Error\nFailed to initialize application\n"), 1);
-	mlx_key_hook(app->mlx, key_hook, app);
-	mlx_mouse_hook(app->mlx, mouse_hook, app);
-	mlx_cursor_hook(app->mlx, cursor_hook, app);
-	mlx_scroll_hook(app->mlx, scroll_hook, app);
-	mlx_loop_hook(app->mlx, render_loop, app);
-	mlx_loop(app->mlx);
-	mlx_terminate(app->mlx);
+	mlx_key_hook(app->window.mlx, key_hook, app);
+	mlx_mouse_hook(app->window.mlx, mouse_hook, app);
+	mlx_cursor_hook(app->window.mlx, cursor_hook, app);
+	mlx_scroll_hook(app->window.mlx, scroll_hook, app);
+	mlx_loop_hook(app->window.mlx, render_loop, app);
+	mlx_loop(app->window.mlx);
+	mlx_terminate(app->window.mlx);
 	return (0);
 }
 
