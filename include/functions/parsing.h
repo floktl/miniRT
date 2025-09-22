@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 10:09:52 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 10:14:47 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int			setup_light(t_light *light, t_scene *scene);
 int			parse_light_internal(char **tokens, t_scene *scene);
 
 // parsing/primitives/parse_sphere.c
-int			validate_sphere_diameter(float diameter);
 int			parse_sphere_center(t_object *obj, char **tokens, int *idx,
 				int token_count);
 int			parse_sphere_diameter(t_object *obj, char **tokens, int *idx,

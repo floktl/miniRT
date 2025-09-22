@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 11:18:31 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/22 10:22:42 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,9 @@ t_color	apply_light_color(t_color texture_color, t_light *light,
 {
 	t_color	result;
 
-	result.r = (int)(texture_color.r * light->color.r * light_intensity
-			/ 255.0);
-	result.g = (int)(texture_color.g * light->color.g * light_intensity
-			/ 255.0);
-	result.b = (int)(texture_color.b * light->color.b * light_intensity
-			/ 255.0);
+	result.r = (int)(texture_color.r * light->color.r * light_intensity / 255);
+	result.g = (int)(texture_color.g * light->color.g * light_intensity / 255);
+	result.b = (int)(texture_color.b * light->color.b * light_intensity / 255);
 	result.r = fmin(255, fmax(0, result.r));
 	result.g = fmin(255, fmax(0, result.g));
 	result.b = fmin(255, fmax(0, result.b));
