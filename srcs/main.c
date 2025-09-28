@@ -39,7 +39,8 @@ static int	mlx_functions(t_app *app)
 	mlx_mouse_hook(app->window.mlx, mouse_hook, app);
 	mlx_cursor_hook(app->window.mlx, cursor_hook, app);
 	mlx_scroll_hook(app->window.mlx, scroll_hook, app);
-	mlx_loop_hook(app->window.mlx, render_loop, app);
+	if (!mlx_loop_hook(app->window.mlx, render_loop, app))
+		return (printf("Error\nFailed to initialize loop hook\n"), 1);
 	mlx_loop(app->window.mlx);
 	mlx_terminate(app->window.mlx);
 	return (0);
