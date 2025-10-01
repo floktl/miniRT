@@ -32,12 +32,14 @@ typedef struct s_color
 // @param PLANE: Plane primitive
 // @param CYLINDER: Cylinder primitive
 // @param CONE: Cone primitive
+// @param LIGHT: Light source sphere
 typedef enum e_obj_type
 {
 	SPHERE,
 	PLANE,
 	CYLINDER,
-	CONE
+	CONE,
+	LIGHT
 }	t_obj_type;
 
 // Union for object-specific data
@@ -249,7 +251,7 @@ typedef struct s_input_state
 {
 	bool		interaction_mode;	// True when user is actively interacting
 	bool		scroll_activity;	// True when scroll wheel is being used
-	bool		shift_pressed;		// True when Shift key is currently pressed
+	bool		shift_pressed;		// True when Shift key currently pressed
 }	t_input_state;
 
 // Main app struct
