@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Florian Keitel <fl.keitelgmail.com>        +#+  +:+       +#+         #
+#    By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 09:46:50 by fkeitel           #+#    #+#              #
-#    Updated: 2025/08/25 10:44:20 by Florian Kei      ###   ########.fr        #
+#    Updated: 2025/09/28 20:12:34 by mezhang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJECTS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(FUNCTIONS)) $(patsubst %.c,$(OBJ_DIR)/
 
 CC = cc -g
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I. -fPIC
 
 all: $(NAME)
 
