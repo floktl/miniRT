@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tokens_float.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:37:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:22:04 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/01 15:21:35 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	process_float_token(char **tokens, int *local_idx, char **str)
 	char	*tmp;
 
 	tmp = ft_strdup(tokens[*local_idx]);
+	if (!tmp)
+		return (0);
 	free(*str);
 	*str = tmp;
 	(*local_idx)++;
@@ -62,18 +64,11 @@ t_float_res	parse_float_tokens(char **tokens, int *idx, int token_count)
 	str = ft_strdup("");
 	local_idx = *idx;
 	if (local_idx >= token_count)
-	{
-		free(str);
-		return (res);
-	}
+		return (free(str), res);
 	process_float_token(tokens, &local_idx, &str);
 	f = ft_atof(str);
 	if (!check_float_validity(f))
-	{
-		free(str);
-		return (res);
-	}
+		return (free(str), res);
 	res = set_float_res(f, local_idx, idx);
-	free(str);
-	return (res);
+	return (free(str), res);
 }
