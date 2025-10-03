@@ -6,7 +6,7 @@
 /*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:38:17 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 15:14:55 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/03 14:09:35 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ t_vec3d	parse_vec3d(char *str)
 {
 	char	**parts;
 	t_vec3d	vec;
-	int		i;
 
 	parts = ft_split(str, ',');
-	i = 0;
 	if (!parts || !parts[0] || !parts[1] || !parts[2] || parts[3]
 		|| ft_strlen(parts[0]) == 0 || ft_strlen(parts[1]) == 0
 		|| ft_strlen(parts[2]) == 0)

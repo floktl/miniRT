@@ -6,7 +6,7 @@
 /*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/03 14:08:54 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/03 17:50:00 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,24 @@ static bool	is_intersection_within_cone(t_ray ray, t_object *obj, double t)
 	return (true);
 }
 
-static double	find_cone_intersection(t_ray ray, t_object *obj, double disc,
-		double cos2_theta)
+static bool	is_point_on_cone_cap(t_vec3d p, t_object *obj)
+{
+	t_vec3d	cap_center;
+	t_vec3d	v;
+	double	dist;
+
+	cap_center = vec_add(obj->data.s_cone.vertex, vec_mul(obj->data.s_cone.axis,
+				obj->data.s_cone.height));
+	v = vec_sub(p, cap_center);
+	dist = vec_length(vec_sub(v, vec_mul(obj->data.s_cone.axis, vec_dot(v,
+						obj->data.s_cone.axis))));
+	if (dist <= obj->data.s_cone.radius)
+		return (true);
+	return (false);
+}
+
+static double	find_cone_side_intersection(t_ray ray, t_object *obj,
+		double disc, double cos2_theta)
 {
 	double	t[2];
 	double	dot_dir_axis;
@@ -72,20 +88,49 @@ static double	find_cone_intersection(t_ray ray, t_object *obj, double disc,
 	return (-1.0);
 }
 
+static double	find_cone_cap_intersection(t_ray ray, t_object *obj)
+{
+	t_vec3d	cap_center;
+	double	denom;
+	double	t_cap;
+	t_vec3d	p;
+
+	cap_center = vec_add(obj->data.s_cone.vertex, vec_mul(obj->data.s_cone.axis,
+				obj->data.s_cone.height));
+	denom = vec_dot(ray.direction, obj->data.s_cone.axis);
+	if (fabs(denom) < 1e-6)
+		return (-1.0);
+	t_cap = vec_dot(vec_sub(cap_center, ray.origin), obj->data.s_cone.axis)
+		/ denom;
+	if (t_cap < 0.0)
+		return (-1.0);
+	p = vec_add(ray.origin, vec_mul(ray.direction, t_cap));
+	if (is_point_on_cone_cap(p, obj))
+		return (t_cap);
+	return (-1.0);
+}
+
 double	intersect_cone(t_ray ray, t_object *obj)
 {
 	t_vec3d	ov;
-	// double	dot_ov_dir;
 	double	cos2_theta;
 	double	disc;
+	double	t_side;
+	double	t_cap;
 
 	ov = vec_sub(ray.origin, obj->data.s_cone.vertex);
-	// dot_ov_dir = vec_dot(ov, ray.direction);
 	cos2_theta = (obj->data.s_cone.height * obj->data.s_cone.height)
 		/ (obj->data.s_cone.radius * obj->data.s_cone.radius
 			+ obj->data.s_cone.height * obj->data.s_cone.height);
 	disc = calculate_quadratic_terms(ray.direction, ov, obj, cos2_theta);
 	if (disc < 0.0)
-		return (-1.0);
-	return (find_cone_intersection(ray, obj, disc, cos2_theta));
+		t_side = -1.0;
+	else
+		t_side = find_cone_side_intersection(ray, obj, disc, cos2_theta);
+	t_cap = find_cone_cap_intersection(ray, obj);
+	if (t_side > 0.0 && (t_cap < 0.0 || t_side < t_cap))
+		return (t_side);
+	if (t_cap > 0.0)
+		return (t_cap);
+	return (-1.0);
 }
