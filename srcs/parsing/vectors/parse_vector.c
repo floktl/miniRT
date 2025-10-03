@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_vector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:38:17 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/01 15:14:55 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,13 @@ t_vec3d	parse_vec3d(char *str)
 		|| ft_strlen(parts[0]) == 0 || ft_strlen(parts[1]) == 0
 		|| ft_strlen(parts[2]) == 0)
 	{
-		while (parts && parts[i])
-			free(parts[i++]);
-		free(parts);
+		free_tokens(parts);
 		return ((t_vec3d){0, 0, 0});
 	}
 	vec.x = ft_atof(parts[0]);
 	vec.y = ft_atof(parts[1]);
 	vec.z = ft_atof(parts[2]);
-	while (parts[i])
-		free(parts[i++]);
-	free(parts);
+	free_tokens(parts);
 	return (vec);
 }
 
