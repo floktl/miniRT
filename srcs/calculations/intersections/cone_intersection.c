@@ -6,9 +6,15 @@
 /*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/02 16:27:27 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/02 18:43:36 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* 
+intersection formula:
+((OC + t*D) . A)^2 = |OC + t*D|^2 * cos^2(theta)
+cos^2(theta) = h^2 / (r^2 + h^2) = 1 / (1 + (r/h)^2)
+*/
 
 #include "miniRT.h"
 
@@ -25,19 +31,17 @@ static double calculate_quadratic_terms(t_vec3d ray_dir, t_vec3d oc, t_object *o
 	params[0] = dot_dir_axis * dot_dir_axis - cos2_theta;
 	params[1] = 2 * (dot_dir_axis * dot_oc_axis - dot_oc_dir * cos2_theta);
 	params[2] = dot_oc_axis * dot_oc_axis - vec_dot(oc, oc) * cos2_theta;
-	return (params[1] * params[1] - 4 * params[0] * params[2]);
+	return (params[1] * params[1] - 4 * params[0] * params[2]); //b^2 - 4ac
 }
 
 static bool is_intersection_within_cone(t_ray ray, t_object *obj, double t)
 {
 	t_vec3d	p;
-	t_vec3d	v;
-	t_vec3d	apex_to_p;
+	double	m;
 
 	p = vec_add(ray.origin, vec_scale(ray.direction, t));
-	v = vec_sub(p, obj->data.s_cone.vertex);
-	apex_to_p = vec_dot(v, obj->data.s_cone.axis);
-	if (apex_to_p < 0 || apex_to_p > obj->data.s_cone.height)
+	m = vec_dot(vec_sub(p, obj->data.s_cone.vertex), obj->data.s_cone.axis);
+	if (m < 0 || m > obj->data.s_cone.height)
 		return (false);
 	return (true);
 }
