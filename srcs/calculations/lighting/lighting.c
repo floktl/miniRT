@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 15:47:57 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 21:33:25 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,13 @@ static t_color	process_light_contribution(t_light *light,
 	double	diffuse_factor;
 	double	specular_factor;
 	double	light_intensity;
+	double	dist_to_light;
 
 	light_dir = vec_sub(light->position, params->point);
+	dist_to_light = vec_length(light_dir);
 	light_dir = vec_normalize(light_dir);
+	// if (in_shadow(params, light_dir, dist_to_light))
+	// 	return ((t_color){0, 0, 0});
 	diffuse_factor = calculate_diffuse_factor(params->normal, light_dir);
 	specular_factor = calculate_specular_factor(params->view_dir, light_dir,
 			params->normal, params->shininess);
@@ -109,6 +113,7 @@ t_color	compute_lighting(t_vec3d point, t_vec3d normal,
 	params.normal = normal;
 	params.view_dir = vec_normalize(vec_sub(scene->camera.position, point));
 	params.shininess = obj->shininess;
+	params.scene = scene;
 	ambient_color = calculate_ambient_color(obj, scene);
 	light_color = process_all_lights(&params, scene->lights, obj->color);
 	ambient_color.r = fmin(255, ambient_color.r + light_color.r);
