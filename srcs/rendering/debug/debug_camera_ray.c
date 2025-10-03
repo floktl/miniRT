@@ -6,11 +6,29 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 14:21:54 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 09:50:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+/*
+ * Debug-specific world to screen projection
+ * Projects 3D world points to 2D screen coordinates using main camera
+ * @param world_point: 3D point in world coordinates
+ * @param app: Application struct with camera data
+ * @return: Screen coordinates with depth information
+ */
+static t_vec3d	project_debug_world_to_screen(t_vec3d world_point, t_app *app)
+{
+	t_vec2d	normalized;
+	t_vec3d	screen_pos;
+
+	// Use the same projection logic as the main rendering system
+	normalized = calculate_normalized_coords(world_point, app);
+	screen_pos = normalized_to_screen_pixels(normalized, world_point, app);
+	return (screen_pos);
+}
 
 /*
  * Calculate color based on 3D position in space
@@ -78,15 +96,25 @@ static void	draw_thick_colored_line(t_app *app, int x, int y, uint32_t color)
 	draw_colored_pixel(app, x - 1, y + 1, color);
 }
 
-static void	draw_debug_camera_sphere(t_app *app, t_vec3d world_pos, int radius)
+static void	draw_debug_camera_sphere(t_app *app, t_vec3d world_pos, int base_radius)
 {
 	t_vec3d	screen_pos;
+	t_vec3d	relative;
+	double	distance;
+	int		radius;
 	int		x;
 	int		y;
 
-	screen_pos = project_world_to_screen(world_pos, app);
+	screen_pos = project_debug_world_to_screen(world_pos, app);
 	if (screen_pos.z <= 0)
 		return ;
+	relative = vec_sub(world_pos, app->scene.camera.position);
+	distance = sqrt(vec_dot(relative, relative));
+	radius = (int)(base_radius * 10.0 / distance);
+	if (radius < 1)
+		radius = 1;
+	if (radius > 20)
+		radius = 20;
 	y = -radius;
 	while (y <= radius)
 	{
@@ -105,20 +133,26 @@ static void	draw_ray_line(t_app *app, t_ray debug_ray, double max_distance)
 {
 	t_vec3d		ray_point;
 	t_vec3d		screen_pos;
-	t_vec3d		visual_direction;
+	//t_vec3d		relative_to_cam;
 	uint32_t	position_color;
 	double		t;
 
-	// Flip Z direction for correct visual representation
-	visual_direction = debug_ray.direction;
-	visual_direction.z = -visual_direction.z;
-
 	t = 0.0;
+	printf("[RAY DEBUG] Drawing ray from (%.3f,%.3f,%.3f) dir (%.3f,%.3f,%.3f) max_dist=%.3f\n",
+		debug_ray.origin.x, debug_ray.origin.y, debug_ray.origin.z,
+		debug_ray.direction.x, debug_ray.direction.y, debug_ray.direction.z, max_distance);
+
 	while (t <= max_distance)
 	{
 		ray_point = vec_add(debug_ray.origin,
-				vec_mul(visual_direction, t));
-		screen_pos = project_world_to_screen(ray_point, app);
+				vec_mul(debug_ray.direction, -t));
+		screen_pos = project_debug_world_to_screen(ray_point, app);
+
+		// Print key points for debugging
+		printf("[RAY DEBUG] t=%.2f world=(%.3f,%.3f,%.3f) screen=(%.1f,%.1f) depth=%.3f\n",
+			t, ray_point.x, ray_point.y, ray_point.z,
+			screen_pos.x, screen_pos.y, screen_pos.z);
+
 		if (screen_pos.z > 0)
 		{
 			if ((int)screen_pos.x >= 0
@@ -130,6 +164,9 @@ static void	draw_ray_line(t_app *app, t_ray debug_ray, double max_distance)
 				draw_thick_colored_line(app, (int)screen_pos.x,
 					(int)screen_pos.y, position_color);
 			}
+			else
+				printf("[RAY DEBUG] Point off-screen: screen=(%.1f,%.1f) depth=%.3f\n",
+					screen_pos.x, screen_pos.y, screen_pos.z);
 		}
 		t += 0.1;
 	}
@@ -167,6 +204,10 @@ void	render_debug_camera_ray(t_app *app)
 	printf("Generated ray - Origin: (%.6f, %.6f, %.6f) Direction: (%.6f, %.6f, %.6f)\n",
 		debug_ray.origin.x, debug_ray.origin.y, debug_ray.origin.z,
 		debug_ray.direction.x, debug_ray.direction.y, debug_ray.direction.z);
+	printf("Main Camera - Pos: (%.6f, %.6f, %.6f) Dir: (%.6f, %.6f, %.6f)\n",
+		app->scene.camera.position.x, app->scene.camera.position.y, app->scene.camera.position.z,
+		app->scene.camera.direction.x, app->scene.camera.direction.y, app->scene.camera.direction.z);
+	printf("=== DEBUG CAMERA SHOULD BE INDEPENDENT ===\n");
 		intersection_dist = find_closest_intersection_debug(debug_ray, &app->scene,
 			&hit_obj);
 			if (intersection_dist > 0.0 && hit_obj)
@@ -184,4 +225,5 @@ void	render_debug_camera_ray(t_app *app)
 		app->scene.debug_camera.up.x,
 		app->scene.debug_camera.up.y,
 		app->scene.debug_camera.up.z);
+	printf("=== DEBUG CAMERA DIRECTION SHOULD BE (0,0,1) ===\n");
 }
