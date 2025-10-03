@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 12:37:42 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 15:24:21 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ t_vec3d	get_normal(t_vec3d point, t_object *obj)
 	else if (obj->type == PLANE)
 		normal = obj->data.s_plane.normal;
 	else if (obj->type == CYLINDER)
-		return ((t_vec3d){0, 0, 1});
+		normal = vec_normalize(vec_sub(point, obj->data.s_cylinder.base));
 	else if (obj->type == CONE)
-		return ((t_vec3d){0, 0, 1});
+		normal = vec_normalize(vec_sub(point, obj->data.s_cone.vertex));
 	else
 		normal = (t_vec3d){0, 0, 1};
 	return (normal);

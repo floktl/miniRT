@@ -68,6 +68,7 @@ typedef union u_obj_data
 	}	s_cylinder;
 	struct //cone
 	{
+		t_vec3d vertex;		// Vertex point of the cone
 		t_vec3d	center;		// Center point of cone base
 		t_vec3d	axis;		// Axis direction vector
 		double	radius;		// Radius of cone base
@@ -251,7 +252,7 @@ typedef struct s_input_state
 {
 	bool		interaction_mode;	// True when user is actively interacting
 	bool		scroll_activity;	// True when scroll wheel is being used
-	bool		shift_pressed;		// True when Shift key currently pressed
+	bool		ctrl_pressed;		// True when Ctrl key is currently pressed;		// True when Shift key is currently pressed
 }	t_input_state;
 
 // Main app struct
