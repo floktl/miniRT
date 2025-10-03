@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculations.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 14:19:12 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:18:51 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ double		find_closest_intersection_debug(t_ray ray, t_scene *scene,
 // @return: Normalized surface normal vector
 t_vec3d		get_normal(t_vec3d point, t_object *obj);
 
+// @brief Calculates the intersection distance between a ray and an object.
+// @param ray: The ray to test for intersection
+// @param obj: The object to test against
+double		calculate_object_intersection(t_ray ray, t_object *obj);
+
 // calculations/intersections/intersections.c
 // @param ray: Ray to test for intersection
 // @param s_sphere: Sphere object to test against
@@ -65,8 +70,8 @@ double		intersect_cone(t_ray ray, t_object *s_cone);
 // @param hit_obj: Object that was hit
 // @param scene: Scene containing lighting information
 // @return: 32-bit color value for the pixel
-uint32_t	calculate_intersection_color(t_ray ray,
-				double intersection_dist, t_object *hit_obj, t_scene *scene);
+uint32_t	calculate_intersection_color(t_ray ray, double intersection_dist,
+				t_object *hit_obj, t_scene *scene);
 
 // @param scene: Scene containing ambient lighting information
 // @return: 32-bit color value for the background pixel
@@ -78,8 +83,8 @@ uint32_t	calculate_background_color(t_scene *scene);
 // @param c3: Third color
 // @param c4: Fourth color
 // @return: Averaged color value
-uint32_t	calculate_average_color(uint32_t c1, uint32_t c2,
-				uint32_t c3, uint32_t c4);
+uint32_t	calculate_average_color(uint32_t c1, uint32_t c2, uint32_t c3,
+				uint32_t c4);
 
 // @param app: Pointer to application struct
 // @param pixel_calculator: Function pointer to calculate pixel color
@@ -87,8 +92,7 @@ uint32_t	calculate_average_color(uint32_t c1, uint32_t c2,
 // @param y: Base y coordinate
 // @return: Averaged color value from 4 sub-pixel samples
 uint32_t	get_supersampled_color(t_app *app,
-				uint32_t (*pixel_calculator)(t_app*, int, int),
-				int x, int y);
+				uint32_t (*pixel_calculator)(t_app *, int, int), int x, int y);
 
 // calculations/lighting/lighting.c
 // @param point: Point on surface to calculate lighting for
@@ -96,8 +100,8 @@ uint32_t	get_supersampled_color(t_app *app,
 // @param scene: Scene containing lights and ambient lighting
 // @param obj: Object being lit (for material properties)
 // @return: Final color with lighting applied
-t_color		compute_lighting(t_vec3d point, t_vec3d normal,
-				t_scene *scene, t_object *obj);
+t_color		compute_lighting(t_vec3d point, t_vec3d normal, t_scene *scene,
+				t_object *obj);
 
 // calculations/lighting/lighting_calculations.c
 // @param normal: Surface normal vector
@@ -129,6 +133,11 @@ t_color		calculate_ambient_color(t_object *obj, t_scene *scene);
 // @param final_color: Color to add contribution to
 // @param contribution: Light contribution to add
 void		add_light_contribution(t_color *final_color, t_color contribution);
+
+// @param params: Lighting parameters at the point
+// @param light_dir: Direction vector from point to light source
+bool		in_shadow(t_light_params *params, t_vec3d light_dir,
+				double dist_to_light);
 
 // @param color: Color to scale
 // @param factor: Scaling factor (0.0 to 1.0)

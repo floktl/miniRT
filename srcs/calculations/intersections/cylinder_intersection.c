@@ -6,7 +6,7 @@
 /*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/03 17:23:13 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:55:37 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,7 @@ static double	find_cylinder_side_intersection(t_ray ray, t_object *obj,
 	return (-1.0);
 }
 
-static double	find_cylinder_cap_intersection(t_ray ray, t_object *obj,
-		double dot_dir_axis)
+double	find_cylinder_cap_intersection(t_ray ray, t_object *obj, double dot_dir_axis)
 {
 	double	t1;
 	double	t2;
