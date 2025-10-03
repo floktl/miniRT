@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:23:20 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 14:20:06 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:35:24 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ void	init_performance_variables(t_app *app)
 	app->input.interaction_mode = false;
 	app->render.render_scale = 1;
 	app->input.scroll_activity = false;
-	app->input.shift_pressed = false;
+	app->input.ctrl_pressed = false;
 }

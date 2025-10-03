@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 09:45:33 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:35:24 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 		app->render.needs_rerender = true;
 	}
 	app->input.scroll_activity = true;
-	if (app->input.shift_pressed)
+	if (app->input.ctrl_pressed)
 	{
 		amount = ydelta * 0.01;
 		rotate_camera_roll(app, amount);

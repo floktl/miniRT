@@ -6,11 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/03 17:49:24 by mezhang          ###   ########.fr       */
-=======
-/*   Updated: 2025/10/03 15:24:21 by fkeitel          ###   ########.fr       */
->>>>>>> 1cdd9aaa4bf3c0c75bb56ae6e7cf4bd6aa02a450
+/*   Updated: 2025/10/03 20:36:42 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +88,7 @@ static t_vec3d	get_cylinder_normal(t_object *obj, t_vec3d point)
 	v = vec_sub(point, obj->data.s_cylinder.base);
 	m = vec_dot(v, obj->data.s_cylinder.axis);
 	perp = vec_sub(v, vec_mul(obj->data.s_cylinder.axis, m));
-	return (vec_normalize(perp));	
+	return (vec_normalize(perp));
 }
 
 static t_vec3d	get_cone_normal(t_object *obj, t_vec3d point)
@@ -107,6 +103,7 @@ static t_vec3d	get_cone_normal(t_object *obj, t_vec3d point)
 	k = obj->data.s_cone.radius / obj->data.s_cone.height;
 	scaled_axis = vec_mul(obj->data.s_cone.axis, m * (1 + k * k));
 	return (vec_normalize(vec_sub(v, scaled_axis)));
+}
 
 double	find_closest_intersection_debug(t_ray ray, t_scene *scene, t_object **hit_obj)
 {

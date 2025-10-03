@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:14:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 10:58:02 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:35:24 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		|| keydata.key == MLX_KEY_RIGHT_CONTROL)
 	{
 		if (keydata.action == MLX_PRESS)
-			app->input.shift_pressed = true;
+			app->input.ctrl_pressed = true;
 		else if (keydata.action == MLX_RELEASE)
-			app->input.shift_pressed = false;
+			app->input.ctrl_pressed = false;
 	}
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 		handle_movement_keys(app, keydata);
