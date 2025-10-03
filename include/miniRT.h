@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:32:32 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 15:36:03 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:50:24 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# ifndef M_PI
+# define M_PI 3.14159265358979323846
+# endif
 
 # include "MLX42/MLX42.h"
 # include "libft.h"
@@ -33,9 +37,5 @@
 // Default window settings
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
-
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 
 #endif

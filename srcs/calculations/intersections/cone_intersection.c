@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cone_intersection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/03 17:50:00 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/03 20:42:37 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ cos^2(theta) = h^2 / (r^2 + h^2) = 1 / (1 + (r/h)^2)
 */
 
 #include "miniRT.h"
+
 
 static double	calculate_quadratic_terms(t_vec3d ray_dir, t_vec3d ov,
 		t_object *obj, double cos2_theta)

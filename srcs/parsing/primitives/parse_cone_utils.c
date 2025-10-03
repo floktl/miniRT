@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cone_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/02 15:30:39 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/03 21:00:14 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	parse_cone_center(t_object *obj, char **tokens, int *idx, int token_count)
 	if (!center_res.success)
 		return (1);
 	obj->data.s_cone.center = center_res.v;
-	obj->data.s_cone.vertex = center_res.v; //temporary, will be changed in intersection
+	obj->data.s_cone.vertex = center_res.v;
 	return (0);
 }
 
