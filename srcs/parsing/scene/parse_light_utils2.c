@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:03:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/20 15:42:06 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/28 16:58:34 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	setup_light(t_light *light, t_scene *scene)
 	light_sphere = malloc(sizeof(t_object));
 	if (!light_sphere)
 		return (cleanup_light_error(light, "Failed to allocate light sphere"));
-	light_sphere->type = SPHERE;
+	light_sphere->type = LIGHT;
 	light_sphere->data.s_sphere.center = light->position;
 	light_sphere->data.s_sphere.radius = 0.1;
 	light_sphere->color = light->color;

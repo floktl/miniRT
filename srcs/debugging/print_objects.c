@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:40:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:56:01 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/28 16:58:34 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	print_objects(const t_object *obj)
 	{
 		printf(C_CYAN "Object[%d]: type=", index++);
 		if (obj->type == SPHERE)
+			print_sphere_data(obj);
+		else if (obj->type == LIGHT)
 			print_sphere_data(obj);
 		else if (obj->type == PLANE)
 			print_plane_data(obj);

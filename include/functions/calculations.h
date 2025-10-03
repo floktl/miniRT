@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 10:12:51 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/01 14:19:12 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_ray		get_ray(t_app *app, int x, int y);
 // @return: Distance to closest intersection, -1 if none
 double		find_closest_intersection(t_ray ray, t_scene *scene,
 				t_object **hit_obj);
+double		find_closest_intersection_debug(t_ray ray, t_scene *scene,
+				t_object **hit_obj);
 
 // @param point: Point on object surface
 // @param obj: Object to calculate normal for
@@ -40,6 +42,7 @@ t_vec3d		get_normal(t_vec3d point, t_object *obj);
 // @param s_sphere: Sphere object to test against
 // @return: Distance to intersection point, -1 if no intersection
 double		intersect_sphere(t_ray ray, t_object *s_sphere);
+double		intersect_sphere_debug(t_ray ray, t_object *s_sphere);
 
 // @param ray: Ray to test for intersection
 // @param s_plane: Plane object to test against
@@ -202,7 +205,18 @@ void		rotate_camera_roll(t_app *app, double angle);
 
 // calculations/camera_movement/camera_zoom.c
 // @param app: Pointer to application struct
-// @param zoom_amount: Amount to zoom (positive = zoom in, negative = zoom out)
+// @param zoom_amount: Amount to zoom (pos = zoom in, neg = zoom out)
 void		zoom_camera_towards_mouse(t_app *app, double zoom_amount);
+
+// calculations/camera_movement/debug_camera_rotation.c
+// @param app: Pointer to application struct
+// @param angle: Rotation angle in radians (pos= clockwise when looking down)
+void		rotate_debug_camera_horizontal(t_app *app, double angle);
+// @param app: Pointer to application struct
+// @param angle: Rotation angle in radians (positive = pitch up)
+void		rotate_debug_camera_vertical(t_app *app, double angle);
+// @param app: Pointer to application struct
+// @param angle: Rotation angle in radians (positive = roll clockwise)
+void		rotate_debug_camera_roll(t_app *app, double angle);
 
 #endif

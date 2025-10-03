@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:45:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/26 13:12:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/09/28 16:58:34 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static void	print_vec3d(const char *label, t_vec3d v)
 
 void	print_sphere_data(const t_object *obj)
 {
-	printf("SPHERE" C_RESET "\n");
+	if (obj->type == LIGHT)
+		printf("LIGHT" C_RESET "\n");
+	else
+		printf("SPHERE" C_RESET "\n");
 	print_vec3d("  center=", obj->data.s_sphere.center);
 	printf("  radius=%.6f\n", obj->data.s_sphere.radius);
 }
