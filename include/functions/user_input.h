@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 14:18:30 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:34:07 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 void		handle_forward_back_keys(t_app *app, mlx_key_data_t keydata);
 void		handle_left_right_keys(t_app *app, mlx_key_data_t keydata);
 void		handle_up_down_keys(t_app *app, mlx_key_data_t keydata);
-void		handle_debug_camera_rotation_keys(t_app *app,
-				mlx_key_data_t keydata);
 void		handle_movement_keys(t_app *app, mlx_key_data_t keydata);
 
 // user_input/keys.c

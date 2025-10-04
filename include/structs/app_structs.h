@@ -157,15 +157,12 @@ typedef struct s_ambient
 
 // Main scene struct
 // @param camera: Camera configuration and position
-// @param debug_camera: Debug camera configuration and position (optional)
 // @param ambient: Ambient lighting settings
 // @param lights: Linked list of light sources
 // @param objects: Linked list of geometric objects
 typedef struct s_scene
 {
 	t_camera	camera;		// Camera configuration and position
-	t_camera	debug_camera;	// Debug camera configuration and position
-	bool		has_debug_camera;	// Flag indicating if debug camera present
 	t_ambient	ambient;	// Ambient lighting settings
 	t_light		*lights;	// Linked list of light sources
 	t_object	*objects;	// Linked list of geometric objects

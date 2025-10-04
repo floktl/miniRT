@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:24:39 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/28 15:52:04 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:35:32 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ static int	dispatch_parse(char **tokens, int token_count, t_scene *scene)
 		return (dispatch_and_return(scene, tokens, "AMBIENT", parse_ambient));
 	else if (ft_strncmp(tokens[0], "C", 2) == 0 && token_count >= 4)
 		return (dispatch_and_return(scene, tokens, "CAMERA", parse_camera));
-	else if (ft_strncmp(tokens[0], "DC", 3) == 0 && token_count >= 4)
-		return (dispatch_and_return(scene, tokens, "DEBUG_CAMERA",
-				parse_debug_camera));
 	else if (ft_strncmp(tokens[0], "L", 2) == 0 && token_count >= 4)
 		return (dispatch_and_return(scene, tokens, "LIGHT", parse_light));
 	else if (ft_strncmp(tokens[0], "sp", 3) == 0 && token_count >= 4)

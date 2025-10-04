@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 10:58:02 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:30:44 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	progressive_re_render_scene(t_app *app)
 		app->render.render_scale = 1;
 		fill_window_with_raytracing(app, render_pixel);
 	}
-	render_debug_camera_ray(app);
 	app->render.needs_rerender = false;
 	app->render.frame_counter++;
 }

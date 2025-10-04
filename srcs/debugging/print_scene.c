@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:03:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 08:46:27 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:32:44 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,6 @@ void	print_scene(const t_scene *scene)
 	print_vec3d("  position=", scene->camera.position);
 	print_vec3d("  direction=", scene->camera.direction);
 	printf("  fov=%.6f\n", scene->camera.fov);
-	if (scene->has_debug_camera)
-	{
-		printf(C_CYAN "Debug Camera:\n" C_RESET);
-		print_vec3d("  position=", scene->debug_camera.position);
-		print_vec3d("  direction=", scene->debug_camera.direction);
-		printf("  fov=%.6f\n", scene->debug_camera.fov);
-	}
 	printf(C_CYAN "Lights:\n" C_RESET);
 	print_lights(scene->lights);
 	printf(C_CYAN "Objects:\n" C_RESET);

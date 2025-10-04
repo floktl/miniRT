@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/28 15:54:48 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:35:23 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ int			parse_ambient(char **tokens, t_scene *scene);
 // @return: 0 on success, 1 on error
 int			parse_camera(char **tokens, t_scene *scene);
 
-// @param tokens: Array of strings representing debug camera line tokens
-// @param scene: Scene struct to set debug camera data in
-// @return: 0 on success, 1 on error
-int			parse_debug_camera(char **tokens, t_scene *scene);
-
 // @param tokens: Array of strings representing light line tokens
 // @param scene: Scene struct to add light to
 // @return: 0 on success, 1 on error
@@ -65,7 +60,6 @@ int			validate_light_brightness(float brightness);
 
 // parsing/scene/parse_scene_camera.c
 int			check_camera_duplicate(t_scene *scene);
-int			check_debug_camera_duplicate(t_scene *scene);
 
 // parsing/scene/parse_scene_utils2.c
 int			parse_error(const char *element, const char *message);
