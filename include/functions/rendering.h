@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/22 10:12:51 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:45:33 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define RENDERING_H
 
 # include "../structs/app_structs.h"
+
+/* render loop that switches between full & low resolution */
+void		render_loop(void *param);
 
 // rendering/core/projection_calculations.c
 // @param world_point: 3D point in world coordinates

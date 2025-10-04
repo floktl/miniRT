@@ -22,15 +22,6 @@ static int	is_not_rt(char *file)
 	return (ft_strncmp(file + len - 3, ".rt", 3));
 }
 
-/* Main render loop that handles progressive rendering */
-static void	render_loop(void *param)
-{
-	t_app	*app;
-
-	app = (t_app *)param;
-	progressive_re_render_scene(app);
-}
-
 static int	mlx_functions(t_app *app)
 {
 	if (init_app(app) != 0)

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/01 14:19:12 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:58:20 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,78 @@ double		intersect_cylinder(t_ray ray, t_object *s_cylinder);
 // @param s_cone: Cone object to test against
 // @return: Distance to intersection point, -1 if no intersection
 double		intersect_cone(t_ray ray, t_object *s_cone);
+
+// calculations/intersections/cylinder_helpers.c
+// @param ray_dir: Ray direction vector
+// @param oc: Vector from ray origin to cylinder base
+// @param obj: Cylinder object
+// @param dot_dir_axis: Dot product of ray direction and cylinder axis
+// @return: Discriminant of quadratic equation
+double		calculate_cylinder_quadratic_terms(t_vec3d ray_dir, t_vec3d oc,
+				t_object *obj, double dot_dir_axis);
+
+// @param ray: Ray to test
+// @param obj: Cylinder object
+// @param t: Intersection parameter
+// @return: True if intersection is within cylinder bounds
+bool		is_cylinder_intersection_inside(t_ray ray, t_object *obj, double t);
+
+// @param ray: Ray to test
+// @param obj: Cylinder object
+// @param t: Intersection parameter
+// @param cap: Cap index (0 for bottom, 1 for top)
+// @return: True if intersection is on the specified cap
+bool		is_cylinder_intersection_on_cap(t_ray ray, t_object *obj, double t,
+				int cap);
+
+// @param ray: Ray to test
+// @param obj: Cylinder object
+// @param dot_dir_axis: Dot product of ray direction and cylinder axis
+// @param disc: Discriminant of quadratic equation
+// @return: Distance to side intersection, -1 if none
+double		find_cylinder_side_intersection(t_ray ray, t_object *obj,
+				double dot_dir_axis, double disc);
+
+// @param ray: Ray to test
+// @param obj: Cylinder object
+// @param dot_dir_axis: Dot product of ray direction and cylinder axis
+// @return: Distance to cap intersection, -1 if none
+double		find_cylinder_cap_intersection(t_ray ray, t_object *obj,
+				double dot_dir_axis);
+
+// calculations/intersections/cone_helpers.c
+// @param ray_dir: Ray direction vector
+// @param ov: Vector from ray origin to cone vertex
+// @param obj: Cone object
+// @param cos2_theta: Cosine squared of cone angle
+// @return: Discriminant of quadratic equation
+double		calculate_cone_quadratic_terms(t_vec3d ray_dir, t_vec3d ov,
+				t_object *obj, double cos2_theta);
+
+// @param ray: Ray to test
+// @param obj: Cone object
+// @param t: Intersection parameter
+// @return: True if intersection is within cone bounds
+bool		is_cone_intersection_within_cone(t_ray ray, t_object *obj,
+				double t);
+
+// @param p: Point to test
+// @param obj: Cone object
+// @return: True if point is on cone cap
+bool		is_point_on_cone_cap(t_vec3d p, t_object *obj);
+
+// @param ray: Ray to test
+// @param obj: Cone object
+// @param disc: Discriminant of quadratic equation
+// @param cos2_theta: Cosine squared of cone angle
+// @return: Distance to side intersection, -1 if none
+double		find_cone_side_intersection(t_ray ray, t_object *obj,
+				double disc, double cos2_theta);
+
+// @param ray: Ray to test
+// @param obj: Cone object
+// @return: Distance to cap intersection, -1 if none
+double		find_cone_cap_intersection(t_ray ray, t_object *obj);
 
 // calculations/color/color_calculations.c
 // @param ray: Ray that hit the object

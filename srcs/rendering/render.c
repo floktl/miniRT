@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:31 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:30:44 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:43:47 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@
 //  │    • frame_counter++                                            │
 //  │                                                                 │
 //  └─────────────────────────────────────────────────────────────────┘
-/* Progressive render that switches between full & low resolution */
-void	progressive_re_render_scene(t_app *app)
+/* render loop that switches between full & low resolution */
+void	render_loop(void *param)
 {
+	t_app	*app;
+
+	app = (t_app *)param;
 	if (!app->render.needs_rerender)
 		return ;
 	if (app->input.interaction_mode

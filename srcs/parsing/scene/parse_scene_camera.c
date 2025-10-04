@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:43:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:33:14 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:45:54 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	check_camera_duplicate(t_scene *scene)
 	}
 	return (0);
 }
-
 
 int	set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 	t_float_res fr)
@@ -40,4 +39,3 @@ int	set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 		return (1);
 	return (0);
 }
-
