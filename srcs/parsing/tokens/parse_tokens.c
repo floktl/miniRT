@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:39:28 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:24:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 12:18:12 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,5 @@ t_clr_res	parse_color_tokens(char **tokens, int *idx, int token_count)
 	if (res.success)
 		return (res);
 	res = handle_loop_res(tokens, idx, token_count, NULL);
-	if (res.success)
-		return (res);
-	if (str)
-		free(str);
 	return (res);
 }
