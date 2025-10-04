@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:45:33 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 12:07:48 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,6 @@ void		fill_window_with_raytracing_low_res(t_app *app,
 // @param y: Y pixel coordinate
 // @return: 32-bit color value for the pixel
 uint32_t	render_pixel(t_app *app, int x, int y);
-
-// rendering/modes/progressive_render.c
-// @param app: Pointer to application struct
-void		progressive_re_render_scene(t_app *app);
 
 // rendering/debug/debug_camera_ray.c
 // @param app: Pointer to application struct

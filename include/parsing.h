@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:30:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:35:23 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 12:08:35 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int			parse_ambient_ratio(char **tokens, int *idx, int token_count,
 int			set_ambient_data(t_scene *scene, t_float_res fr, t_color col);
 int			set_camera_data(t_scene *scene, t_vec3d_res pr, t_vec3d_res dr,
 				t_float_res fr);
-int			set_debug_camera_data(t_scene *scene, t_vec3d_res pr,
-				t_vec3d_res dr, t_float_res fr);
 
 // parsing/scene/parse_scene_utils3.c
 int			parse_ambient_color(char **tokens, int *idx, int token_count,
@@ -96,7 +94,6 @@ int			setup_light(t_light *light, t_scene *scene);
 int			parse_light_internal(char **tokens, t_scene *scene);
 
 // parsing/primitives/parse_sphere.c
-int			validate_sphere_diameter(float diameter);
 int			parse_sphere_center(t_object *obj, char **tokens, int *idx,
 				int token_count);
 int			parse_sphere_diameter(t_object *obj, char **tokens, int *idx,

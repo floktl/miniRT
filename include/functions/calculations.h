@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:58:20 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/04 12:07:15 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,29 +202,6 @@ t_color		calculate_ambient_color(t_object *obj, t_scene *scene);
 // @param contribution: Light contribution to add
 void		add_light_contribution(t_color *final_color, t_color contribution);
 
-// @param color: Color to scale
-// @param factor: Scaling factor (0.0 to 1.0)
-// @return: Scaled color
-t_color		scale_color(t_color color, double factor);
-
-// @param a: First color to add
-// @param b: Second color to add
-// @return: Sum of the two colors (clamped to 255)
-t_color		add_colors(t_color a, t_color b);
-
-// @param light_dir: Direction vector from point to light source
-// @param normal: Surface normal vector
-// @return: Diffuse lighting factor (0.0 to 1.0)
-double		compute_diffuse(t_vec3d light_dir, t_vec3d normal);
-
-// @param light_dir: Direction vector from point to light source
-// @param normal: Surface normal vector
-// @param view_dir: Direction vector from point to camera
-// @param shininess: Material shininess factor
-// @return: Specular lighting factor (0.0 to 1.0)
-double		compute_specular(t_vec3d light_dir, t_vec3d normal,
-				t_vec3d view_dir, double shininess);
-
 // calculations/textures/textures.c
 // @param obj: Object to apply texture to
 // @param point: Point on object surface
@@ -279,16 +256,5 @@ void		rotate_camera_roll(t_app *app, double angle);
 // @param app: Pointer to application struct
 // @param zoom_amount: Amount to zoom (pos = zoom in, neg = zoom out)
 void		zoom_camera_towards_mouse(t_app *app, double zoom_amount);
-
-// calculations/camera_movement/debug_camera_rotation.c
-// @param app: Pointer to application struct
-// @param angle: Rotation angle in radians (pos= clockwise when looking down)
-void		rotate_debug_camera_horizontal(t_app *app, double angle);
-// @param app: Pointer to application struct
-// @param angle: Rotation angle in radians (positive = pitch up)
-void		rotate_debug_camera_vertical(t_app *app, double angle);
-// @param app: Pointer to application struct
-// @param angle: Rotation angle in radians (positive = roll clockwise)
-void		rotate_debug_camera_roll(t_app *app, double angle);
 
 #endif
