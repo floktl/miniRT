@@ -6,7 +6,7 @@
 /*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:17:48 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/03 21:33:25 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/06 08:45:28 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static t_color	process_light_contribution(t_light *light,
 	light_dir = vec_sub(light->position, params->point);
 	dist_to_light = vec_length(light_dir);
 	light_dir = vec_normalize(light_dir);
-	// if (in_shadow(params, light_dir, dist_to_light))
-	// 	return ((t_color){0, 0, 0});
+	if (in_shadow(params, light_dir, dist_to_light))
+		return (apply_light_color((texture_color), light, 0.0));
 	diffuse_factor = calculate_diffuse_factor(params->normal, light_dir);
 	specular_factor = calculate_specular_factor(params->view_dir, light_dir,
 			params->normal, params->shininess);
@@ -95,27 +95,27 @@ static t_color	process_all_lights(t_light_params *params, t_light *lights,
 }
 
 t_color	compute_lighting(t_vec3d point, t_vec3d normal,
-		t_scene *scene, t_object *obj)
+		t_scene *scene, t_object *hit_obj)
 {
 	t_light_params	params;
 	t_color			ambient_color;
 	t_color			light_color;
 
-	if (obj->is_light_sphere)
+	if (hit_obj->is_light_sphere)
 	{
-		return (obj->color);
+		return (hit_obj->color);
 	}
-	if (is_light_inside_sphere(obj, scene->lights))
+	if (is_light_inside_sphere(hit_obj, scene->lights))
 	{
-		return (obj->color);
+		return (hit_obj->color);
 	}
 	params.point = point;
 	params.normal = normal;
 	params.view_dir = vec_normalize(vec_sub(scene->camera.position, point));
-	params.shininess = obj->shininess;
+	params.shininess = hit_obj->shininess;
 	params.scene = scene;
-	ambient_color = calculate_ambient_color(obj, scene);
-	light_color = process_all_lights(&params, scene->lights, obj->color);
+	ambient_color = calculate_ambient_color(hit_obj, scene);
+	light_color = process_all_lights(&params, scene->lights, hit_obj->color);
 	ambient_color.r = fmin(255, ambient_color.r + light_color.r);
 	ambient_color.g = fmin(255, ambient_color.g + light_color.g);
 	ambient_color.b = fmin(255, ambient_color.b + light_color.b);

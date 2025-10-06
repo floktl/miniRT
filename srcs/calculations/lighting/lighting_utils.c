@@ -6,7 +6,7 @@
 /*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/03 20:17:53 by mezhang          ###   ########.fr       */
+/*   Updated: 2025/10/06 08:44:53 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ bool in_shadow(t_light_params *params, t_vec3d light_dir, double dist_to_light)
 	current_obj = params->scene->objects;
 	while (current_obj)
 	{
-		intersection_dist = calculate_object_intersection(shadow_ray, current_obj);
-		if (intersection_dist > 1e-4 && intersection_dist < dist_to_light)
-			return (true);
+		if (!current_obj->is_light_sphere)
+		{
+			intersection_dist = calculate_object_intersection(shadow_ray, current_obj);
+			if (intersection_dist > 1e-4 && intersection_dist < dist_to_light)
+				return (true);
+		}
 		current_obj = current_obj->next;
 	}
 	return (false);
