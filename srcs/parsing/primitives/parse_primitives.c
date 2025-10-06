@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_primitives.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:07:30 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 11:42:47 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 int	cleanup_object_error(t_object *obj, const char *message)
 {
 	printf("[Object] %s\n", message);
-	free(obj);
+	if (obj)
+		free(obj);
 	return (1);
 }
 

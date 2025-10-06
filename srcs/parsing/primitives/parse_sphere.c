@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/09/28 16:58:34 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 12:08:06 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ int	parse_sphere(char **tokens, t_scene *scene)
 		return (1);
 	obj->type = SPHERE;
 	if (parse_sphere_center(obj, tokens, &idx, token_count))
-		return (cleanup_object_error(obj, "[Sphere] Failed to parse center"));
+		return (1);
 	dr = parse_float_tokens(tokens, &idx, token_count);
 	if (!dr.success)
 		return (cleanup_object_error(obj, "[Sphere] Failed to parse diameter"));
 	obj->data.s_sphere.radius = dr.f / 2.0;
 	if (parse_sphere_color(obj, tokens, &idx, token_count))
-		return (cleanup_object_error(obj, "[Sphere] Failed to parse color"));
+		return (1);
 	if (parse_sphere_optional(obj, tokens, &idx, token_count))
 		return (1);
 	if (validate_sphere_data(obj, dr))
-		return (cleanup_object_error(obj, "[Sphere] Validation failed"));
+		return (1);
 	obj->is_light_sphere = false;
 	obj->next = scene->objects;
 	scene->objects = obj;

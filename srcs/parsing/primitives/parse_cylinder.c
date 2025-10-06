@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:12:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 12:06:33 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	parse_cylinder(char **tokens, t_scene *scene)
 	if (parse_cylinder_dimensions(obj, tokens, &idx, token_count))
 		return (cleanup_object_error(obj, "[Cylinder] Failed to parse dimen."));
 	if (parse_cylinder_color(obj, tokens, &idx, token_count))
-		return (cleanup_object_error(obj, "[Cylinder] Failed to parse color"));
+		return (1);
 	if (parse_cylinder_optional(obj, tokens, &idx, token_count))
 		return (1);
 	if (validate_cylinder_final(obj))

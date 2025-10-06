@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:39:28 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/08/25 15:24:10 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 11:39:28 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static t_clr_res	handle_loop_res(char **tokens, int *idx,
 		return (res);
 	}
 	if (str)
+	{
 		free(str);
+		str= NULL;
+	}
 	return ((t_clr_res){{0, 0, 0}, 0});
 }
 
@@ -70,7 +73,5 @@ t_clr_res	parse_color_tokens(char **tokens, int *idx, int token_count)
 	res = handle_loop_res(tokens, idx, token_count, NULL);
 	if (res.success)
 		return (res);
-	if (str)
-		free(str);
 	return (res);
 }
