@@ -49,30 +49,30 @@ typedef enum e_obj_type
 // @param s_cone: Cone data (center point, axis, radius, height)
 typedef union u_obj_data
 {
-	struct //sphere
+	struct
 	{
-		t_vec3d	center;		// Center point of the sphere
-		double	radius;		// Radius of the sphere
+		t_vec3d	center;
+		double	radius;
 	}	s_sphere;
-	struct //plane
+	struct
 	{
-		t_vec3d	point;		// Point on the plane
-		t_vec3d	normal;		// Normal vector of the plane
+		t_vec3d	point;
+		t_vec3d	normal;
 	}	s_plane;
-	struct //cylinder
+	struct
 	{
-		t_vec3d	base;		// Base center point of cylinder
-		t_vec3d	axis;		// Axis direction vector
-		double	radius;		// Radius of cylinder
-		double	height;		// Height of cylinder
+		t_vec3d	base;
+		t_vec3d	axis;
+		double	radius;
+		double	height;
 	}	s_cylinder;
-	struct //cone
+	struct
 	{
-		t_vec3d	vertex;		// Vertex point of the cone
-		t_vec3d	center;		// Center point of cone base
-		t_vec3d	axis;		// Axis direction vector
-		double	radius;		// Radius of cone base
-		double	height;		// Height of cone
+		t_vec3d	vertex;
+		t_vec3d	center;
+		t_vec3d	axis;
+		double	radius;
+		double	height;
 	}	s_cone;
 }	t_obj_data;
 
@@ -83,11 +83,11 @@ typedef union u_obj_data
 // @param shininess: Material shininess factor
 typedef struct s_light_params
 {
-	t_vec3d			point;		// Point on surface being lit
-	t_vec3d			normal;		// Surface normal at the point
-	t_vec3d			view_dir;	// Direction from point to camera
-	double			shininess;	// Material shininess factor
-	struct s_scene	*scene;		// Pointer to the scene (for lights/objects)
+	t_vec3d			point;
+	t_vec3d			normal;
+	t_vec3d			view_dir;
+	double			shininess;
+	struct s_scene	*scene;
 }	t_light_params;
 
 // Texture types enumeration
@@ -112,14 +112,14 @@ typedef enum e_texture_type
 // @param next: Pointer to next object in linked list
 typedef struct s_object
 {
-	t_obj_type		type;			// Type of geometric primitive
-	t_obj_data		data;		// Union containing primitive-specific data
-	t_color			color;		// RGB color of the object
-	double			shininess;	// Specular reflection shininess factor
-	t_texture_type	texture_type;	// Type of texture applied
-	double			texture_scale;	// Scaling factor for texture
-	bool			is_light_sphere;	// if object is light sphere
-	struct s_object	*next;		// Pointer to next object in linked list
+	t_obj_type		type;
+	t_obj_data		data;
+	t_color			color;
+	double			shininess;
+	t_texture_type	texture_type;
+	double			texture_scale;
+	bool			is_light_sphere;
+	struct s_object	*next;
 }	t_object;
 
 // Struct for light
@@ -129,10 +129,10 @@ typedef struct s_object
 // @param next: Pointer to next light in linked list
 typedef struct s_light
 {
-	t_vec3d			position;	// 3D position of the light source
-	double			brightness;	// Light intensity (0.0 to 1.0)
-	t_color			color;		// RGB color of the light
-	struct s_light	*next;		// Pointer to next light in linked list
+	t_vec3d			position;
+	double			brightness;
+	t_color			color;
+	struct s_light	*next;
 }	t_light;
 
 // Struct for camera
@@ -141,10 +141,10 @@ typedef struct s_light
 // @param fov: Field of view in degrees
 typedef struct s_camera
 {
-	t_vec3d	position;	// 3D position of the camera
-	t_vec3d	direction;	// Direction vector the camera is facing
-	t_vec3d	up;			// Up vector for camera orientation (for roll rot)
-	double	fov;		// Field of view in degrees
+	t_vec3d	position;
+	t_vec3d	direction;
+	t_vec3d	up;
+	double	fov;
 }	t_camera;
 
 // Struct for ambient light
@@ -152,8 +152,8 @@ typedef struct s_camera
 // @param color: RGB color of the ambient light
 typedef struct s_ambient
 {
-	double	ratio;		// Ambient light intensity (0.0 to 1.0)
-	t_color	color;		// RGB color of the ambient light
+	double	ratio;
+	t_color	color;
 }	t_ambient;
 
 // Main scene struct
@@ -163,10 +163,10 @@ typedef struct s_ambient
 // @param objects: Linked list of geometric objects
 typedef struct s_scene
 {
-	t_camera	camera;		// Camera configuration and position
-	t_ambient	ambient;	// Ambient lighting settings
-	t_light		*lights;	// Linked list of light sources
-	t_object	*objects;	// Linked list of geometric objects
+	t_camera	camera;
+	t_ambient	ambient;
+	t_light		*lights;
+	t_object	*objects;
 }	t_scene;
 
 // Window and display state
@@ -176,10 +176,10 @@ typedef struct s_scene
 // @param window_height: Window height in pixels
 typedef struct s_window_state
 {
-	mlx_t		*mlx;		// MLX42 library instance
-	mlx_image_t	*img;		// MLX42 image for rendering
-	int			width;	// Window width in pixels
-	int			height;	// Window height in pixels
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	int			width;
+	int			height;
 }	t_window_state;
 
 // Camera movement state
@@ -188,9 +188,9 @@ typedef struct s_window_state
 // @param move_speed: Camera movement speed
 typedef struct s_camera_state
 {
-	t_vec3d		original_pos;	// Original camera position
-	t_vec3d		original_dir;	// Original camera direction
-	double		move_speed;	// Camera movement speed
+	t_vec3d		original_pos;
+	t_vec3d		original_dir;
+	double		move_speed;
 }	t_camera_state;
 
 // Mouse input state
@@ -204,14 +204,14 @@ typedef struct s_camera_state
 // @param accumulated_y: Accumulated mouse movement for smoothing
 typedef struct s_mouse_state
 {
-	bool		left_dragging;	// Whether left mouse is being dragged
-	bool		right_dragging;	// Whether right mouse is being dragged
-	int			last_x;		// Last mouse X position
-	int			last_y;		// Last mouse Y position
-	double		left_sensitivity;	// Mouse sensitivity for left mouse
-	double		right_sensitivity;	// Mouse sensitivity for right mouse
-	double		accumulated_x;	// Accumulated mouse movement for smoothing
-	double		accumulated_y;	// Accumulated mouse movement for smoothing
+	bool		left_dragging;
+	bool		right_dragging;
+	int			last_x;
+	int			last_y;
+	double		left_sensitivity;
+	double		right_sensitivity;
+	double		accumulated_x;
+	double		accumulated_y;
 }	t_mouse_state;
 
 // Zoom state
@@ -221,10 +221,10 @@ typedef struct s_mouse_state
 // @param max_zoom: Maximum zoom level
 typedef struct s_zoom_state
 {
-	double		factor;		// Current zoom factor
-	double		speed;		// Zoom speed multiplier
-	double		min_zoom;	// Minimum zoom level
-	double		max_zoom;	// Maximum zoom level
+	double		factor;
+	double		speed;
+	double		min_zoom;
+	double		max_zoom;
 }	t_zoom_state;
 
 // Rendering state
@@ -235,11 +235,11 @@ typedef struct s_zoom_state
 // @param sphere_color: Color for drawing spheres in debug mode
 typedef struct s_render_state
 {
-	bool		needs_rerender;	// Flag indicating scene needs re-rendering
-	int			frame_counter;	// Frame counter for simple frame limiting
-	int			render_skip_frames;	// Skip frames during interaction
-	int			render_scale;	// (1 = full resolution, 2 = half, etc.)
-	uint32_t	sphere_color;	// Color for drawing spheres in debug mode
+	bool		needs_rerender;
+	int			frame_counter;
+	int			render_skip_frames;
+	int			render_scale;
+	uint32_t	sphere_color;
 }	t_render_state;
 
 // Input state
@@ -248,9 +248,9 @@ typedef struct s_render_state
 // @param shift_pressed: True when Shift key is currently pressed
 typedef struct s_input_state
 {
-	bool		interaction_mode;	// True when user is actively interacting
-	bool		scroll_activity;	// True when scroll wheel is being used
-	bool		ctrl_pressed;		// True when Ctrl key is currently pressed;
+	bool		interaction_mode;
+	bool		scroll_activity;
+	bool		ctrl_pressed;
 }	t_input_state;
 
 // Main app struct
@@ -263,13 +263,13 @@ typedef struct s_input_state
 // @param input: Input state
 typedef struct s_app
 {
-	t_window_state	window;		// Window and display state
-	t_scene			scene;		// Complete scene data
-	t_camera_state	camera;		// Camera movement state
-	t_mouse_state	mouse;		// Mouse input state
-	t_zoom_state	zoom;		// Zoom state
-	t_render_state	render;		// Rendering state
-	t_input_state	input;		// Input state
+	t_window_state	window;
+	t_scene			scene;
+	t_camera_state	camera;
+	t_mouse_state	mouse;
+	t_zoom_state	zoom;
+	t_render_state	render;
+	t_input_state	input;
 }	t_app;
 
 #endif

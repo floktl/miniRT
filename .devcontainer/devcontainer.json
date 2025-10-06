@@ -1,9 +1,0 @@
-{
-  "name": "miniRT Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils": {},
-    "ghcr.io/devcontainers/features/git": {}
-  },
-  "postCreateCommand": "apt-get update && apt-get install -y build-essential cmake libx11-dev libxrandr-dev libxext-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev libglfw3-dev valgrind"
-}

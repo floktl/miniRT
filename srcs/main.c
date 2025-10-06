@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yourname <yourname@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 00:00:00 by yourname         #+#    #+#             */
-/*   Updated: 2024/10/10 00:00:00 by yourname        ###   ########.fr       */
+/*   Created: 2025/10/06 18:34:04 by mezhang           #+#    #+#             */
+/*   Updated: 2025/10/06 18:34:07 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	main(int argc, char **argv)
 	}
 	print_scene(&app.scene);
 	free(path);
-	//if (mlx_functions(&app) != 0)
-	//{
-	//	free_scene(&app.scene);
-	//	return (printf("Error\nFailed to initialize mlx\n"), 1);
-	//}
+	if (mlx_functions(&app) != 0)
+	{
+		free_scene(&app.scene);
+		return (printf("Error\nFailed to initialize mlx\n"), 1);
+	}
 	free_scene(&app.scene);
 	return (0);
 }

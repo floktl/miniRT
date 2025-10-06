@@ -19,24 +19,24 @@
 // @param success: 1 if parsing succeeded, 0 if failed
 typedef struct s_color_res
 {
-	t_color	c;		// Parsed color value
-	int		success;	// 1 if parsing succeeded, 0 if failed
+	t_color	c;
+	int		success;
 }	t_clr_res;
 
 // @param v: Parsed 3D vector value
 // @param success: 1 if parsing succeeded, 0 if failed
 typedef struct s_vec3d_res
 {
-	t_vec3d	v;		// Parsed 3D vector value
-	int		success;	// 1 if parsing succeeded, 0 if failed
+	t_vec3d	v;
+	int		success;
 }	t_vec3d_res;
 
 // @param f: Parsed float value
 // @param success: 1 if parsing succeeded, 0 if failed
 typedef struct s_float_res
 {
-	float	f;		// Parsed float value
-	int		success;	// 1 if parsing succeeded, 0 if failed
+	float	f;
+	int		success;
 }	t_float_res;
 
 #endif

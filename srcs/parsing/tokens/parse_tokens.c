@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fkeitel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 13:39:28 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/06 11:39:28 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 18:31:46 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static t_clr_res	handle_single_token_res(char **tokens, int *idx,
-		char *str)
+static t_clr_res	handle_single_token_res(char **tokens, int *idx, char *str)
 {
 	t_color		c;
 	t_clr_res	res;
@@ -33,8 +32,8 @@ static t_clr_res	handle_single_token_res(char **tokens, int *idx,
 	return ((t_clr_res){{0, 0, 0}, 0});
 }
 
-static t_clr_res	handle_loop_res(char **tokens, int *idx,
-		int token_count, char *str)
+static t_clr_res	handle_loop_res(char **tokens, int *idx, int token_count,
+		char *str)
 {
 	t_clr_res	res;
 
@@ -49,7 +48,7 @@ static t_clr_res	handle_loop_res(char **tokens, int *idx,
 	if (str)
 	{
 		free(str);
-		str= NULL;
+		str = NULL;
 	}
 	return ((t_clr_res){{0, 0, 0}, 0});
 }
