@@ -44,10 +44,8 @@ int	main(int argc, char **argv)
 
 	path = NULL;
 	app = (t_app){0};
-	if (argc != 2)
+	if (argc != 2 && is_not_rt(argv[1]))
 		return (printf("Error\nUsage: ./miniRT <scene.rt>\n"), 1);
-	if (is_not_rt(argv[1]))
-		return (printf("Error\nFile must have .rt extension\n"), 1);
 	path = ft_strdup(argv[1]);
 	if (!path)
 		return (printf("Error\nFailed to allocate memory for path\n"), 1);

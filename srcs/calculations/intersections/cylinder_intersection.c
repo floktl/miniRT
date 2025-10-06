@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/06 09:20:33 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 11:06:56 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ P = O + tD
  */
 
 #include "miniRT.h"
-
 
 double	intersect_cylinder(t_ray ray, t_object *obj)
 {

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/06 09:17:01 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 11:10:56 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** - Intersection: The point where a ray hits an object's surface
 ** - Distance: How far along the ray the intersection occurs
 **
-	- Closest intersection: The nearest object hit by the ray (used for rendering)
+	- Closest intersection: The nearest object hit by ray (used for rendering)
 **
 ** Process:
 ** 1. For each object, calculate if the ray intersects it
@@ -74,9 +74,6 @@ double	find_closest_intersection_debug(t_ray ray, t_scene *scene,
 	double		closest_dist;
 	double		current_dist;
 
-	printf("[DEBUG INTERSECTION] find_closest_intersection: ray origin=(%.3f,%.3f,%.3f) dir=(%.3f,%.3f,%.3f)\n",
-		ray.origin.x, ray.origin.y, ray.origin.z, ray.direction.x,
-		ray.direction.y, ray.direction.z);
 	*hit_obj = NULL;
 	closest_dist = -1.0;
 	current = scene->objects;
@@ -91,8 +88,6 @@ double	find_closest_intersection_debug(t_ray ray, t_scene *scene,
 		}
 		current = current->next;
 	}
-	printf("[DEBUG INTERSECTION] Final result: distance=%.3f, hit_obj=%p\n",
-		closest_dist, *hit_obj);
 	return (closest_dist);
 }
 
