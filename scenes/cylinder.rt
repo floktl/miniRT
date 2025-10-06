@@ -1,0 +1,8 @@
+# Cylinder Cap Test Scene
+
+A 0.2 255,255,255
+C 0,5,-15 0,-0.3,1 60
+L 10,10,10 0.8 255,255,255
+
+# Cylinder with visible caps
+cy 0,0,5 0,1,0 2 4 10,80,220 50

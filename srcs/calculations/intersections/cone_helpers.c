@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cone_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:59:26 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 20:43:26 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ double	find_cone_cap_intersection(t_ray ray, t_object *obj)
 	cap_center = vec_add(obj->data.s_cone.vertex, vec_mul(obj->data.s_cone.axis,
 				obj->data.s_cone.height));
 	denom = vec_dot(ray.direction, obj->data.s_cone.axis);
-	if (fabs(denom) < 1e-6)
+	if (fabs(denom) < 1e-4)
 		return (-1.0);
 	t_cap = vec_dot(vec_sub(cap_center, ray.origin), obj->data.s_cone.axis)
 		/ denom;

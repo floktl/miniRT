@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_calculations.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:59:19 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 22:15:34 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,25 @@
 static t_vec3d	get_cylinder_normal(t_object *obj, t_vec3d point)
 {
 	t_vec3d	v;
+	t_vec3d	radial;
 	t_vec3d	perp;
 	double	m;
+	double	dist;
 
 	v = vec_sub(point, obj->data.s_cylinder.base);
 	m = vec_dot(v, obj->data.s_cylinder.axis);
+	if (fabs(m) < 1e-4)
+	{
+		radial = vec_sub(v, vec_mul(obj->data.s_cylinder.axis, m));
+		if (vec_length(radial) <= obj->data.s_cylinder.radius)
+			return (vec_mul(obj->data.s_cylinder.axis, -1));
+	}
+	if (fabs(m - obj->data.s_cylinder.height) < 1e-4)
+	{
+		radial = vec_sub(v, vec_mul(obj->data.s_cylinder.axis, m));
+		if (vec_length(radial) <= obj->data.s_cylinder.radius)
+			return (obj->data.s_cylinder.axis);
+	}
 	perp = vec_sub(v, vec_mul(obj->data.s_cylinder.axis, m));
 	return (vec_normalize(perp));
 }

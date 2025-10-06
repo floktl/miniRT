@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_helpers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
+/*   By: mezhang <mezhang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:58:37 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 22:15:41 by mezhang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,21 @@ bool	is_cylinder_intersection_on_cap(t_ray ray, t_object *obj, double t,
 {
 	t_vec3d	p;
 	t_vec3d	v;
+	t_vec3d	cap_center;
 	double	dist;
 
 	p = vec_add(ray.origin, vec_mul(ray.direction, t));
 	if (cap == 0)
-		v = vec_sub(p, obj->data.s_cylinder.base);
+		cap_center = obj->data.s_cylinder.base;
 	else
-		v = vec_sub(p, vec_add(obj->data.s_cylinder.base,
-					vec_mul(obj->data.s_cylinder.axis,
-						obj->data.s_cylinder.height)));
-	dist = vec_length(vec_sub(v, vec_mul(obj->data.s_cylinder.axis, vec_dot(v,
-						obj->data.s_cylinder.axis))));
+		cap_center = vec_add(obj->data.s_cylinder.base,
+				vec_mul(obj->data.s_cylinder.axis,
+					obj->data.s_cylinder.height));
+	v = vec_sub(p, cap_center);
+	dist = vec_dot(v, obj->data.s_cylinder.axis);
+	if (fabs(dist) > 1e-4)
+		return (false);
+	dist = vec_length(vec_sub(v, vec_mul(obj->data.s_cylinder.axis, dist)));
 	if (dist > obj->data.s_cylinder.radius)
 		return (false);
 	return (true);
@@ -111,7 +115,7 @@ double	find_cylinder_cap_intersection(t_ray ray, t_object *obj,
 
 	denom = dot_dir_axis;
 	res = -1.0;
-	if (fabs(denom) > 1e-6)
+	if (fabs(denom) > 1e-4)
 	{
 		t1 = (vec_dot(obj->data.s_cylinder.base, obj->data.s_cylinder.axis)
 				- vec_dot(ray.origin, obj->data.s_cylinder.axis)) / denom;
@@ -122,8 +126,11 @@ double	find_cylinder_cap_intersection(t_ray ray, t_object *obj,
 					obj->data.s_cylinder.axis)) / denom;
 		if (t1 > 0 && is_cylinder_intersection_on_cap(ray, obj, t1, 0))
 			res = t1;
-		else if (t2 > 0 && is_cylinder_intersection_on_cap(ray, obj, t2, 1))
-			res = fmin(res, t2);
+		if (t2 > 0 && is_cylinder_intersection_on_cap(ray, obj, t2, 1))
+		{
+			if (res < 0 || t2 < res)
+				res = t2;
+		}
 	}
 	return (res);
 }
