@@ -49,6 +49,8 @@ int	main(int argc, char **argv)
 	if (is_not_rt(argv[1]))
 		return (printf("Error\nFile must have .rt extension\n"), 1);
 	path = ft_strdup(argv[1]);
+	if (!path)
+		return (printf("Error\nFailed to allocate memory for path\n"), 1);
 	if (parse_scene(path, &app.scene) != 0)
 	{
 		free(path);

@@ -6,7 +6,7 @@
 /*   By: fkeitel <fl.keitelgmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 11:00:00 by fkeitel           #+#    #+#             */
-/*   Updated: 2025/10/04 11:59:11 by fkeitel          ###   ########.fr       */
+/*   Updated: 2025/10/06 09:17:01 by fkeitel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 ** - Ray: A line starting from a point (origin) extending in a direction
 ** - Intersection: The point where a ray hits an object's surface
 ** - Distance: How far along the ray the intersection occurs
-** - Closest intersection: The nearest object hit by ray (used for rendering)
+**
+	- Closest intersection: The nearest object hit by the ray (used for rendering)
 **
 ** Process:
 ** 1. For each object, calculate if the ray intersects it
@@ -29,19 +30,6 @@
 ** 3. Keep track of the closest valid intersection
 ** 4. Return the closest object and its distance
 */
-
-static double	calculate_object_intersection(t_ray ray, t_object *obj)
-{
-	if (obj->type == SPHERE || obj->type == LIGHT)
-		return (intersect_sphere(ray, obj));
-	else if (obj->type == PLANE)
-		return (intersect_plane(ray, obj));
-	else if (obj->type == CYLINDER)
-		return (intersect_cylinder(ray, obj));
-	else if (obj->type == CONE)
-		return (intersect_cone(ray, obj));
-	return (-1.0);
-}
 
 static double	calculate_object_intersection_debug(t_ray ray, t_object *obj)
 {
@@ -80,12 +68,15 @@ double	find_closest_intersection(t_ray ray, t_scene *scene, t_object **hit_obj)
 }
 
 double	find_closest_intersection_debug(t_ray ray, t_scene *scene,
-			t_object **hit_obj)
+		t_object **hit_obj)
 {
 	t_object	*current;
 	double		closest_dist;
 	double		current_dist;
 
+	printf("[DEBUG INTERSECTION] find_closest_intersection: ray origin=(%.3f,%.3f,%.3f) dir=(%.3f,%.3f,%.3f)\n",
+		ray.origin.x, ray.origin.y, ray.origin.z, ray.direction.x,
+		ray.direction.y, ray.direction.z);
 	*hit_obj = NULL;
 	closest_dist = -1.0;
 	current = scene->objects;
@@ -100,5 +91,20 @@ double	find_closest_intersection_debug(t_ray ray, t_scene *scene,
 		}
 		current = current->next;
 	}
+	printf("[DEBUG INTERSECTION] Final result: distance=%.3f, hit_obj=%p\n",
+		closest_dist, *hit_obj);
 	return (closest_dist);
+}
+
+double	calculate_object_intersection(t_ray ray, t_object *obj)
+{
+	if (obj->type == SPHERE || obj->type == LIGHT)
+		return (intersect_sphere(ray, obj));
+	else if (obj->type == PLANE)
+		return (intersect_plane(ray, obj));
+	else if (obj->type == CYLINDER)
+		return (intersect_cylinder(ray, obj));
+	else if (obj->type == CONE)
+		return (intersect_cone(ray, obj));
+	return (-1.0);
 }

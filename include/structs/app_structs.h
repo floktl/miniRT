@@ -87,6 +87,7 @@ typedef struct s_light_params
 	t_vec3d	normal;		// Surface normal at the point
 	t_vec3d	view_dir;	// Direction from point to camera
 	double	shininess;	// Material shininess factor
+	struct s_scene	*scene;	// Pointer to the scene (for lights/objects)
 }	t_light_params;
 
 // Texture types enumeration
